@@ -1,0 +1,9 @@
+/poetry.lock
+/.idea/.gitignore
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/PicScanner.iml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea
+*.lock
+*.log

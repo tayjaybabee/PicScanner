@@ -1,10 +1,9 @@
 from dataclasses import dataclass, field
 
 from . import check_file, provision_paths
-from .units import UNIT_MAP
 
 from pathlib import Path
-from typing import Union
+from typing import Union, List, Dict
 
 from inspyre_toolbox.conversions.bytes import ByteConverter
 from inspyre_toolbox.humanize import Numerical
@@ -54,6 +53,13 @@ def get_lowest_unit_size(size: int) -> tuple[Union[int, float], str]:
 
         if converted >= 1:
             return converted, unit.upper(),
+
+
+class File:
+    def __init__(self, path: Union[str, Path]):
+        self.__path = None
+
+
 
 
 @dataclass
@@ -111,9 +117,20 @@ class FileCollection:
 
         return lowest_unit_size
 
+    def __getitem__(self, key: Union[int, str]) -> Union[str, Dict[str, int]]:
+        if isinstance(key, int):
+            return str(self.paths[key])
+        elif isinstance(key, str):
+            if not key.startswith('.'):
+                key = f".{key}"
+            key = key.lower()
+            if key not in self.extensions:
+                raise KeyError(f"Extension {key} not found in file collection.")
+            return self.extensions[key]
+        else:
+            raise TypeError("Key must be an integer (for path index) or a string (for extension).")
+
     def __str__(self):
         size, unit = self.get_total_size_in_lowest_unit()
-
         size_str = Numerical(size, noun=unit).count_noun()
-
         return f"Total size: {size_str}, Total files: {self.total_files}"
