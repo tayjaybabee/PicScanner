@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pic_scanner.helpers.filesystem.classes &mdash; PicScanner 1.0.0-dev.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=fd3f3429" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=3992bef7"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            PicScanner
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">PicScanner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+          <li class="breadcrumb-item"><a href="../../helpers.html">pic_scanner.helpers</a></li>
+          <li class="breadcrumb-item"><a href="../filesystem.html">pic_scanner.helpers.filesystem</a></li>
+      <li class="breadcrumb-item active">pic_scanner.helpers.filesystem.classes</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for pic_scanner.helpers.filesystem.classes</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">check_file</span><span class="p">,</span> <span class="n">provision_paths</span>
+
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span>
+
+<span class="kn">from</span> <span class="nn">inspyre_toolbox.conversions.bytes</span> <span class="kn">import</span> <span class="n">ByteConverter</span>
+<span class="kn">from</span> <span class="nn">inspyre_toolbox.humanize</span> <span class="kn">import</span> <span class="n">Numerical</span>
+
+
+<span class="c1"># Create a data class that takes a collection of file paths and creates a class representing a</span>
+<span class="c1"># collection of files with properties for total size and number of files and a dictionary of extensions with</span>
+<span class="c1"># properties for total size and number of files.</span>
+
+
+<div class="viewcode-block" id="get_lowest_unit_size">
+<a class="viewcode-back" href="../../../../pic_scanner.helpers.filesystem.html#pic_scanner.helpers.filesystem.classes.get_lowest_unit_size">[docs]</a>
+<span class="k">def</span> <span class="nf">get_lowest_unit_size</span><span class="p">(</span><span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the lowest unit size for a given size.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        size (int):</span>
+<span class="sd">            The size to convert.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple[Union[int, float], str]:</span>
+<span class="sd">            The converted size and the unit.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; get_lowest_unit_size(1024)</span>
+<span class="sd">        (1.0, &#39;KB&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; get_lowest_unit_size(1024 * 1024)</span>
+<span class="sd">        (1.0, &#39;MB&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; get_lowest_unit_size(1024 * 1024 * 1024)</span>
+<span class="sd">        (1.0, &#39;GB&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; get_lowest_unit_size(1024 * 1024 * 1024 * 1024)</span>
+<span class="sd">        (1.0, &#39;TB&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; get_lowest_unit_size(1024 * 1024 * 1024 * 1024 * 1024)</span>
+<span class="sd">        (1.0, &#39;PB&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; get_lowest_unit_size(1024 * 1024 * 1024 * 1024 * 1024 * 1024)</span>
+<span class="sd">        (1.0, &#39;EB&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; get_lowest_unit_size(1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024)</span>
+<span class="sd">        (1.0, &#39;ZB&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; get_lowest_unit_size(1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024)</span>
+<span class="sd">        (1.0, &#39;YB&#39;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">units</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;byte&#39;</span><span class="p">,</span> <span class="s1">&#39;kilobyte&#39;</span><span class="p">,</span> <span class="s1">&#39;megabyte&#39;</span><span class="p">,</span> <span class="s1">&#39;gigabyte&#39;</span><span class="p">,</span> <span class="s1">&#39;terabyte&#39;</span><span class="p">,</span> <span class="s1">&#39;petabyte&#39;</span><span class="p">,</span> <span class="s1">&#39;exabyte&#39;</span><span class="p">,</span> <span class="s1">&#39;zetabyte&#39;</span><span class="p">,</span> <span class="s1">&#39;yottabyte&#39;</span><span class="p">]</span>
+    <span class="n">units</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+    <span class="n">converter</span> <span class="o">=</span> <span class="n">ByteConverter</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="s1">&#39;byte&#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">unit</span> <span class="ow">in</span> <span class="n">units</span><span class="p">:</span>
+        <span class="n">converted</span> <span class="o">=</span> <span class="n">converter</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">unit</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+
+        <span class="k">if</span> <span class="n">converted</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">converted</span><span class="p">,</span> <span class="n">unit</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span></div>
+
+
+
+<div class="viewcode-block" id="File">
+<a class="viewcode-back" href="../../../../pic_scanner.helpers.filesystem.html#pic_scanner.helpers.filesystem.classes.File">[docs]</a>
+<span class="k">class</span> <span class="nc">File</span><span class="p">:</span>
+<div class="viewcode-block" id="File.__init__">
+<a class="viewcode-back" href="../../../../pic_scanner.helpers.filesystem.html#pic_scanner.helpers.filesystem.classes.File.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__path</span> <span class="o">=</span> <span class="kc">None</span></div>
+</div>
+
+
+
+
+
+<div class="viewcode-block" id="FileCollection">
+<a class="viewcode-back" href="../../../../pic_scanner.helpers.filesystem.html#pic_scanner.helpers.filesystem.classes.FileCollection">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">FileCollection</span><span class="p">:</span>
+    <span class="n">paths</span><span class="p">:</span> <span class="nb">list</span>
+    <span class="n">total_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">total_files</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">extensions</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_process_files</span><span class="p">()</span>
+
+<div class="viewcode-block" id="FileCollection._process_files">
+<a class="viewcode-back" href="../../../../pic_scanner.helpers.filesystem.html#pic_scanner.helpers.filesystem.classes.FileCollection._process_files">[docs]</a>
+    <span class="k">def</span> <span class="nf">_process_files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">paths</span> <span class="o">=</span> <span class="n">provision_paths</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">paths</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">path_str</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">paths</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path_str</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">check_file</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">do_not_provision</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+                <span class="n">extension</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">suffix</span>
+
+                <span class="k">if</span> <span class="n">extension</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">extensions</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">extensions</span><span class="p">[</span><span class="n">extension</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                            <span class="s1">&#39;total_size&#39;</span><span class="p">:</span>  <span class="mi">0</span><span class="p">,</span>
+                            <span class="s1">&#39;total_files&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                            <span class="p">}</span>
+
+                <span class="n">file_size</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">stat</span><span class="p">()</span><span class="o">.</span><span class="n">st_size</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">total_size</span> <span class="o">+=</span> <span class="n">file_size</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">total_files</span> <span class="o">+=</span> <span class="mi">1</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">extensions</span><span class="p">[</span><span class="n">extension</span><span class="p">][</span><span class="s1">&#39;total_size&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">file_size</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">extensions</span><span class="p">[</span><span class="n">extension</span><span class="p">][</span><span class="s1">&#39;total_files&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span></div>
+
+
+<div class="viewcode-block" id="FileCollection.get_total_size_in_lowest_unit">
+<a class="viewcode-back" href="../../../../pic_scanner.helpers.filesystem.html#pic_scanner.helpers.filesystem.classes.FileCollection.get_total_size_in_lowest_unit">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_total_size_in_lowest_unit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">str</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">get_lowest_unit_size</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">total_size</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="FileCollection.get_total_extension_size_in_lowest_unit">
+<a class="viewcode-back" href="../../../../pic_scanner.helpers.filesystem.html#pic_scanner.helpers.filesystem.classes.FileCollection.get_total_extension_size_in_lowest_unit">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_total_extension_size_in_lowest_unit</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">extension</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+            <span class="n">return_as_string</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">str</span><span class="p">]:</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">extension</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">):</span>
+            <span class="n">extension</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;.</span><span class="si">{</span><span class="n">extension</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="n">extension</span> <span class="o">=</span> <span class="n">extension</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">extension</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">extensions</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid extension: </span><span class="si">{</span><span class="n">extension</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+
+        <span class="n">lowest_unit_size</span> <span class="o">=</span> <span class="n">get_lowest_unit_size</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">extensions</span><span class="p">[</span><span class="n">extension</span><span class="p">][</span><span class="s1">&#39;total_size&#39;</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="n">return_as_string</span><span class="p">:</span>
+            <span class="n">size_str</span> <span class="o">=</span> <span class="n">Numerical</span><span class="p">(</span><span class="n">lowest_unit_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">noun</span><span class="o">=</span><span class="n">lowest_unit_size</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">count_noun</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">size_str</span>
+
+        <span class="k">return</span> <span class="n">lowest_unit_size</span></div>
+
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">paths</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">key</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">):</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;.</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">extensions</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Extension </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> not found in file collection.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">extensions</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Key must be an integer (for path index) or a string (for extension).&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">size</span><span class="p">,</span> <span class="n">unit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_total_size_in_lowest_unit</span><span class="p">()</span>
+        <span class="n">size_str</span> <span class="o">=</span> <span class="n">Numerical</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">noun</span><span class="o">=</span><span class="n">unit</span><span class="p">)</span><span class="o">.</span><span class="n">count_noun</span><span class="p">()</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Total size: </span><span class="si">{</span><span class="n">size_str</span><span class="si">}</span><span class="s2">, Total files: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">total_files</span><span class="si">}</span><span class="s2">&quot;</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Inspyre-Softworks.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

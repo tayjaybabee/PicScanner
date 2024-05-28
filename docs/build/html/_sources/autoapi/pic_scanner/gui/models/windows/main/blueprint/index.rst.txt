@@ -1,0 +1,819 @@
+pic_scanner.gui.models.windows.main.blueprint
+=============================================
+
+.. py:module:: pic_scanner.gui.models.windows.main.blueprint
+
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/pic_scanner/gui/models/windows/main/blueprint/columns/index
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   pic_scanner.gui.models.windows.main.blueprint.MOD_LOGGER
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   pic_scanner.gui.models.windows.main.blueprint.FileCollection
+   pic_scanner.gui.models.windows.main.blueprint.LeftColumn
+   pic_scanner.gui.models.windows.main.blueprint.FileColumn
+   pic_scanner.gui.models.windows.main.blueprint.BaseBlueprint
+   pic_scanner.gui.models.windows.main.blueprint.GUIFileCollection
+   pic_scanner.gui.models.windows.main.blueprint.BluePrint
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   pic_scanner.gui.models.windows.main.blueprint.flag_lock
+
+
+Package Contents
+----------------
+
+.. py:function:: flag_lock(instance, flag_name)
+
+   Context manager to set and unset a private flag attribute in an instance.
+
+   This context manager ensures that a specified private flag attribute
+   in the given instance is set to True when entering the context and
+   reset to False upon exiting the context. This is useful for indicating
+   that an operation is in progress within a specific scope.
+
+   :param instance: The instance containing the private flag attribute.
+   :type instance: object
+   :param flag_name: The name of the flag attribute (without leading underscore).
+   :type flag_name: str
+
+   :raises AttributeError: If the instance does not have the specified private flag attribute.
+
+   Example usage:
+       handler = OperationHandler()
+       with flag_lock(handler, 'flag'):
+           # Perform some operation
+           pass
+
+   This will automatically set handler._flag to True within the context
+   and reset it to False when exiting the context.
+
+
+.. py:class:: FileCollection(paths: List[str] = None)
+
+   A class for managing a collection of files.
+
+   Properties:
+       paths (list):
+           A list of file paths.
+
+       total_size (int):
+           The total size of the collection, in bytes.
+
+       total_files (int):
+           The total number of files in the collection.
+
+       extensions (dict):
+           A dictionary of extensions with properties for total size and number of files.
+
+       needs_reprocessing (bool):
+           A flag indicating whether the collection needs reprocessing.
+
+   .. method:: get_total_size_in_lowest_unit
+
+      
+      Get the total size of the collection in the lowest unit.
+      
+
+   .. method:: get_total_extension_size_in_lowest_unit
+
+      
+      Get the total size of a specific extension in the lowest unit.
+      
+
+   .. method:: remove_file
+
+      
+      Remove a file from the collection.
+      
+
+   .. method:: reprocess_files
+
+      
+      Reprocess the files in the collection.
+      
+
+   .. rubric:: Examples
+
+   >>> collection = FileCollection(paths=['/path/to/file1', '/path/to/file2'])
+   >>> collection.total_size
+   123456  # Total size of the collection, in bytes.
+
+
+   .. py:attribute:: paths
+      :type:  list
+
+
+   .. py:attribute:: total_size
+      :type:  int
+
+
+   .. py:attribute:: total_files
+      :type:  int
+
+
+   .. py:attribute:: extensions
+      :type:  dict
+
+
+   .. py:method:: __post_init__()
+
+      Post-initialization method for the FileCollection class.
+
+      This method processes the files in the collection. It calculates the total size of the collection, the total number
+      of files, and the total size of each extension in the collection. It populates the `total_size`, `total_files`, and
+      `extensions` attributes of the class.
+
+      :returns: None
+
+
+
+   .. py:property:: needs_reprocessing
+      :type: bool
+
+      Returns whether the collection needs reprocessing.
+
+      This property returns a boolean value indicating whether the collection needs reprocessing. If the collection has
+      been modified since the last processing, this property will return `True`. If the collection has not been modified,
+      it will return `False`. The property is read-only.
+
+      :returns:     True if the collection needs reprocessing, False otherwise.
+      :rtype: bool
+
+
+   .. py:method:: _process_files()
+
+      Process the files in the collection.
+
+      This method processes the files in the collection. It calculates the total size of the collection, the total number
+      of files, and the total size of each extension in the collection. It populates the `total_size`, `total_files`, and
+      `extensions` attributes of the class.
+
+      :returns: None
+
+
+
+   .. py:method:: reprocess_files()
+
+      Reprocess the files in the collection.
+
+      This method reprocesses the files in the collection. It recalculates the total size of the collection, the total
+      number of files, and the total size of each extension in the collection. It populates the `total_size`, `total_files`,
+      and `extensions` attributes of the class. This method is used to update the collection after files have been added
+      or removed.
+
+      .. note::
+
+         This method should be called after files have been added or removed from the collection. It will only reprocess
+         the files if the `needs_reprocessing` attribute is set to `True`. After reprocessing, the `needs_reprocessing`
+         attribute will be set to `False`.
+
+      :returns: None
+
+
+
+   .. py:method:: get_total_size_in_lowest_unit() -> tuple[Union[int, float], str]
+
+      Get the total size of the collection in the lowest unit with a size greater than or equal to 1.
+
+      This method calculates the total size of the collection in the lowest unit with a size greater than or equal
+      to 1. It returns the size and the unit as a tuple. The unit is a string representing the unit of the size.
+
+      :returns:     The total size of the collection and the unit.
+      :rtype: tuple[Union[int, float], str]
+
+
+
+   .. py:method:: get_total_extension_size_in_lowest_unit(extension: str, return_as_string: bool = False) -> tuple[Union[int, float], str]
+
+      Get the total size of a specific extension in the lowest unit with a size greater than or equal to 1.
+
+      :param extension: The extension to get the size of.
+      :type extension: str
+      :param return_as_string: A flag indicating whether to return the size as a string. If True, the size will be returned as a string
+                               with the unit. If False, the size will be returned as a tuple with the size and the unit.
+      :type return_as_string: bool
+
+      :returns:     The total size of the extension and the unit.
+      :rtype: tuple[Union[int, float], str]
+
+      :raises ValueError: If the extension is not found in the collection.
+
+
+
+   .. py:method:: remove_file(path: Union[pathlib.Path, str], **kwargs)
+
+      Remove a file from the collection.
+
+      This method removes a file from the collection. It takes a file path as an argument and removes the file from the
+      collection. It then reprocesses the files in the collection to update the total size, total number of files, and
+      total size of each extension.
+
+      .. note::
+
+         This method does not delete the file from the file system. It only removes the file from the collection,
+         and only if the file is in the collection. If the file is not in the collection, this method will raise a
+         `KeyError`. After removing the file, the collection will be reprocessed to update the total size, total number
+         of files, and total size of each extension.
+
+      :param path: The file path to remove.
+      :type path: Union[Path, str]
+      :param \*\*kwargs: Additional keyword arguments.
+
+      :raises KeyError: If the file is not in the collection.
+
+      :returns: None
+
+
+
+   .. py:method:: __getitem__(key: Union[int, str]) -> Union[str, Dict[str, int]]
+
+
+   .. py:method:: __str__()
+
+      Return str(self).
+
+
+
+.. py:class:: LeftColumn(file_collection: pic_scanner.helpers.filesystem.classes.FileCollection, **kwargs)
+
+   Bases: :py:obj:`pic_scanner.gui.models.element_bases.column.Column`
+
+
+   A class that represents the left column of the main window.
+
+   Properties:
+       file_collection (FileCollection):
+           The collection of files.
+
+       file_list_box (psg.Listbox):
+           The listbox displaying the file names.
+
+       file_names (list[str]):
+           The list of file names.
+
+       next_button (psg.Button):
+           The button to go to the next file.
+
+       file_num_display_elem (psg.Text):
+           The element displaying the current file number.
+
+       prev_button (psg.Button):
+           The button to go to the previous file.
+
+       remove_button (psg.Button):
+           The button to remove the current image.
+
+
+   .. py:attribute:: instances
+      :value: []
+
+
+
+   .. py:property:: file_collection
+      Gets the file collection.
+
+      :returns:     The collection of files.
+      :rtype: FileCollection
+
+
+   .. py:property:: file_list_box
+      Gets the file list box.
+
+      :returns:     The listbox displaying the file names.
+      :rtype: psg.Listbox
+
+
+   .. py:property:: file_names
+      Gets the file names.
+
+      :returns:     The list of file names.
+      :rtype: list[str]
+
+
+   .. py:property:: next_button
+      Gets the next button.
+
+
+      :returns:     The button to go to the next file.
+      :rtype: psg.Button
+
+
+   .. py:property:: file_num_display_elem
+      Gets the file number display element.
+
+      :returns:     The element displaying the current file number.
+      :rtype: psg.Text
+
+
+   .. py:property:: prev_button
+      Gets the previous button.
+
+      :returns:     The button to go to the previous file.
+      :rtype: psg.Button
+
+
+   .. py:property:: remove_button
+      Gets the remove button.
+
+      :returns:     The button to remove the current image.
+      :rtype: psg.Button
+
+
+   .. py:method:: build()
+
+      Builds the left column layout.
+
+      :returns: The column layout.
+      :rtype: psg.Column
+
+
+
+.. py:class:: FileColumn(file_path, **kwargs)
+
+   Bases: :py:obj:`pic_scanner.gui.models.element_bases.column.Column`
+
+
+   A class for building a PySimpleGUI Column.
+
+   This class is used to build a PySimpleGUI Column. It is a subclass of the `AutoBuildMeta` metaclass.
+
+   Properties:
+       auto_build (bool):
+           A boolean value that determines whether the class should automatically build itself when
+           instantiated. This is set to `False` by default. This property is read-only.
+
+       building (bool):
+           A boolean value that determines whether the class is currently building itself. This is set to `False` by
+           default.
+
+       column (psg.Column):
+           The PySimpleGUI Column object. This is built from the layout, and will only have a value if the class is built.
+
+       column_key (str):
+           The key for the column. This is used to identify the column in the layout. It is set to `None` by default, and
+           after instantiation it is frozen and cannot be changed.
+
+       is_built (bool):
+           A boolean value that determines whether the class has been built.
+
+       layout (list):
+           A list of elements that make up the layout of the class. This is used to build the column, and is set to
+           an empty list by default.
+
+
+   .. py:property:: building
+      :type: bool
+
+      Returns the value of the `building` attribute.
+
+      The `building` attribute is a boolean value that determines whether the class is currently building itself.
+
+      :returns:     The value of the `building` attribute.
+      :rtype: bool
+
+
+   .. py:property:: changing_image
+      :type: bool
+
+
+
+   .. py:property:: file_name_display_elem
+      :type: pic_scanner.gui.models.element_bases.column.psg.Text
+
+
+
+   .. py:property:: file_path
+      :type: pathlib.Path
+
+      A property that returns the file path.
+
+      :rtype: Path
+
+
+   .. py:property:: gui_file_collection
+
+
+   .. py:property:: image_elem
+      :type: pic_scanner.gui.models.element_bases.column.psg.Image
+
+      A property that returns the image element.
+
+      :returns: The image element.
+
+
+   .. py:method:: build() -> pic_scanner.gui.models.element_bases.column.psg.Column
+
+      Builds the column.
+
+      This method builds the column by creating the layout and column elements and setting the
+      `is_built ` attribute to `True`.
+
+      :returns: The column.
+
+
+
+   .. py:method:: change_image(new_path: Union[pathlib.Path, str, int]) -> None
+
+      Changes the image displayed in the column.
+
+      This method changes the image displayed in the column to the image located at the path and
+      updates the file name display element to show the new file name.
+
+      :param new_path: The new path to the image.
+      :type new_path: Path
+
+
+
+.. py:class:: BaseBlueprint(auto_build: bool = False)
+
+   A base class for building blueprints.
+
+   This class is used to create blueprints for building GUI elements. A blueprint is a set of
+   instructions that are used to build a GUI element.
+
+   Properties:
+
+       auto_build (bool):
+           A boolean value that determines whether the class should automatically build itself when
+           instantiated.
+
+       building (bool):
+           A boolean value that determines whether the class is currently building itself.
+
+       is_built (bool):
+           A boolean value that determines whether the class has been built.
+
+       layout (list):
+           A list of elements that make up the layout of the class.
+
+   .. method:: build()
+
+      
+      An abstract method that builds the class.
+      
+
+
+   .. py:property:: auto_build
+      Returns the value of the `auto_build` attribute.
+
+      The `auto_build` attribute is a boolean value that determines whether the class should
+      automatically build itself when instantiated.
+
+      :returns:     The value of the `auto_build` attribute.
+      :rtype: bool
+
+
+   .. py:property:: building
+      Returns the value of the `building` attribute.
+
+      The `building` attribute is a boolean value that determines whether the class is currently building
+      itself.
+
+      :returns:     The value of the `building` attribute.
+      :rtype: bool
+
+
+   .. py:method:: building()
+
+      Deletes the `building` attribute.
+
+      This method sets the `building` attribute to `False`.
+
+      :returns: None
+
+
+
+   .. py:property:: _built
+      Returns the value of the `_built` attribute.
+
+      The `_built` attribute is a boolean value that determines whether the class has been built.
+
+      :returns:     The value of the `_built` attribute.
+      :rtype: bool
+
+
+   .. py:property:: is_built
+      Returns the value of the `is_built` attribute.
+
+      The `is_built` attribute is a boolean value that determines whether the class has been built.
+
+      :returns:     The value of the `is_built` attribute.
+      :rtype: bool
+
+
+   .. py:property:: layout
+      Returns the value of the `layout` attribute.
+
+      The `layout` attribute is a list of elements that make up the layout of the class.
+
+      :returns:     The value of the `layout` attribute.
+      :rtype: list
+
+
+   .. py:method:: build()
+      :abstractmethod:
+
+
+      An abstract method that builds the class.
+
+      This method is called to build the class by creating and must be implemented by subclasses.
+
+      :returns: None
+
+
+
+.. py:class:: GUIFileCollection(collection: pic_scanner.helpers.filesystem.classes.FileCollection)
+
+   Bases: :py:obj:`pic_scanner.log_engine.Loggable`
+
+
+   A class to manage a collection of files with a cursor to navigate through them.
+
+   Properties:
+       collection (FileCollection):
+           The collection of files.
+
+       files (list[Path]):
+           List of file paths from the collection.
+
+       cursor (int):
+           Current position of the cursor in the collection.
+
+
+   .. py:attribute:: cursor
+
+
+   .. py:property:: collection
+      :type: pic_scanner.helpers.filesystem.classes.FileCollection
+
+      Returns the collection of files.
+
+      :returns:     The collection of files.
+      :rtype: FileCollection
+
+
+   .. py:property:: files
+      :type: list
+
+      Returns the list of file paths from the collection.
+
+      :returns:     The list of file paths.
+      :rtype: list
+
+
+   .. py:property:: needs_reprocessing
+      :type: bool
+
+      Returns whether the collection needs reprocessing.
+
+      :returns:     True if the collection needs reprocessing, False otherwise.
+      :rtype: bool
+
+
+   .. py:method:: next() -> str
+
+      Moves the cursor to the next file in the collection and returns it.
+
+      :returns:     The path of the next file.
+      :rtype: str
+
+
+
+   .. py:method:: prev() -> str
+
+      Moves the cursor to the previous file in the collection and returns it.
+
+      :returns:     The path of the previous file.
+      :rtype: str
+
+
+
+   .. py:method:: current() -> str
+
+      Returns the file at the current cursor position.
+
+      :returns:     The path of the current file.
+      :rtype: str
+
+
+
+   .. py:method:: remove_current()
+
+      Removes the file at the current cursor position.
+
+
+
+   .. py:method:: set_cursor(index: int)
+
+      Sets the cursor to the specified index, adjusting if out of bounds.
+
+      :param index: The position to set the cursor to.
+      :type index: int
+
+      :raises IndexError: If the index is out of the valid range.
+
+
+
+   .. py:method:: __getitem__(key: int) -> str
+
+      Returns the file at the specified index.
+
+      :param key: The index of the file to retrieve.
+      :type key: int
+
+      :returns:     The path of the file at the specified index.
+      :rtype: str
+
+
+
+   .. py:method:: add_cursor_callback(callback, *args, **kwargs)
+
+      Adds a callback to be invoked when the cursor changes.
+
+      :param callback: The callback function.
+      :type callback: callable
+      :param \*args: Additional positional arguments to pass to the callback.
+      :param \*\*kwargs: Additional keyword arguments to pass to the callback.
+
+
+
+   .. py:method:: __len__() -> int
+
+      Returns the number of files in the collection.
+
+      :returns:     The number of files.
+      :rtype: int
+
+
+
+.. py:data:: MOD_LOGGER
+
+.. py:class:: BluePrint(file_collection: pic_scanner.helpers.filesystem.classes.FileCollection, pre_built_left_column=None, pre_built_file_column=None, **kwargs)
+
+   Bases: :py:obj:`pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint`, :py:obj:`pic_scanner.log_engine.Loggable`
+
+
+   A base class for building blueprints.
+
+   This class is used to create blueprints for building GUI elements. A blueprint is a set of
+   instructions that are used to build a GUI element.
+
+   Properties:
+
+       auto_build (bool):
+           A boolean value that determines whether the class should automatically build itself when
+           instantiated.
+
+       building (bool):
+           A boolean value that determines whether the class is currently building itself.
+
+       is_built (bool):
+           A boolean value that determines whether the class has been built.
+
+       layout (list):
+           A list of elements that make up the layout of the class.
+
+   .. method:: build()
+
+      
+      An abstract method that builds the class.
+      
+
+
+   .. py:attribute:: __left_column
+
+
+   .. py:attribute:: __file_column
+
+
+   .. py:attribute:: __file_collection_cursor
+
+
+   .. py:property:: building
+      Returns the value of the `building` attribute.
+
+      The `building` attribute is a boolean value that determines whether the class is currently building
+      itself.
+
+      :returns:     The value of the `building` attribute.
+      :rtype: bool
+
+
+   .. py:method:: building()
+
+      Returns the value of the `building` attribute.
+
+      The `building` attribute is a boolean value that determines whether the class is currently building
+      itself.
+
+      :returns:     The value of the `building` attribute.
+      :rtype: bool
+
+
+
+   .. py:property:: file_collection
+
+
+   .. py:property:: file_collection_cursor
+
+
+   .. py:property:: file_column
+      A property that returns the file column.
+
+      The file column is the column that displays the image in the GUI representation of the blueprint. This is the
+      right column in the blueprint layout. This property is a RestrictedSetter, and can only be set to an instance of
+      FileColumn. The initial value is None.
+
+      :returns:     The file column.
+      :rtype: FileColumn
+
+
+   .. py:property:: left_column
+      A property that returns the left column.
+
+      :returns:     The left column.
+      :rtype: LeftColumn
+
+
+   .. py:method:: build()
+
+      Build the blueprint layout.
+
+      :returns:     The layout of the blueprint.
+      :rtype: list
+
+
+
+   .. py:method:: change_image(new_image)
+
+      Change the image in the file column.
+
+      This method changes the image in the image element of the file column to the new image provided. The new image
+      must be a path to an image file. This method is used to change the image displayed in the GUI when the user
+      navigates through the images in the file collection. This method is called by the blueprint controller when the
+      user changes the image.
+
+      Parameters::
+          new_image:
+              The new image to display in the file column.
+
+      :returns: None
+
+
+
+   .. py:method:: current_image()
+
+      Get the current image.
+
+      This method returns the path to the current image in the file column. This is the image that is currently
+      displayed in the GUI. This method is used by the blueprint controller to determine which image is currently
+      displayed in the GUI. This method is called by the blueprint controller when the user changes the image. The
+      blueprint controller uses this method to determine the current image. The blueprint controller then uses this
+      information to update the current image in the GUI.
+
+      :returns:     The path to the current image.
+      :rtype: str
+
+
+
+   .. py:method:: next_image()
+
+      Get the next image.
+
+      This method moves the cursor to the next image in the file collection and returns the path to that image. This
+      method is used by the blueprint controller to move the cursor to the next image in the file collection. This
+      method is called by the blueprint controller when the user clicks the 'Next' button in the GUI. The blueprint
+      controller uses this method to move the cursor to the next image in the file collection. The blueprint controller
+      then uses this information to update the current image in the GUI.
+
+      :returns:     The path to the next image.
+      :rtype: str
+
+
+
+   .. py:method:: update_image()
+
+

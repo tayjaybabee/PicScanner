@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pic_scanner.gui.models.windows.main.blueprint.columns &mdash; PicScanner 1.0.0-dev.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../../_static/graphviz.css?v=fd3f3429" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../../../_static/documentation_options.js?v=3992bef7"></script>
+        <script src="../../../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../../../../index.html" class="icon icon-home">
+            PicScanner
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../index.html">PicScanner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../../../../index.html">Module code</a></li>
+          <li class="breadcrumb-item"><a href="../../main.html">pic_scanner.gui.models.windows.main</a></li>
+          <li class="breadcrumb-item"><a href="../blueprint.html">pic_scanner.gui.models.windows.main.blueprint</a></li>
+      <li class="breadcrumb-item active">pic_scanner.gui.models.windows.main.blueprint.columns</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for pic_scanner.gui.models.windows.main.blueprint.columns</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
+
+<span class="kn">from</span> <span class="nn">inspyre_toolbox.syntactic_sweets.properties</span> <span class="kn">import</span> <span class="n">validate_path</span>
+
+<span class="kn">from</span> <span class="nn">pic_scanner.gui.models.element_bases.column</span> <span class="kn">import</span> <span class="n">Column</span><span class="p">,</span> <span class="n">psg</span>
+<span class="kn">from</span> <span class="nn">pic_scanner.helpers</span> <span class="kn">import</span> <span class="n">get_caller_name</span>
+<span class="kn">from</span> <span class="nn">pic_scanner.helpers.locks</span> <span class="kn">import</span> <span class="n">flag_lock</span>
+<span class="kn">from</span> <span class="nn">pic_scanner.helpers.filesystem.classes</span> <span class="kn">import</span> <span class="n">FileCollection</span>
+<span class="kn">from</span> <span class="nn">pic_scanner.helpers.images</span> <span class="kn">import</span> <span class="n">get_image_data</span>
+<span class="kn">from</span> <span class="nn">pic_scanner.gui.models.element_bases</span> <span class="kn">import</span> <span class="n">GUIFileCollection</span>
+
+
+<span class="n">gui_file_collection</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+
+<div class="viewcode-block" id="LeftColumn">
+<a class="viewcode-back" href="../../../../../../../pic_scanner.gui.models.windows.main.blueprint.columns.html#pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn">[docs]</a>
+<span class="k">class</span> <span class="nc">LeftColumn</span><span class="p">(</span><span class="n">Column</span><span class="p">):</span>
+    <span class="n">instances</span> <span class="o">=</span> <span class="p">[]</span>
+
+<div class="viewcode-block" id="LeftColumn.__init__">
+<a class="viewcode-back" href="../../../../../../../pic_scanner.gui.models.windows.main.blueprint.columns.html#pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_collection</span><span class="p">:</span> <span class="n">FileCollection</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">global</span> <span class="n">gui_file_collection</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">file_collection</span><span class="p">,</span> <span class="n">FileCollection</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;The `file_collection` attribute must be of type `FileCollection`.&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__file_collection</span> <span class="o">=</span> <span class="n">file_collection</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">gui_file_collection</span><span class="p">:</span>
+            <span class="n">gui_file_collection</span> <span class="o">=</span> <span class="n">GUIFileCollection</span><span class="p">(</span><span class="n">file_collection</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;LEFT_COLUMN&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__file_list_box</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__file_num_display_elem</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__next_button</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__prev_button</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">file_collection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__file_collection</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">file_list_box</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">building</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_built</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_collection</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">__file_list_box</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Creating file listbox&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__file_list_box</span> <span class="o">=</span> <span class="n">psg</span><span class="o">.</span><span class="n">Listbox</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">file_names</span><span class="p">,</span>
+                <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span>
+                <span class="n">key</span><span class="o">=</span><span class="s1">&#39;FILE_LIST_BOX&#39;</span><span class="p">,</span>
+                <span class="n">enable_events</span><span class="o">=</span><span class="kc">True</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__file_list_box</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">file_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_collection</span><span class="o">.</span><span class="n">paths</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">next_button</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">building</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_built</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">__next_button</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__next_button</span> <span class="o">=</span> <span class="n">psg</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+                <span class="s1">&#39;Next file&#39;</span><span class="p">,</span>
+                <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+                <span class="n">key</span><span class="o">=</span><span class="s1">&#39;NEXT_BUTTON&#39;</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__next_button</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">file_num_display_elem</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">building</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_built</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_collection</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">__file_num_display_elem</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__file_num_display_elem</span> <span class="o">=</span> <span class="n">psg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;File 1 of </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">file_collection</span><span class="o">.</span><span class="n">total_files</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+                <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+                <span class="n">key</span><span class="o">=</span><span class="s1">&#39;FILE_NUM_DISPLAY&#39;</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__file_num_display_elem</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">prev_button</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">building</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_built</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">__prev_button</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__prev_button</span> <span class="o">=</span> <span class="n">psg</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+                <span class="s1">&#39;Previous file&#39;</span><span class="p">,</span>
+                <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+                <span class="n">key</span><span class="o">=</span><span class="s1">&#39;PREV_BUTTON&#39;</span><span class="p">,</span>
+                <span class="n">disabled</span><span class="o">=</span><span class="kc">True</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__prev_button</span>
+
+<div class="viewcode-block" id="LeftColumn.build">
+<a class="viewcode-back" href="../../../../../../../pic_scanner.gui.models.windows.main.blueprint.columns.html#pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.build">[docs]</a>
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Starting build: is_built=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">is_built</span><span class="si">}</span><span class="s2">, file_collection is not None=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">file_collection</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="kc">None</span><span class="si">}</span><span class="s2">, building=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">building</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Debugging</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_built</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_collection</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">building</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">flag_lock</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;building&#39;</span><span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Inside flag_lock&quot;</span><span class="p">)</span>  <span class="c1"># Debugging</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_layout</span> <span class="o">=</span> <span class="p">[</span>
+                        <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">file_list_box</span><span class="p">],</span>
+                        <span class="p">[</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">next_button</span><span class="p">,</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">prev_button</span><span class="p">,</span>
+                                <span class="p">]</span>
+                        <span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_column</span> <span class="o">=</span> <span class="n">psg</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;LEFT_COLUMN&#39;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_built</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Build complete&quot;</span><span class="p">)</span>  <span class="c1"># Debugging</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span></div>
+</div>
+
+
+
+
+<div class="viewcode-block" id="FileColumn">
+<a class="viewcode-back" href="../../../../../../../pic_scanner.gui.models.windows.main.blueprint.columns.html#pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn">[docs]</a>
+<span class="k">class</span> <span class="nc">FileColumn</span><span class="p">(</span><span class="n">Column</span><span class="p">):</span>
+
+<div class="viewcode-block" id="FileColumn.__init__">
+<a class="viewcode-back" href="../../../../../../../pic_scanner.gui.models.windows.main.blueprint.columns.html#pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">global</span> <span class="n">gui_file_collection</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">LeftColumn</span><span class="o">.</span><span class="n">instances</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;The `LeftColumn` class has not been instantiated yet.&#39;</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;FILE_COLUMN&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_changing_image</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__file_path</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="o">=</span> <span class="n">file_path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__image_elem</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__file_name_display_elem</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">building</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_building</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">changing_image</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_changing_image</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">file_name_display_elem</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">psg</span><span class="o">.</span><span class="n">Text</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">building</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_built</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">__file_name_display_elem</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__file_name_display_elem</span> <span class="o">=</span> <span class="n">psg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                    <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+                    <span class="n">key</span><span class="o">=</span><span class="s1">&#39;FILE_NAME_DISPLAY&#39;</span>
+                    <span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">building</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_built</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;The file name display element has not been built yet.&#39;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__file_name_display_elem</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">file_path</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        A property that returns the file path.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Path:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__file_path</span>
+
+    <span class="nd">@file_path</span><span class="o">.</span><span class="n">setter</span>
+    <span class="nd">@validate_path</span><span class="p">(</span><span class="n">exists</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">file_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_built</span> <span class="ow">and</span> <span class="n">new</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__file_path</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__needs_update</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__file_path</span> <span class="o">=</span> <span class="n">new</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_built</span> <span class="ow">and</span> <span class="n">new</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__file_path</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">changing_image</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">change_image</span><span class="p">(</span><span class="n">new</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__file_path</span> <span class="o">=</span> <span class="n">new</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">gui_file_collection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">global</span> <span class="n">gui_file_collection</span>
+
+        <span class="k">return</span> <span class="n">gui_file_collection</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">image_elem</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">psg</span><span class="o">.</span><span class="n">Image</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        A property that returns the image element.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            The image element.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">building</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_built</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__image_elem</span> <span class="o">=</span> <span class="n">psg</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span>
+                    <span class="n">data</span><span class="o">=</span><span class="n">get_image_data</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">)),</span>
+                    <span class="n">key</span><span class="o">=</span><span class="s1">&#39;IMAGE_DISPLAY&#39;</span>
+                    <span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">building</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_built</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;The image element has not been built yet.&#39;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__image_elem</span>
+
+<div class="viewcode-block" id="FileColumn.build">
+<a class="viewcode-back" href="../../../../../../../pic_scanner.gui.models.windows.main.blueprint.columns.html#pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.build">[docs]</a>
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">psg</span><span class="o">.</span><span class="n">Column</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Builds the column.</span>
+
+<span class="sd">        This method builds the column by creating the layout and column elements and setting the</span>
+<span class="sd">        `is_built ` attribute to `True`.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            The column.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_built</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+            <span class="k">with</span> <span class="n">flag_lock</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;building&#39;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_layout</span> <span class="o">=</span> <span class="p">[</span>
+                        <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">file_name_display_elem</span><span class="p">],</span>
+                        <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">image_elem</span><span class="p">]</span>
+                        <span class="p">]</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">_column</span> <span class="o">=</span> <span class="n">psg</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;FILE_COLUMN&#39;</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gui_file_collection</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gui_file_collection</span><span class="p">,</span> <span class="n">GUIFileCollection</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">gui_file_collection</span><span class="o">.</span><span class="n">add_cursor_callback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">change_image</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_built</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span></div>
+
+
+<div class="viewcode-block" id="FileColumn.change_image">
+<a class="viewcode-back" href="../../../../../../../pic_scanner.gui.models.windows.main.blueprint.columns.html#pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.change_image">[docs]</a>
+    <span class="k">def</span> <span class="nf">change_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Path</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Changes the image displayed in the column.</span>
+
+<span class="sd">        This method changes the image displayed in the column to the image located at the path and</span>
+<span class="sd">        updates the file name display element to show the new file name.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">              new_path (Path):</span>
+<span class="sd">                    The new path to the image.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_built</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;The column has not been built yet.&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">new_path</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="n">new_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gui_file_collection</span><span class="p">[</span><span class="n">new_path</span><span class="p">]</span>
+
+        <span class="k">with</span> <span class="n">flag_lock</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;changing_image&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="o">=</span> <span class="n">new_path</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">image_elem</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">get_image_data</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">)))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">file_name_display_elem</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Inspyre-Softworks.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

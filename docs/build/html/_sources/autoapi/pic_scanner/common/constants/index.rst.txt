@@ -1,0 +1,185 @@
+pic_scanner.common.constants
+============================
+
+.. py:module:: pic_scanner.common.constants
+
+.. autoapi-nested-parse::
+
+   __init__.py
+
+   This module contains constants and default settings used across the application.
+
+   Imports:
+       from .defaults import *
+       from .meta.constants import *
+
+   Constants:
+       AUTHORS (list): A list of authors of the project.
+       DEFAULT_BASE_URL (str): The default base URL for the API.
+       FILE_SYSTEM_DEFAULTS (dict): Default settings for the file system.
+       IMAGE_EXTENSIONS (list): A list of valid image extensions.
+       LABEL_DESCRIPTIONS (dict): A dictionary containing labels and their descriptions.
+       PROG_NAME (str): The name of the program.
+       RELEASE_MAP (dict): A mapping of releases.
+       UNIT_ABBREVIATION_MAP (dict): A dictionary that maps unit abbreviations to their full names.
+       URLS (dict): A dictionary containing various URLs used in the application.
+       VALID_LABELS (set): A set of valid labels that can be used to classify images in the dataset.
+       VERSION (str): The version of the program.
+
+   .. attribute:: UNIT_ABBREVIATION_MAP
+
+      A dictionary that maps unit abbreviations to their full names.
+      .. rubric:: Example
+      
+      {
+          'B': 'bytes',
+          'KB': 'kilobytes',
+          'MB': 'megabytes',
+          'GB': 'gigabytes',
+          'TB': 'terabytes',
+          'PB': 'petabytes',
+          'EB': 'exabytes',
+          'ZB': 'zetabytes',
+          'YB': 'yottabytes',
+      }
+
+      :type: dict
+
+   .. attribute:: DEFAULT_BASE_URL
+
+      The default base URL for the API.
+      Example: 'http://localhost:8080/infer'
+
+      :type: str
+
+   .. attribute:: LABEL_DESCRIPTIONS
+
+      A dictionary that contains the labels and their descriptions.
+      .. rubric:: Example
+      
+      {
+          "FEMALE_GENITALIA_COVERED": "Female genitalia covered",
+          "FACE_FEMALE":              "Female face",
+          "BUTTOCKS_EXPOSED":         "Exposed buttocks",
+          "FEMALE_BREAST_EXPOSED":    "Exposed female breasts",
+          "FEMALE_GENITALIA_EXPOSED": "Exposed female genitalia",
+          "MALE_BREAST_EXPOSED":      "Exposed male breasts",
+          "ANUS_EXPOSED":             "Exposed anus",
+          "FEET_EXPOSED":             "Exposed feet",
+          "BELLY_COVERED":            "Covered belly",
+          "FEET_COVERED":             "Covered feet",
+          "ARMPITS_COVERED":          "Covered armpits",
+          "ARMPITS_EXPOSED":          "Exposed armpits",
+          "FACE_MALE":                "Male face",
+          "BELLY_EXPOSED":            "Exposed belly",
+          "MALE_GENITALIA_EXPOSED":   "Exposed male genitalia",
+          "ANUS_COVERED":             "Covered anus",
+          "FEMALE_BREAST_COVERED":    "Covered female breasts",
+          "BUTTOCKS_COVERED":         "Covered buttocks",
+      }
+
+      :type: dict
+
+   .. attribute:: VALID_LABELS
+
+      A set of valid labels that can be used to classify images in the dataset.
+      .. rubric:: Example
+      
+      {"FEMALE_GENITALIA_COVERED", "FACE_FEMALE", "BUTTOCKS_EXPOSED", ...}
+
+      :type: set
+
+   .. attribute:: IMAGE_EXTENSIONS
+
+      A list of valid image extensions.
+      Example: ['.png', '.jpg', '.jpeg', '.bmp', '.tiff']
+
+      :type: list
+
+
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/pic_scanner/common/constants/defaults/index
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   pic_scanner.common.constants.FILE_SYSTEM_DEFAULTS
+   pic_scanner.common.constants.AUTHORS
+   pic_scanner.common.constants.RELEASE_MAP
+   pic_scanner.common.constants.URLS
+   pic_scanner.common.constants.VERSION
+   pic_scanner.common.constants.PROG_NAME
+   pic_scanner.common.constants.UNIT_ABBREVIATION_MAP
+   pic_scanner.common.constants.DEFAULT_BASE_URL
+   pic_scanner.common.constants.LABEL_DESCRIPTIONS
+   pic_scanner.common.constants.VALID_LABELS
+   pic_scanner.common.constants.IMAGE_EXTENSIONS
+
+
+Package Contents
+----------------
+
+.. py:data:: FILE_SYSTEM_DEFAULTS
+
+.. py:data:: AUTHORS
+
+   The authors of the project.
+
+.. py:data:: RELEASE_MAP
+
+   The release map for the project.
+
+.. py:data:: URLS
+
+   The URLs used in the project.
+
+.. py:data:: VERSION
+
+   The version information for the project.
+
+.. py:data:: PROG_NAME
+   :value: 'IS-NSFW-Scanner'
+
+
+   The name of the program.
+
+.. py:data:: UNIT_ABBREVIATION_MAP
+
+   dict:
+   A dictionary that maps unit abbreviations to their full names.
+
+.. py:data:: DEFAULT_BASE_URL
+   :value: 'http://localhost:8080/infer'
+
+
+   str:
+   The default base URL for the API.
+
+.. py:data:: LABEL_DESCRIPTIONS
+
+   dict:
+   A dictionary that contains the labels and their descriptions.
+
+   The keys are the labels and the values are the descriptions.
+
+.. py:data:: VALID_LABELS
+
+   set:
+   A set of valid labels that can be used to classify images in the dataset.
+
+.. py:data:: IMAGE_EXTENSIONS
+   :value: ['.png', '.jpg', '.jpeg', '.bmp', '.tiff']
+
+
+   list:
+   A list of valid image extensions.
+

@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pic_scanner.helpers.filesystem package &mdash; PicScanner 1.0.0-dev.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=3992bef7"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PicScanner
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PicScanner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">pic_scanner.helpers.filesystem package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/pic_scanner.helpers.filesystem.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pic-scanner-helpers-filesystem-package">
+<h1>pic_scanner.helpers.filesystem package<a class="headerlink" href="#pic-scanner-helpers-filesystem-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-pic_scanner.helpers.filesystem.classes">
+<span id="pic-scanner-helpers-filesystem-classes-module"></span><h2>pic_scanner.helpers.filesystem.classes module<a class="headerlink" href="#module-pic_scanner.helpers.filesystem.classes" title="Link to this heading"></a></h2>
+<p>classes.py</p>
+<p>This module provides a class for managing a collection of files and a class for managing a single file. The FileCollection
+class takes a list of file paths and creates a class representing a collection of files with properties for total size and
+number of files and a dictionary of extensions with properties for total size and number of files. The File class is a
+placeholder for future development. It is not currently used in the application. It is intended to be used for managing
+individual files in the future.</p>
+<dl>
+<dt>Classes:</dt><dd><dl>
+<dt>File:</dt><dd><p>A placeholder class for managing individual files.</p>
+</dd>
+<dt>FileCollection:</dt><dd><p>A class for managing a collection of files.</p>
+<dl class="simple">
+<dt>Methods:</dt><dd><dl class="simple">
+<dt>get_total_size_in_lowest_unit:</dt><dd><p>Get the total size of the collection in the lowest unit.</p>
+</dd>
+<dt>get_total_extension_size_in_lowest_unit:</dt><dd><p>Get the total size of a specific extension in the lowest unit.</p>
+</dd>
+<dt>remove_file:</dt><dd><p>Remove a file from the collection.</p>
+</dd>
+<dt>reprocess_files:</dt><dd><p>Reprocess the files in the collection.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt>NeedsReprocessingTag:</dt><dd><p>A descriptor class for managing the needs_reprocessing attribute of the FileCollection class.</p>
+</dd>
+</dl>
+</dd>
+<dt>Functions:</dt><dd><dl class="simple">
+<dt>get_lowest_unit_size:</dt><dd><p>Get the lowest unit size for a given size.</p>
+</dd>
+</dl>
+</dd>
+<dt>Since:</dt><dd><p>1.0</p>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.File">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pic_scanner.helpers.filesystem.classes.</span></span><span class="sig-name descname"><span class="pre">File</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/helpers/filesystem/classes.html#File"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.File" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.File.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/helpers/filesystem/classes.html#File.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.File.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.FileCollection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pic_scanner.helpers.filesystem.classes.</span></span><span class="sig-name descname"><span class="pre">FileCollection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paths</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.FileCollection" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class for managing a collection of files.</p>
+<dl class="simple">
+<dt>Properties:</dt><dd><dl class="simple">
+<dt>paths (list):</dt><dd><p>A list of file paths.</p>
+</dd>
+<dt>total_size (int):</dt><dd><p>The total size of the collection, in bytes.</p>
+</dd>
+<dt>total_files (int):</dt><dd><p>The total number of files in the collection.</p>
+</dd>
+<dt>extensions (dict):</dt><dd><p>A dictionary of extensions with properties for total size and number of files.</p>
+</dd>
+<dt>needs_reprocessing (bool):</dt><dd><p>A flag indicating whether the collection needs reprocessing.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.FileCollection.get_total_size_in_lowest_unit">
+<span class="sig-name descname"><span class="pre">get_total_size_in_lowest_unit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.get_total_size_in_lowest_unit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.FileCollection.get_total_size_in_lowest_unit" title="Link to this definition"></a></dt>
+<dd><p>Get the total size of the collection in the lowest unit.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.FileCollection.get_total_extension_size_in_lowest_unit">
+<span class="sig-name descname"><span class="pre">get_total_extension_size_in_lowest_unit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.get_total_extension_size_in_lowest_unit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.FileCollection.get_total_extension_size_in_lowest_unit" title="Link to this definition"></a></dt>
+<dd><p>Get the total size of a specific extension in the lowest unit.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.FileCollection.remove_file">
+<span class="sig-name descname"><span class="pre">remove_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.remove_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.FileCollection.remove_file" title="Link to this definition"></a></dt>
+<dd><p>Remove a file from the collection.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.FileCollection.reprocess_files">
+<span class="sig-name descname"><span class="pre">reprocess_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.reprocess_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.FileCollection.reprocess_files" title="Link to this definition"></a></dt>
+<dd><p>Reprocess the files in the collection.</p>
+</dd></dl>
+
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">collection</span> <span class="o">=</span> <span class="n">FileCollection</span><span class="p">(</span><span class="n">paths</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;/path/to/file1&#39;</span><span class="p">,</span> <span class="s1">&#39;/path/to/file2&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collection</span><span class="o">.</span><span class="n">total_size</span>
+<span class="go">123456  # Total size of the collection, in bytes.</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.FileCollection.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paths</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.FileCollection.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the FileCollection with a list of file paths.</p>
+<p><cite>FileCollection</cite> is a class for managing a collection of files. It takes a list of file paths and creates a class
+representing a collection of files with properties for total size and number of files and a dictionary of extensions
+with properties for total size and number of files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paths</strong> (<em>list</em>) – A list of file paths.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.FileCollection._process_files">
+<span class="sig-name descname"><span class="pre">_process_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection._process_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.FileCollection._process_files" title="Link to this definition"></a></dt>
+<dd><p>Process the files in the collection.</p>
+<p>This method processes the files in the collection. It calculates the total size of the collection, the total number
+of files, and the total size of each extension in the collection. It populates the <cite>total_size</cite>, <cite>total_files</cite>, and
+<cite>extensions</cite> attributes of the class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.FileCollection.extensions">
+<span class="sig-name descname"><span class="pre">extensions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></em><a class="reference internal" href="_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.extensions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.FileCollection.extensions" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">get_total_extension_size_in_lowest_unit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extension</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_as_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.get_total_extension_size_in_lowest_unit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dd><p>Get the total size of a specific extension in the lowest unit with a size greater than or equal to 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>extension</strong> (<em>str</em>) – The extension to get the size of.</p></li>
+<li><p><strong>return_as_string</strong> (<em>bool</em>) – A flag indicating whether to return the size as a string. If True, the size will be returned as a string
+with the unit. If False, the size will be returned as a tuple with the size and the unit.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The total size of the extension and the unit.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[Union[int, float], str]</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the extension is not found in the collection.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">get_total_size_in_lowest_unit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.get_total_size_in_lowest_unit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id1" title="Link to this definition"></a></dt>
+<dd><p>Get the total size of the collection in the lowest unit with a size greater than or equal to 1.</p>
+<p>This method calculates the total size of the collection in the lowest unit with a size greater than or equal
+to 1. It returns the size and the unit as a tuple. The unit is a string representing the unit of the size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The total size of the collection and the unit.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[Union[int, float], str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.FileCollection.needs_reprocessing">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">needs_reprocessing</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="reference internal" href="_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.needs_reprocessing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.FileCollection.needs_reprocessing" title="Link to this definition"></a></dt>
+<dd><p>Returns whether the collection needs reprocessing.</p>
+<p>This property returns a boolean value indicating whether the collection needs reprocessing. If the collection has
+been modified since the last processing, this property will return <cite>True</cite>. If the collection has not been modified,
+it will return <cite>False</cite>. The property is read-only.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the collection needs reprocessing, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.FileCollection.paths">
+<span class="sig-name descname"><span class="pre">paths</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></em><a class="reference internal" href="_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.paths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.FileCollection.paths" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">remove_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.remove_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id2" title="Link to this definition"></a></dt>
+<dd><p>Remove a file from the collection.</p>
+<p>This method removes a file from the collection. It takes a file path as an argument and removes the file from the
+collection. It then reprocesses the files in the collection to update the total size, total number of files, and
+total size of each extension.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method does not delete the file from the file system. It only removes the file from the collection,
+and only if the file is in the collection. If the file is not in the collection, this method will raise a
+<cite>KeyError</cite>. After removing the file, the collection will be reprocessed to update the total size, total number
+of files, and total size of each extension.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>Union</em><em>[</em><em>Path</em><em>, </em><em>str</em><em>]</em>) – The file path to remove.</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>KeyError</strong> – If the file is not in the collection.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">reprocess_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.reprocess_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id3" title="Link to this definition"></a></dt>
+<dd><p>Reprocess the files in the collection.</p>
+<p>This method reprocesses the files in the collection. It recalculates the total size of the collection, the total
+number of files, and the total size of each extension in the collection. It populates the <cite>total_size</cite>, <cite>total_files</cite>,
+and <cite>extensions</cite> attributes of the class. This method is used to update the collection after files have been added
+or removed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method should be called after files have been added or removed from the collection. It will only reprocess
+the files if the <cite>needs_reprocessing</cite> attribute is set to <cite>True</cite>. After reprocessing, the <cite>needs_reprocessing</cite>
+attribute will be set to <cite>False</cite>.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.FileCollection.total_files">
+<span class="sig-name descname"><span class="pre">total_files</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="reference internal" href="_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.total_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.FileCollection.total_files" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.FileCollection.total_size">
+<span class="sig-name descname"><span class="pre">total_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="reference internal" href="_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.total_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.FileCollection.total_size" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.NeedsReprocessingTag">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pic_scanner.helpers.filesystem.classes.</span></span><span class="sig-name descname"><span class="pre">NeedsReprocessingTag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/helpers/filesystem/classes.html#NeedsReprocessingTag"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.NeedsReprocessingTag" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.NeedsReprocessingTag.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/helpers/filesystem/classes.html#NeedsReprocessingTag.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.NeedsReprocessingTag.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.get_lowest_unit_size">
+<span class="sig-prename descclassname"><span class="pre">pic_scanner.helpers.filesystem.classes.</span></span><span class="sig-name descname"><span class="pre">get_lowest_unit_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/helpers/filesystem/classes.html#get_lowest_unit_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.get_lowest_unit_size" title="Link to this definition"></a></dt>
+<dd><p>Get the lowest unit size for a given size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>size</strong> (<em>int</em>) – The size to convert.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The converted size and the unit.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[Union[int, float], str]</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_lowest_unit_size</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+<span class="go">(1.0, &#39;KB&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_lowest_unit_size</span><span class="p">(</span><span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">)</span>
+<span class="go">(1.0, &#39;MB&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_lowest_unit_size</span><span class="p">(</span><span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">)</span>
+<span class="go">(1.0, &#39;GB&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_lowest_unit_size</span><span class="p">(</span><span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">)</span>
+<span class="go">(1.0, &#39;TB&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_lowest_unit_size</span><span class="p">(</span><span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">)</span>
+<span class="go">(1.0, &#39;PB&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_lowest_unit_size</span><span class="p">(</span><span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">)</span>
+<span class="go">(1.0, &#39;EB&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_lowest_unit_size</span><span class="p">(</span><span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">)</span>
+<span class="go">(1.0, &#39;ZB&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_lowest_unit_size</span><span class="p">(</span><span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">)</span>
+<span class="go">(1.0, &#39;YB&#39;)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-pic_scanner.helpers.filesystem.units">
+<span id="pic-scanner-helpers-filesystem-units-module"></span><h2>pic_scanner.helpers.filesystem.units module<a class="headerlink" href="#module-pic_scanner.helpers.filesystem.units" title="Link to this heading"></a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.units.UNIT_MAP">
+<span class="sig-prename descclassname"><span class="pre">pic_scanner.helpers.filesystem.units.</span></span><span class="sig-name descname"><span class="pre">UNIT_MAP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'B':</span> <span class="pre">Unit(unit_name='bytes',</span> <span class="pre">unit_abbrev='B',</span> <span class="pre">base_multiplier=1,</span> <span class="pre">pluralize='bytes'),</span> <span class="pre">'EB':</span> <span class="pre">Unit(unit_name='exabytes',</span> <span class="pre">unit_abbrev='EB',</span> <span class="pre">base_multiplier=1152921504606846976,</span> <span class="pre">pluralize='exabytes'),</span> <span class="pre">'GB':</span> <span class="pre">Unit(unit_name='gigabytes',</span> <span class="pre">unit_abbrev='GB',</span> <span class="pre">base_multiplier=1073741824,</span> <span class="pre">pluralize='gigabytes'),</span> <span class="pre">'KB':</span> <span class="pre">Unit(unit_name='kilobytes',</span> <span class="pre">unit_abbrev='KB',</span> <span class="pre">base_multiplier=1024,</span> <span class="pre">pluralize='kilobytes'),</span> <span class="pre">'MB':</span> <span class="pre">Unit(unit_name='megabytes',</span> <span class="pre">unit_abbrev='MB',</span> <span class="pre">base_multiplier=1048576,</span> <span class="pre">pluralize='megabytes'),</span> <span class="pre">'PB':</span> <span class="pre">Unit(unit_name='petabytes',</span> <span class="pre">unit_abbrev='PB',</span> <span class="pre">base_multiplier=1125899906842624,</span> <span class="pre">pluralize='petabytes'),</span> <span class="pre">'TB':</span> <span class="pre">Unit(unit_name='terabytes',</span> <span class="pre">unit_abbrev='TB',</span> <span class="pre">base_multiplier=1099511627776,</span> <span class="pre">pluralize='terabytes'),</span> <span class="pre">'YB':</span> <span class="pre">Unit(unit_name='yottabytes',</span> <span class="pre">unit_abbrev='YB',</span> <span class="pre">base_multiplier=1208925819614629174706176,</span> <span class="pre">pluralize='yottabytes'),</span> <span class="pre">'ZB':</span> <span class="pre">Unit(unit_name='zetabytes',</span> <span class="pre">unit_abbrev='ZB',</span> <span class="pre">base_multiplier=1180591620717411303424,</span> <span class="pre">pluralize='zetabytes')}</span></em><a class="reference internal" href="_modules/pic_scanner/helpers/filesystem/units.html#UNIT_MAP"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.units.UNIT_MAP" title="Link to this definition"></a></dt>
+<dd><p>A dictionary mapping storage units to their respective data classes.</p>
+</dd></dl>
+
+</section>
+<section id="module-pic_scanner.helpers.filesystem">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pic_scanner.helpers.filesystem" title="Link to this heading"></a></h2>
+<p>__init__.py</p>
+<p>The filesystem module provides functions for working with the filesystem.</p>
+<p>This module provides functions for checking if a path is valid, checking if a directory is valid, checking if a file is
+valid, provisioning a path, provisioning a list of paths, gathering files in a directory, and getting the abbreviation
+for a storage unit.</p>
+<dl class="simple">
+<dt>Functions:</dt><dd><dl class="simple">
+<dt>check_path:</dt><dd><p>Check if a path is valid.</p>
+</dd>
+<dt>check_directory:</dt><dd><p>Check if a directory is valid.</p>
+</dd>
+<dt>check_file:</dt><dd><p>Check if a file is valid.</p>
+</dd>
+<dt>provision_path:</dt><dd><p>Provision a path.</p>
+</dd>
+<dt>provision_paths:</dt><dd><p>Provision a list of paths.</p>
+</dd>
+<dt>gather_files_in_dir:</dt><dd><p>Gather all files in a directory.</p>
+</dd>
+<dt>get_storage_unit_abbreviation:</dt><dd><p>Get the abbreviation for a storage unit.</p>
+</dd>
+</dl>
+</dd>
+<dt>Since:</dt><dd><p>1.0</p>
+</dd>
+</dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.check_directory">
+<span class="sig-prename descclassname"><span class="pre">pic_scanner.helpers.filesystem.</span></span><span class="sig-name descname"><span class="pre">check_directory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/helpers/filesystem.html#check_directory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.check_directory" title="Link to this definition"></a></dt>
+<dd><p>Check if a directory is valid.</p>
+<p>This function checks if a directory is valid. If the path is a string, it will be converted to a Path object. If the
+path is not expanded, it will be expanded. If the path is not resolved, it will be resolved. If the path is not
+converted to a string, it will be converted to a string. If the path is not provisioned, it will be provisioned.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Provisioning a path involves converting it to a Path object, expanding it, and resolving it.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><em>Path</em><em>]</em>) – The directory to check.</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A flag indicating whether the directory is valid.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.check_file">
+<span class="sig-prename descclassname"><span class="pre">pic_scanner.helpers.filesystem.</span></span><span class="sig-name descname"><span class="pre">check_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/helpers/filesystem.html#check_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.check_file" title="Link to this definition"></a></dt>
+<dd><p>Check if a file is valid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><em>Path</em><em>]</em>) – The file to check.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A flag indicating whether the file is valid.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.check_path">
+<span class="sig-prename descclassname"><span class="pre">pic_scanner.helpers.filesystem.</span></span><span class="sig-name descname"><span class="pre">check_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_not_expand</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_not_resolve</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_not_convert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_not_provision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/helpers/filesystem.html#check_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.check_path" title="Link to this definition"></a></dt>
+<dd><p>Check if a path is valid.</p>
+<p>This function checks if a path is valid. If the path is a string, it will be converted to a Path object. If the path
+is not expanded, it will be expanded. If the path is not resolved, it will be resolved. If the path is not converted
+to a string, it will be converted to a string. If the path is not provisioned, it will be provisioned.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Provisioning a path involves converting it to a Path object, expanding it, and resolving it.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><em>Path</em><em>]</em>) – The path to check.</p></li>
+<li><p><strong>do_not_expand</strong> (<em>bool</em>) – A flag indicating whether to expand the path.</p></li>
+<li><p><strong>do_not_resolve</strong> (<em>bool</em>) – A flag indicating whether to resolve the path.</p></li>
+<li><p><strong>do_not_convert</strong> (<em>bool</em>) – A flag indicating whether to convert the path to a string.</p></li>
+<li><p><strong>do_not_provision</strong> (<em>bool</em>) – A flag indicating whether to provision the path.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A flag indicating whether the path is valid.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.provision_path">
+<span class="sig-prename descclassname"><span class="pre">pic_scanner.helpers.filesystem.</span></span><span class="sig-name descname"><span class="pre">provision_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_not_expand</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_not_resolve</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_not_convert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/helpers/filesystem.html#provision_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.provision_path" title="Link to this definition"></a></dt>
+<dd><p>Provision a path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – The path to provision.</p></li>
+<li><p><strong>do_not_convert</strong> (<em>bool</em>) – A flag indicating whether to convert the path to a string.</p></li>
+<li><p><strong>do_not_expand</strong> (<em>bool</em>) – A flag indicating whether to expand the path.</p></li>
+<li><p><strong>do_not_resolve</strong> (<em>bool</em>) – A flag indicating whether to resolve the path.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The provisioned path.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Path</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Inspyre-Softworks.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pic_scanner.gui.models.element_bases package &mdash; PicScanner 1.0.0-dev.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=3992bef7"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PicScanner
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PicScanner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">pic_scanner.gui.models.element_bases package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/pic_scanner.gui.models.element_bases.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pic-scanner-gui-models-element-bases-package">
+<h1>pic_scanner.gui.models.element_bases package<a class="headerlink" href="#pic-scanner-gui-models-element-bases-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-pic_scanner.gui.models.element_bases.blueprint">
+<span id="pic-scanner-gui-models-element-bases-blueprint-module"></span><h2>pic_scanner.gui.models.element_bases.blueprint module<a class="headerlink" href="#module-pic_scanner.gui.models.element_bases.blueprint" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pic_scanner.gui.models.element_bases.blueprint.</span></span><span class="sig-name descname"><span class="pre">BaseBlueprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">auto_build</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases/blueprint.html#BaseBlueprint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A base class for building blueprints.</p>
+<p>This class is used to create blueprints for building GUI elements. A blueprint is a set of
+instructions that are used to build a GUI element.</p>
+<p>Properties:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>auto_build (bool):</dt><dd><p>A boolean value that determines whether the class should automatically build itself when
+instantiated.</p>
+</dd>
+<dt>building (bool):</dt><dd><p>A boolean value that determines whether the class is currently building itself.</p>
+</dd>
+<dt>is_built (bool):</dt><dd><p>A boolean value that determines whether the class has been built.</p>
+</dd>
+<dt>layout (list):</dt><dd><p>A list of elements that make up the layout of the class.</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases/blueprint.html#BaseBlueprint.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint.build" title="Link to this definition"></a></dt>
+<dd><p>An abstract method that builds the class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">auto_build</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases/blueprint.html#BaseBlueprint.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initializes the class.</p>
+<p>This method initializes the class by setting the <cite>building</cite> and <cite>is_built</cite> attributes to
+<cite>False</cite> and the <cite>layout</cite> attribute to an empty list. It also sets the <cite>auto_build</cite> attribute
+to the value of the <cite>auto_build</cite> argument if it is a boolean value, otherwise it sets it to
+<cite>False</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>auto_build</strong> (<em>bool</em>) – A boolean value that determines whether the class should automatically build itself
+when instantiated. Defaults to <cite>False</cite>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc._abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint._abc_impl" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint._built">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_built</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases/blueprint.html#BaseBlueprint._built"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint._built" title="Link to this definition"></a></dt>
+<dd><p>Returns the value of the <cite>_built</cite> attribute.</p>
+<p>The <cite>_built</cite> attribute is a boolean value that determines whether the class has been built.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The value of the <cite>_built</cite> attribute.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint.auto_build">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">auto_build</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases/blueprint.html#BaseBlueprint.auto_build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint.auto_build" title="Link to this definition"></a></dt>
+<dd><p>Returns the value of the <cite>auto_build</cite> attribute.</p>
+<p>The <cite>auto_build</cite> attribute is a boolean value that determines whether the class should
+automatically build itself when instantiated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The value of the <cite>auto_build</cite> attribute.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id0">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases/blueprint.html#BaseBlueprint.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dd><p>An abstract method that builds the class.</p>
+<p>This method is called to build the class by creating and must be implemented by subclasses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint.building">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">building</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases/blueprint.html#BaseBlueprint.building"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint.building" title="Link to this definition"></a></dt>
+<dd><p>Returns the value of the <cite>building</cite> attribute.</p>
+<p>The <cite>building</cite> attribute is a boolean value that determines whether the class is currently building
+itself.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The value of the <cite>building</cite> attribute.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint.is_built">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_built</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases/blueprint.html#BaseBlueprint.is_built"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint.is_built" title="Link to this definition"></a></dt>
+<dd><p>Returns the value of the <cite>is_built</cite> attribute.</p>
+<p>The <cite>is_built</cite> attribute is a boolean value that determines whether the class has been built.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The value of the <cite>is_built</cite> attribute.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint.layout">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">layout</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases/blueprint.html#BaseBlueprint.layout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint.layout" title="Link to this definition"></a></dt>
+<dd><p>Returns the value of the <cite>layout</cite> attribute.</p>
+<p>The <cite>layout</cite> attribute is a list of elements that make up the layout of the class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The value of the <cite>layout</cite> attribute.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pic_scanner.gui.models.element_bases.column">
+<span id="pic-scanner-gui-models-element-bases-column-module"></span><h2>pic_scanner.gui.models.element_bases.column module<a class="headerlink" href="#module-pic_scanner.gui.models.element_bases.column" title="Link to this heading"></a></h2>
+</section>
+<section id="module-pic_scanner.gui.models.element_bases.metas">
+<span id="pic-scanner-gui-models-element-bases-metas-module"></span><h2>pic_scanner.gui.models.element_bases.metas module<a class="headerlink" href="#module-pic_scanner.gui.models.element_bases.metas" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.metas.AutoBuildMeta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pic_scanner.gui.models.element_bases.metas.</span></span><span class="sig-name descname"><span class="pre">AutoBuildMeta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bases</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases/metas.html#AutoBuildMeta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.metas.AutoBuildMeta" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABCMeta</span></code></p>
+<p>Metaclass for classes that should build themselves upon instantiation when the <cite>auto_build</cite>
+attribute is True.</p>
+<p>This metaclass overrides the <cite>__call__</cite> method to build the instance if the <cite>auto_build</cite>
+attribute is True.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.metas.AutoBuildMeta.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pic_scanner.gui.models.element_bases.metas.AutoBuildMeta.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.metas.AutoBuildMeta._abc_caches_clear">
+<span class="sig-name descname"><span class="pre">_abc_caches_clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases/metas.html#AutoBuildMeta._abc_caches_clear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.metas.AutoBuildMeta._abc_caches_clear" title="Link to this definition"></a></dt>
+<dd><p>Clear the caches (for debugging or testing).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.metas.AutoBuildMeta._abc_registry_clear">
+<span class="sig-name descname"><span class="pre">_abc_registry_clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases/metas.html#AutoBuildMeta._abc_registry_clear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.metas.AutoBuildMeta._abc_registry_clear" title="Link to this definition"></a></dt>
+<dd><p>Clear the registry (for debugging or testing).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.metas.AutoBuildMeta._dump_registry">
+<span class="sig-name descname"><span class="pre">_dump_registry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases/metas.html#AutoBuildMeta._dump_registry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.metas.AutoBuildMeta._dump_registry" title="Link to this definition"></a></dt>
+<dd><p>Debug helper to print the ABC registry.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.metas.AutoBuildMeta.mro">
+<span class="sig-name descname"><span class="pre">mro</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pic_scanner.gui.models.element_bases.metas.AutoBuildMeta.mro" title="Link to this definition"></a></dt>
+<dd><p>Return a type’s method resolution order.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.metas.AutoBuildMeta.register">
+<span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subclass</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases/metas.html#AutoBuildMeta.register"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.metas.AutoBuildMeta.register" title="Link to this definition"></a></dt>
+<dd><p>Register a virtual subclass of an ABC.</p>
+<p>Returns the subclass, to allow usage as a class decorator.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.metas.AutoBuildRunMeta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pic_scanner.gui.models.element_bases.metas.</span></span><span class="sig-name descname"><span class="pre">AutoBuildRunMeta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bases</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases/metas.html#AutoBuildRunMeta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.metas.AutoBuildRunMeta" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABCMeta</span></code></p>
+<p>Metaclass for classes that should build and run themselves upon instantiation when the <cite>auto_build</cite>
+and <cite>auto_run</cite> attributes are True.</p>
+<p>This metaclass overrides the <cite>__call__</cite> method to build and run the instance if the <cite>auto_build</cite>
+and <cite>auto_run</cite> attributes are True.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.metas.AutoBuildRunMeta.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pic_scanner.gui.models.element_bases.metas.AutoBuildRunMeta.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.metas.AutoBuildRunMeta._abc_caches_clear">
+<span class="sig-name descname"><span class="pre">_abc_caches_clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases/metas.html#AutoBuildRunMeta._abc_caches_clear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.metas.AutoBuildRunMeta._abc_caches_clear" title="Link to this definition"></a></dt>
+<dd><p>Clear the caches (for debugging or testing).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.metas.AutoBuildRunMeta._abc_registry_clear">
+<span class="sig-name descname"><span class="pre">_abc_registry_clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases/metas.html#AutoBuildRunMeta._abc_registry_clear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.metas.AutoBuildRunMeta._abc_registry_clear" title="Link to this definition"></a></dt>
+<dd><p>Clear the registry (for debugging or testing).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.metas.AutoBuildRunMeta._dump_registry">
+<span class="sig-name descname"><span class="pre">_dump_registry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases/metas.html#AutoBuildRunMeta._dump_registry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.metas.AutoBuildRunMeta._dump_registry" title="Link to this definition"></a></dt>
+<dd><p>Debug helper to print the ABC registry.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.metas.AutoBuildRunMeta.mro">
+<span class="sig-name descname"><span class="pre">mro</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pic_scanner.gui.models.element_bases.metas.AutoBuildRunMeta.mro" title="Link to this definition"></a></dt>
+<dd><p>Return a type’s method resolution order.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.metas.AutoBuildRunMeta.register">
+<span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subclass</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases/metas.html#AutoBuildRunMeta.register"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.metas.AutoBuildRunMeta.register" title="Link to this definition"></a></dt>
+<dd><p>Register a virtual subclass of an ABC.</p>
+<p>Returns the subclass, to allow usage as a class decorator.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pic_scanner.gui.models.element_bases">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pic_scanner.gui.models.element_bases" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.GUIFileCollection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pic_scanner.gui.models.element_bases.</span></span><span class="sig-name descname"><span class="pre">GUIFileCollection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collection</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.GUIFileCollection" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Loggable</span></code></p>
+<p>A class to manage a collection of files with a cursor to navigate through them.</p>
+<dl class="simple">
+<dt>Properties:</dt><dd><dl class="simple">
+<dt>collection (FileCollection):</dt><dd><p>The collection of files.</p>
+</dd>
+<dt>files (list[Path]):</dt><dd><p>List of file paths from the collection.</p>
+</dd>
+<dt>cursor (int):</dt><dd><p>Current position of the cursor in the collection.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.GUIFileCollection.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collection</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.GUIFileCollection.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initializes the GUIFileCollection with a given FileCollection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>collection</strong> (<a class="reference internal" href="autoapi/pic_scanner/gui/models/element_bases/index.html#pic_scanner.gui.models.element_bases.FileCollection" title="pic_scanner.gui.models.element_bases.FileCollection"><em>FileCollection</em></a>) – The file collection to manage.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the collection is not an instance of FileCollection.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.GUIFileCollection.add_cursor_callback">
+<span class="sig-name descname"><span class="pre">add_cursor_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.add_cursor_callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.GUIFileCollection.add_cursor_callback" title="Link to this definition"></a></dt>
+<dd><p>Adds a callback to be invoked when the cursor changes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>callback</strong> (<em>callable</em>) – The callback function.</p></li>
+<li><p><strong>*args</strong> – Additional positional arguments to pass to the callback.</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments to pass to the callback.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.GUIFileCollection.class_logger">
+<span class="sig-name descname"><span class="pre">class_logger</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.class_logger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.GUIFileCollection.class_logger" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.GUIFileCollection.collection">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">collection</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="pic_scanner.helpers.filesystem.html#pic_scanner.helpers.filesystem.classes.FileCollection" title="pic_scanner.helpers.filesystem.classes.FileCollection"><span class="pre">FileCollection</span></a></em><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.collection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.GUIFileCollection.collection" title="Link to this definition"></a></dt>
+<dd><p>Returns the collection of files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The collection of files.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="autoapi/pic_scanner/gui/models/element_bases/index.html#pic_scanner.gui.models.element_bases.FileCollection" title="pic_scanner.gui.models.element_bases.FileCollection">FileCollection</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.GUIFileCollection.create_child_logger">
+<span class="sig-name descname"><span class="pre">create_child_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.create_child_logger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.GUIFileCollection.create_child_logger" title="Link to this definition"></a></dt>
+<dd><p>Creates and returns a child logger of this object’s logger.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – The name of the child logger.
+If not provided, the name of the calling function is used.</p></li>
+<li><p><strong>override</strong> (<em>bool</em><em>, </em><em>optional</em>) – A flag to override the membership check. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An instance of the Logger class that represents the child logger.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Logger</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.GUIFileCollection.current">
+<span class="sig-name descname"><span class="pre">current</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.current"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.GUIFileCollection.current" title="Link to this definition"></a></dt>
+<dd><p>Returns the file at the current cursor position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The path of the current file.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.GUIFileCollection.cursor">
+<span class="sig-name descname"><span class="pre">cursor</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.cursor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.GUIFileCollection.cursor" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.GUIFileCollection.files">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">files</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.GUIFileCollection.files" title="Link to this definition"></a></dt>
+<dd><p>Returns the list of file paths from the collection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The list of file paths.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.GUIFileCollection.log_device">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">log_device</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.log_device"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.GUIFileCollection.log_device" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.GUIFileCollection.method_logger">
+<span class="sig-name descname"><span class="pre">method_logger</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.method_logger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.GUIFileCollection.method_logger" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.GUIFileCollection.needs_reprocessing">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">needs_reprocessing</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.needs_reprocessing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.GUIFileCollection.needs_reprocessing" title="Link to this definition"></a></dt>
+<dd><p>Returns whether the collection needs reprocessing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the collection needs reprocessing, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.GUIFileCollection.next">
+<span class="sig-name descname"><span class="pre">next</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.next"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.GUIFileCollection.next" title="Link to this definition"></a></dt>
+<dd><p>Moves the cursor to the next file in the collection and returns it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The path of the next file.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.GUIFileCollection.prev">
+<span class="sig-name descname"><span class="pre">prev</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.prev"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.GUIFileCollection.prev" title="Link to this definition"></a></dt>
+<dd><p>Moves the cursor to the previous file in the collection and returns it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The path of the previous file.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.GUIFileCollection.remove_current">
+<span class="sig-name descname"><span class="pre">remove_current</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.remove_current"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.GUIFileCollection.remove_current" title="Link to this definition"></a></dt>
+<dd><p>Removes the file at the current cursor position.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.element_bases.GUIFileCollection.set_cursor">
+<span class="sig-name descname"><span class="pre">set_cursor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.set_cursor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.element_bases.GUIFileCollection.set_cursor" title="Link to this definition"></a></dt>
+<dd><p>Sets the cursor to the specified index, adjusting if out of bounds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em>) – The position to set the cursor to.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>IndexError</strong> – If the index is out of the valid range.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<section id="the-guifilecollection-class">
+<h3>The <code class="docutils literal notranslate"><span class="pre">GUIFileCollection</span></code> class<a class="headerlink" href="#the-guifilecollection-class" title="Link to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="id1">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pic_scanner.gui.models.element_bases.</span></span><span class="sig-name descname"><span class="pre">GUIFileCollection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collection</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id1" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Loggable</span></code></p>
+<p>A class to manage a collection of files with a cursor to navigate through them.</p>
+<dl class="simple">
+<dt>Properties:</dt><dd><dl class="simple">
+<dt>collection (FileCollection):</dt><dd><p>The collection of files.</p>
+</dd>
+<dt>files (list[Path]):</dt><dd><p>List of file paths from the collection.</p>
+</dd>
+<dt>cursor (int):</dt><dd><p>Current position of the cursor in the collection.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collection</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id2" title="Link to this definition"></a></dt>
+<dd><p>Initializes the GUIFileCollection with a given FileCollection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>collection</strong> (<a class="reference internal" href="autoapi/pic_scanner/gui/models/element_bases/index.html#pic_scanner.gui.models.element_bases.FileCollection" title="pic_scanner.gui.models.element_bases.FileCollection"><em>FileCollection</em></a>) – The file collection to manage.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the collection is not an instance of FileCollection.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">add_cursor_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.add_cursor_callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id3" title="Link to this definition"></a></dt>
+<dd><p>Adds a callback to be invoked when the cursor changes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>callback</strong> (<em>callable</em>) – The callback function.</p></li>
+<li><p><strong>*args</strong> – Additional positional arguments to pass to the callback.</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments to pass to the callback.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">class_logger</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.class_logger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id4" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id5">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">collection</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="pic_scanner.helpers.filesystem.html#pic_scanner.helpers.filesystem.classes.FileCollection" title="pic_scanner.helpers.filesystem.classes.FileCollection"><span class="pre">FileCollection</span></a></em><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.collection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id5" title="Link to this definition"></a></dt>
+<dd><p>Returns the collection of files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The collection of files.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="autoapi/pic_scanner/gui/models/element_bases/index.html#pic_scanner.gui.models.element_bases.FileCollection" title="pic_scanner.gui.models.element_bases.FileCollection">FileCollection</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id6">
+<span class="sig-name descname"><span class="pre">create_child_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.create_child_logger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id6" title="Link to this definition"></a></dt>
+<dd><p>Creates and returns a child logger of this object’s logger.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – The name of the child logger.
+If not provided, the name of the calling function is used.</p></li>
+<li><p><strong>override</strong> (<em>bool</em><em>, </em><em>optional</em>) – A flag to override the membership check. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An instance of the Logger class that represents the child logger.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Logger</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id7">
+<span class="sig-name descname"><span class="pre">current</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.current"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id7" title="Link to this definition"></a></dt>
+<dd><p>Returns the file at the current cursor position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The path of the current file.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id8">
+<span class="sig-name descname"><span class="pre">cursor</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.cursor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id8" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id9">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">files</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id9" title="Link to this definition"></a></dt>
+<dd><p>Returns the list of file paths from the collection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The list of file paths.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id10">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">log_device</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.log_device"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id10" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id11">
+<span class="sig-name descname"><span class="pre">method_logger</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.method_logger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id11" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id12">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">needs_reprocessing</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.needs_reprocessing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id12" title="Link to this definition"></a></dt>
+<dd><p>Returns whether the collection needs reprocessing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the collection needs reprocessing, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id13">
+<span class="sig-name descname"><span class="pre">next</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.next"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id13" title="Link to this definition"></a></dt>
+<dd><p>Moves the cursor to the next file in the collection and returns it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The path of the next file.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id14">
+<span class="sig-name descname"><span class="pre">prev</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.prev"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id14" title="Link to this definition"></a></dt>
+<dd><p>Moves the cursor to the previous file in the collection and returns it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The path of the previous file.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id15">
+<span class="sig-name descname"><span class="pre">remove_current</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.remove_current"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id15" title="Link to this definition"></a></dt>
+<dd><p>Removes the file at the current cursor position.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id16">
+<span class="sig-name descname"><span class="pre">set_cursor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.set_cursor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id16" title="Link to this definition"></a></dt>
+<dd><p>Sets the cursor to the specified index, adjusting if out of bounds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em>) – The position to set the cursor to.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>IndexError</strong> – If the index is out of the valid range.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Inspyre-Softworks.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

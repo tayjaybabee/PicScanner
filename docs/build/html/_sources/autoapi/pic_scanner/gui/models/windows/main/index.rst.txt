@@ -1,0 +1,449 @@
+pic_scanner.gui.models.windows.main
+===================================
+
+.. py:module:: pic_scanner.gui.models.windows.main
+
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/pic_scanner/gui/models/windows/main/blueprint/index
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   pic_scanner.gui.models.windows.main.PARENT_LOGGER
+   pic_scanner.gui.models.windows.main.MOD_LOGGER
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   pic_scanner.gui.models.windows.main.BluePrint
+   pic_scanner.gui.models.windows.main.Window
+   pic_scanner.gui.models.windows.main.MainWindow
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   pic_scanner.gui.models.windows.main.flag_lock
+
+
+Package Contents
+----------------
+
+.. py:class:: BluePrint(file_collection: pic_scanner.helpers.filesystem.classes.FileCollection, pre_built_left_column=None, pre_built_file_column=None, **kwargs)
+
+   Bases: :py:obj:`pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint`, :py:obj:`pic_scanner.log_engine.Loggable`
+
+
+   A base class for building blueprints.
+
+   This class is used to create blueprints for building GUI elements. A blueprint is a set of
+   instructions that are used to build a GUI element.
+
+   Properties:
+
+       auto_build (bool):
+           A boolean value that determines whether the class should automatically build itself when
+           instantiated.
+
+       building (bool):
+           A boolean value that determines whether the class is currently building itself.
+
+       is_built (bool):
+           A boolean value that determines whether the class has been built.
+
+       layout (list):
+           A list of elements that make up the layout of the class.
+
+   .. method:: build()
+
+      
+      An abstract method that builds the class.
+      
+
+
+   .. py:attribute:: __left_column
+
+
+   .. py:attribute:: __file_column
+
+
+   .. py:attribute:: __file_collection_cursor
+
+
+   .. py:property:: building
+      Returns the value of the `building` attribute.
+
+      The `building` attribute is a boolean value that determines whether the class is currently building
+      itself.
+
+      :returns:     The value of the `building` attribute.
+      :rtype: bool
+
+
+   .. py:method:: building()
+
+      Returns the value of the `building` attribute.
+
+      The `building` attribute is a boolean value that determines whether the class is currently building
+      itself.
+
+      :returns:     The value of the `building` attribute.
+      :rtype: bool
+
+
+
+   .. py:property:: file_collection
+
+
+   .. py:property:: file_collection_cursor
+
+
+   .. py:property:: file_column
+      A property that returns the file column.
+
+      The file column is the column that displays the image in the GUI representation of the blueprint. This is the
+      right column in the blueprint layout. This property is a RestrictedSetter, and can only be set to an instance of
+      FileColumn. The initial value is None.
+
+      :returns:     The file column.
+      :rtype: FileColumn
+
+
+   .. py:property:: left_column
+      A property that returns the left column.
+
+      :returns:     The left column.
+      :rtype: LeftColumn
+
+
+   .. py:method:: build()
+
+      Build the blueprint layout.
+
+      :returns:     The layout of the blueprint.
+      :rtype: list
+
+
+
+   .. py:method:: change_image(new_image)
+
+      Change the image in the file column.
+
+      This method changes the image in the image element of the file column to the new image provided. The new image
+      must be a path to an image file. This method is used to change the image displayed in the GUI when the user
+      navigates through the images in the file collection. This method is called by the blueprint controller when the
+      user changes the image.
+
+      Parameters::
+          new_image:
+              The new image to display in the file column.
+
+      :returns: None
+
+
+
+   .. py:method:: current_image()
+
+      Get the current image.
+
+      This method returns the path to the current image in the file column. This is the image that is currently
+      displayed in the GUI. This method is used by the blueprint controller to determine which image is currently
+      displayed in the GUI. This method is called by the blueprint controller when the user changes the image. The
+      blueprint controller uses this method to determine the current image. The blueprint controller then uses this
+      information to update the current image in the GUI.
+
+      :returns:     The path to the current image.
+      :rtype: str
+
+
+
+   .. py:method:: next_image()
+
+      Get the next image.
+
+      This method moves the cursor to the next image in the file collection and returns the path to that image. This
+      method is used by the blueprint controller to move the cursor to the next image in the file collection. This
+      method is called by the blueprint controller when the user clicks the 'Next' button in the GUI. The blueprint
+      controller uses this method to move the cursor to the next image in the file collection. The blueprint controller
+      then uses this information to update the current image in the GUI.
+
+      :returns:     The path to the next image.
+      :rtype: str
+
+
+
+   .. py:method:: update_image()
+
+
+.. py:class:: Window(auto_build=False, auto_run=False, title=None, blueprint: Optional[pic_scanner.BluePrint] = None, blueprint_args: Optional[dict] = None)
+
+   Bases: :py:obj:`inspy_logger.Loggable`
+
+
+   A metaclass to enhance classes with logging capabilities. Classes that inherit from
+   'Loggable' can instantly access a logger without manually setting it up. This logger
+   is derived from a parent logger, ensuring consistent logging behavior and hierarchy.
+
+   .. attribute:: - log_device
+
+      The logger device associated with the instance of the class.
+
+
+   .. py:property:: blueprint
+
+
+   .. py:method:: build()
+      :abstractmethod:
+
+
+      Builds the window.
+
+      :returns: None
+
+
+
+   .. py:property:: event_handler
+
+
+   .. py:method:: close()
+
+      Closes the window.
+
+      :returns: None
+
+
+
+   .. py:method:: run()
+
+      Runs the window.
+
+      :returns: None
+
+
+
+   .. py:property:: auto_build
+      Returns the value of the `auto_build` attribute.
+
+      :returns:     The value of the `auto_build` attribute.
+      :rtype: bool
+
+
+   .. py:property:: auto_run
+      Returns the value of the `auto_run` attribute.
+
+      :returns:     The value of the `auto_run` attribute.
+      :rtype: bool
+
+
+   .. py:property:: is_built
+      Returns the value of the `built` attribute.
+
+      :returns:     The value of the `built` attribute.
+      :rtype: bool
+
+
+   .. py:property:: building
+      Returns the value of the `building` attribute.
+
+      :returns:     The value of the `building` attribute.
+      :rtype: bool
+
+
+   .. py:method:: is_built()
+
+      Deletes the `built` attribute.
+
+      :returns: None
+
+
+
+   .. py:property:: _built
+
+
+   .. py:property:: closed
+      Returns the value of the `closed` attribute.
+
+      :returns:     The value of the `closed` attribute.
+      :rtype: bool
+
+
+   .. py:property:: layout
+      Returns the value of the `layout` attribute.
+
+      :returns:     The value of the `layout` attribute.
+      :rtype: list
+
+
+   .. py:property:: running
+      Returns the value of the `running` attribute.
+
+      :returns:     The value of the `running` attribute.
+      :rtype: bool
+
+
+   .. py:property:: title
+
+
+   .. py:property:: window
+
+
+   .. py:property:: _window
+
+
+.. py:function:: flag_lock(instance, flag_name)
+
+   Context manager to set and unset a private flag attribute in an instance.
+
+   This context manager ensures that a specified private flag attribute
+   in the given instance is set to True when entering the context and
+   reset to False upon exiting the context. This is useful for indicating
+   that an operation is in progress within a specific scope.
+
+   :param instance: The instance containing the private flag attribute.
+   :type instance: object
+   :param flag_name: The name of the flag attribute (without leading underscore).
+   :type flag_name: str
+
+   :raises AttributeError: If the instance does not have the specified private flag attribute.
+
+   Example usage:
+       handler = OperationHandler()
+       with flag_lock(handler, 'flag'):
+           # Perform some operation
+           pass
+
+   This will automatically set handler._flag to True within the context
+   and reset it to False when exiting the context.
+
+
+.. py:data:: PARENT_LOGGER
+
+.. py:data:: MOD_LOGGER
+
+.. py:class:: MainWindow(*args, **kwargs)
+
+   Bases: :py:obj:`pic_scanner.gui.models.windows.template.Window`, :py:obj:`pic_scanner.log_engine.Loggable`
+
+
+   A metaclass to enhance classes with logging capabilities. Classes that inherit from
+   'Loggable' can instantly access a logger without manually setting it up. This logger
+   is derived from a parent logger, ensuring consistent logging behavior and hierarchy.
+
+   .. attribute:: - log_device
+
+      The logger device associated with the instance of the class.
+
+
+   .. py:class:: EventHandler(window)
+
+      Bases: :py:obj:`pic_scanner.log_engine.Loggable`
+
+
+      A metaclass to enhance classes with logging capabilities. Classes that inherit from
+      'Loggable' can instantly access a logger without manually setting it up. This logger
+      is derived from a parent logger, ensuring consistent logging behavior and hierarchy.
+
+      .. attribute:: - log_device
+
+         The logger device associated with the instance of the class.
+
+
+      .. py:method:: __call__(event, values)
+
+
+      .. py:property:: announced_start
+
+
+
+   .. py:method:: check_index()
+
+
+   .. py:method:: check_prev_button()
+
+
+   .. py:method:: check_remove_button()
+
+      Checks if the remove button should be enabled or disabled.
+
+      If no image is selected, the button is disabled. If an image is selected, the button is
+      enabled.
+
+      :returns: None
+
+
+
+   .. py:property:: event_handler
+
+
+   .. py:property:: file_cursor
+
+
+   .. py:property:: files
+
+
+   .. py:method:: build()
+
+      Builds the main window.
+
+      :returns: PySimpleGUI.Window
+
+
+
+   .. py:method:: close()
+
+      Closes the window.
+
+      This method is called when the window is closed by the user or by the program. It facilitates
+      the safe closing of the window and the logging of the event. It also sets the `running` flag
+      to `False`.
+
+      :returns: None
+
+
+
+   .. py:method:: remove_current_file()
+
+
+   .. py:method:: update_remove_button_state(state: bool)
+
+      Updates the state of the remove button.
+
+      This method takes a boolean value and sets the 'disabled' state of the remove button to the
+      opposite of that value. If this value is `True`, the button is enabled. If the value is
+      `False`, the button is disabled. This method is used to enable or disable the remove button
+      based on the state of the window. If no image is selected, this method will ensure the button
+      remains disabled. If the user has an image selected, this method will enable the `Remove`
+      button.
+
+      :param state: The state to set the button to.
+      :type state: bool
+
+      :returns: None
+
+
+
+   .. py:property:: active_image
+
+
+   .. py:property:: file_index
+
+
+   .. py:property:: setting_index
+      :type: bool
+
+
+

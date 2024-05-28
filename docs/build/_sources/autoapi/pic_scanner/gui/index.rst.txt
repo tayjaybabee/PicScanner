@@ -1,0 +1,15 @@
+pic_scanner.gui
+===============
+
+.. py:module:: pic_scanner.gui
+
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/pic_scanner/gui/models/index
+
+

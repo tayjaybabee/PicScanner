@@ -1,0 +1,197 @@
+pic_scanner.gui.models.element_bases
+====================================
+
+.. py:module:: pic_scanner.gui.models.element_bases
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/pic_scanner/gui/models/element_bases/blueprint/index
+   /autoapi/pic_scanner/gui/models/element_bases/column/index
+   /autoapi/pic_scanner/gui/models/element_bases/metas/index
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   pic_scanner.gui.models.element_bases.FileCollection
+   pic_scanner.gui.models.element_bases.ReactiveProperty
+   pic_scanner.gui.models.element_bases.GUIFileCollection
+
+
+Package Contents
+----------------
+
+.. py:class:: FileCollection
+
+   .. py:attribute:: paths
+      :type:  list
+
+
+   .. py:attribute:: total_size
+      :type:  int
+
+
+   .. py:attribute:: total_files
+      :type:  int
+
+
+   .. py:attribute:: extensions
+      :type:  dict
+
+
+   .. py:method:: __post_init__()
+
+
+   .. py:method:: _process_files()
+
+
+   .. py:method:: get_total_size_in_lowest_unit() -> tuple[Union[int, float], str]
+
+
+   .. py:method:: get_total_extension_size_in_lowest_unit(extension: str, return_as_string: bool = False) -> tuple[Union[int, float], str]
+
+
+   .. py:method:: __getitem__(key: Union[int, str]) -> Union[str, Dict[str, int]]
+
+
+   .. py:method:: __str__()
+
+      Return str(self).
+
+
+
+.. py:class:: ReactiveProperty(default_value=None, callback=None, *args, **kwargs)
+
+   .. py:method:: __set_name__(owner, name)
+
+
+   .. py:method:: __get__(instance, owner)
+
+
+   .. py:method:: __set__(instance, value)
+
+
+   .. py:method:: add_callback(callback, *args, **kwargs)
+
+
+.. py:class:: GUIFileCollection(collection: pic_scanner.helpers.filesystem.classes.FileCollection)
+
+   A class to manage a collection of files with a cursor to navigate through them.
+
+   .. attribute:: collection
+
+      The collection of files.
+
+      :type: FileCollection
+
+   .. attribute:: __files
+
+      List of file paths from the collection.
+
+      :type: list[Path]
+
+   .. attribute:: cursor
+
+      Current position of the cursor in the collection.
+
+      :type: int
+
+
+   .. py:attribute:: cursor
+
+
+   .. py:property:: collection
+      :type: pic_scanner.helpers.filesystem.classes.FileCollection
+
+      Returns the collection of files.
+
+      :returns:     The collection of files.
+      :rtype: FileCollection
+
+
+   .. py:property:: files
+      :type: list
+
+      Returns the list of file paths from the collection.
+
+      :returns:     The list of file paths.
+      :rtype: list
+
+
+   .. py:method:: next() -> str
+
+      Moves the cursor to the next file in the collection and returns it.
+
+      :returns: The path of the next file.
+      :rtype: str
+
+
+
+   .. py:method:: prev() -> str
+
+      Moves the cursor to the previous file in the collection and returns it.
+
+      :returns: The path of the previous file.
+      :rtype: str
+
+
+
+   .. py:method:: current() -> str
+
+      Returns the file at the current cursor position.
+
+      :returns: The path of the current file.
+      :rtype: str
+
+
+
+   .. py:method:: set_cursor(index: int)
+
+      Sets the cursor to the specified index, adjusting if out of bounds.
+
+      :param index: The position to set the cursor to.
+      :type index: int
+
+      :raises IndexError: If the index is out of the valid range.
+
+
+
+   .. py:method:: __getitem__(key: int) -> str
+
+      Returns the file at the specified index.
+
+      :param key: The index of the file to retrieve.
+      :type key: int
+
+      :returns: The path of the file at the specified index.
+      :rtype: str
+
+
+
+   .. py:method:: add_cursor_callback(callback, *args, **kwargs)
+
+      Adds a callback to be invoked when the cursor changes.
+
+      :param callback: The callback function.
+      :type callback: callable
+      :param \*args: Additional positional arguments to pass to the callback.
+      :param \*\*kwargs: Additional keyword arguments to pass to the callback.
+
+
+
+   .. py:method:: __len__() -> int
+
+      Returns the number of files in the collection.
+
+      :returns: The number of files.
+      :rtype: int
+
+
+

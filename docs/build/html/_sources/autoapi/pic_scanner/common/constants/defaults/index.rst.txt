@@ -1,0 +1,29 @@
+pic_scanner.common.constants.defaults
+=====================================
+
+.. py:module:: pic_scanner.common.constants.defaults
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/pic_scanner/common/constants/defaults/dirs/index
+   /autoapi/pic_scanner/common/constants/defaults/files/index
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   pic_scanner.common.constants.defaults.FILE_SYSTEM_DEFAULTS
+
+
+Package Contents
+----------------
+
+.. py:data:: FILE_SYSTEM_DEFAULTS
+

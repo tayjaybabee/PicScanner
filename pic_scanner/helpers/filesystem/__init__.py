@@ -1,10 +1,47 @@
+"""
+__init__.py
+
+The filesystem module provides functions for working with the filesystem.
+
+This module provides functions for checking if a path is valid, checking if a directory is valid, checking if a file is
+valid, provisioning a path, provisioning a list of paths, gathering files in a directory, and getting the abbreviation
+for a storage unit.
+
+Functions:
+    check_path:
+        Check if a path is valid.
+
+    check_directory:
+        Check if a directory is valid.
+
+    check_file:
+        Check if a file is valid.
+
+    provision_path:
+        Provision a path.
+
+    provision_paths:
+        Provision a list of paths.
+
+    gather_files_in_dir:
+        Gather all files in a directory.
+
+    get_storage_unit_abbreviation:
+        Get the abbreviation for a storage unit.
+
+
+Since:
+    1.0
+"""
+
 from pathlib import Path
 from typing import Union
 
 
 __all__ = [
     'check_path',
-    'check_directory',
+    'ch'
+    'eck_directory',
     'check_file',
     'provision_path',
 
@@ -21,6 +58,13 @@ def check_path(
 ) -> bool:
     """
     Check if a path is valid.
+
+    This function checks if a path is valid. If the path is a string, it will be converted to a Path object. If the path
+    is not expanded, it will be expanded. If the path is not resolved, it will be resolved. If the path is not converted
+    to a string, it will be converted to a string. If the path is not provisioned, it will be provisioned.
+
+    Note:
+        Provisioning a path involves converting it to a Path object, expanding it, and resolving it.
 
     Parameters:
         path (Union[str, Path]):
@@ -50,10 +94,7 @@ def check_path(
             do_not_resolve=do_not_resolve
         )
 
-    if not isinstance(path, Path):
-        return False
-
-    return path.exists()
+    return path.exists() if isinstance(path, Path) else False
 
 
 def check_directory(
@@ -63,18 +104,25 @@ def check_directory(
     """
     Check if a directory is valid.
 
+    This function checks if a directory is valid. If the path is a string, it will be converted to a Path object. If the
+    path is not expanded, it will be expanded. If the path is not resolved, it will be resolved. If the path is not
+    converted to a string, it will be converted to a string. If the path is not provisioned, it will be provisioned.
+
+    Note:
+        Provisioning a path involves converting it to a Path object, expanding it, and resolving it.
+
     Parameters:
         path (Union[str, Path]):
             The directory to check.
+
+        **kwargs:
+            Additional keyword arguments.
 
     Returns:
         bool:
             A flag indicating whether the directory is valid.
     """
-    if check_path(path, **kwargs):
-        return path.is_dir()
-    else:
-        return False
+    return path.is_dir() if check_path(path, **kwargs) else False
 
 
 def check_file(
@@ -92,10 +140,7 @@ def check_file(
         bool:
             A flag indicating whether the file is valid.
     """
-    if check_path(path, **kwargs):
-        return path.is_file()
-    else:
-        return False
+    return path.is_file() if check_path(path, **kwargs) else False
 
 
 def provision_path(
@@ -142,6 +187,11 @@ def provision_path(
 def provision_paths(path_list: list) -> list:
     """
     Provision a list of paths.
+
+    This function takes a list of paths and provisions them.
+
+    Note:
+        Provisioning a path involves converting it to a Path object, expanding it, and resolving it.
 
     Parameters:
         path_list (list):

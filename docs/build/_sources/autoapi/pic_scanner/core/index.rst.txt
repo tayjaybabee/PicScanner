@@ -1,0 +1,54 @@
+pic_scanner.core
+================
+
+.. py:module:: pic_scanner.core
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   pic_scanner.core.scan_image
+   pic_scanner.core.scan_images
+
+
+Package Contents
+----------------
+
+.. py:function:: scan_image(image_path: Union[str, pathlib.Path], base_url: Optional[str] = None) -> pic_scanner.models.image.ScannedImage
+
+   Scan an image for NSFW content.
+
+   :param image_path: The path to the image to scan.
+   :type image_path: Union[str, Path]
+   :param base_url: The base URL of the API to use.
+   :type base_url: Optional[str]
+
+   :returns:     The scanned image.
+   :rtype: ScannedImage
+
+   :raises ValueError: If the image path is invalid.
+
+
+.. py:function:: scan_images(image_paths: Union[list[Union[str, pathlib.Path]], pathlib.Path], base_url: Optional[str] = None, do_not_convert_paths: bool = False, do_not_provision_paths: bool = False, prog_bar: bool = False, **kwargs) -> pic_scanner.models.image.ScannedImageCollection
+
+   Scan a collection of images for NSFW content.
+
+   :param image_paths: The paths to the images to scan.
+   :type image_paths: Union[list[Union[str, Path]], Path]
+   :param base_url: The base URL of the API to use.
+   :type base_url: Optional[str]
+   :param do_not_convert_paths: A flag indicating whether to convert the paths to strings.
+   :type do_not_convert_paths: bool
+   :param do_not_provision_paths: A flag indicating whether to provision the paths.
+   :type do_not_provision_paths: bool
+   :param prog_bar: A flag indicating whether to display a progress bar.
+   :type prog_bar: bool
+
+   :returns:     The scanned images.
+   :rtype: ScannedImageCollection
+
+   :raises ValueError: If the image paths are invalid.
+
+

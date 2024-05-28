@@ -1,0 +1,260 @@
+pic_scanner.helpers
+===================
+
+.. py:module:: pic_scanner.helpers
+
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/pic_scanner/helpers/filesystem/index
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/pic_scanner/helpers/images/index
+   /autoapi/pic_scanner/helpers/locks/index
+   /autoapi/pic_scanner/helpers/properties/index
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   pic_scanner.helpers.IMAGE_EXTENSIONS
+   pic_scanner.helpers.MAIN_MOD_LOGGER
+   pic_scanner.helpers.MOD_LOGGER
+   pic_scanner.helpers.excluded
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   pic_scanner.helpers.FileCollection
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   pic_scanner.helpers.provision_path
+   pic_scanner.helpers.check_directory
+   pic_scanner.helpers.is_class
+   pic_scanner.helpers.is_instance
+   pic_scanner.helpers.get_picture_files
+   pic_scanner.helpers.get_file_collection
+   pic_scanner.helpers.get_caller_name
+
+
+Package Contents
+----------------
+
+.. py:function:: provision_path(path: Union[str, pathlib.Path], do_not_expand: bool = False, do_not_resolve: bool = False, do_not_convert: bool = False) -> pathlib.Path
+
+   Provision a path.
+
+   :param path: The path to provision.
+   :type path: str
+   :param do_not_convert: A flag indicating whether to convert the path to a string.
+   :type do_not_convert: bool
+   :param do_not_expand: A flag indicating whether to expand the path.
+   :type do_not_expand: bool
+   :param do_not_resolve: A flag indicating whether to resolve the path.
+   :type do_not_resolve: bool
+
+   :returns:     The provisioned path.
+   :rtype: Path
+
+
+.. py:function:: check_directory(path: Union[str, pathlib.Path], **kwargs) -> bool
+
+   Check if a directory is valid.
+
+   :param path: The directory to check.
+   :type path: Union[str, Path]
+
+   :returns:     A flag indicating whether the directory is valid.
+   :rtype: bool
+
+
+.. py:data:: IMAGE_EXTENSIONS
+   :value: ['.png', '.jpg', '.jpeg', '.bmp', '.tiff']
+
+
+   list:
+   A list of valid image extensions.
+
+.. py:class:: FileCollection
+
+   .. py:attribute:: paths
+      :type:  list
+
+
+   .. py:attribute:: total_size
+      :type:  int
+
+
+   .. py:attribute:: total_files
+      :type:  int
+
+
+   .. py:attribute:: extensions
+      :type:  dict
+
+
+   .. py:method:: __post_init__()
+
+
+   .. py:method:: _process_files()
+
+
+   .. py:method:: get_total_size_in_lowest_unit() -> tuple[Union[int, float], str]
+
+
+   .. py:method:: get_total_extension_size_in_lowest_unit(extension: str, return_as_string: bool = False) -> tuple[Union[int, float], str]
+
+
+   .. py:method:: __getitem__(key: Union[int, str]) -> Union[str, Dict[str, int]]
+
+
+   .. py:method:: __str__()
+
+      Return str(self).
+
+
+
+.. py:data:: MAIN_MOD_LOGGER
+
+.. py:data:: MOD_LOGGER
+
+.. py:data:: excluded
+   :value: []
+
+
+.. py:function:: is_class(obj)
+
+   Determine if an object is a class.
+
+   :param obj: The object to check.
+
+   :returns:     True if the object is a class; False otherwise.
+   :rtype: bool
+
+   .. rubric:: Example
+
+   >>> is_class(str)
+   True
+   >>> is_class('string')
+   False
+
+
+.. py:function:: is_instance(obj)
+
+   Determine if an object is an instance of a class.
+
+   :param obj: The object to check.
+
+   :returns:     True if the object is an instance of a class; False otherwise.
+   :rtype: bool
+
+   .. rubric:: Example
+
+   >>> is_instance(str)
+   False
+   >>> is_instance('string')
+   True
+
+
+.. py:function:: get_picture_files(directory: Union[str, pathlib.Path], recursive: bool = False, do_not_provision: bool = False, exclude_dir_names: list[str] = None, **kwargs) -> list
+
+   Get a list of picture files in a directory.
+
+   This function searches a directory for picture files and returns a list
+   of the picture files found. The search can be performed recursively
+   and specific directories can be excluded from the search.
+
+   .. note::
+
+      Use of the `exclude_dir_names` parameter is case-insensitive, and
+      directory-depth is not considered when excluding directories. **If
+      a nested directory contains an excluded directory name, the nested
+      directory will be excluded.**
+
+   :param directory: The directory to search for picture files.
+   :type directory: str or Path
+   :param recursive: A flag indicating whether to search recursively.
+   :type recursive: bool
+   :param do_not_provision: A flag indicating whether to provision the directory.
+   :type do_not_provision: bool
+   :param exclude_dir_names: A list of directory names to exclude.
+   :type exclude_dir_names: list
+   :param \*\*kwargs: Additional keyword arguments.
+
+   :returns:     A list of picture files in the directory.
+   :rtype: list[Path]
+
+   .. rubric:: Example
+
+   >>> get_picture_files('path/to/directory', recursive=True)
+   [Path('path/to/directory/image1.jpg'), Path('path/to/directory/image2.jpg')]
+
+
+.. py:function:: get_file_collection(directory: Union[str, pathlib.Path], recursive: bool = False, do_not_provision: bool = False, exclude_dir_names: list[str] = None, **kwargs) -> filesystem.classes.FileCollection
+
+   Get a FileCollection object for a directory.
+
+   This function searches a directory for picture files and returns a
+   FileCollection object containing the picture files found. The search
+   can be performed recursively and specific directories can be excluded
+   from the search.
+
+   .. note::
+
+      Use of the `exclude_dir_names` parameter is case-insensitive, and
+      directory-depth is not considered when excluding directories. **If
+      a nested directory contains an excluded directory name, the nested
+      directory will be excluded.**
+
+   :param directory: The directory to search for picture files.
+   :type directory: str or Path
+   :param recursive: A flag indicating whether to search recursively.
+   :type recursive: bool
+   :param do_not_provision: A flag indicating whether to provision the directory.
+   :type do_not_provision: bool
+   :param exclude_dir_names: A list of directory names to exclude.
+   :type exclude_dir_names: list
+   :param \*\*kwargs: Additional keyword arguments.
+
+   :returns:     A FileCollection object containing the picture files in the directory.
+   :rtype: FileCollection
+
+   .. rubric:: Example
+
+   >>> get_file_collection('path/to/directory', recursive=True)
+   FileCollection(paths=[Path('path/to/directory/image1.jpg'), Path('path/to/directory/image2.jpg')])
+
+
+.. py:function:: get_caller_name()
+
+   Get the name of the calling function.
+
+   :returns:     The name of the calling function.
+   :rtype: str
+
+   .. rubric:: Example
+
+   >>> get_caller_name()
+   'get_caller_name'
+
+

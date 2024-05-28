@@ -1,0 +1,25 @@
+pic_scanner.common.constants.defaults.dirs
+==========================================
+
+.. py:module:: pic_scanner.common.constants.defaults.dirs
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   pic_scanner.common.constants.defaults.dirs.PROG_DIRS
+   pic_scanner.common.constants.defaults.dirs.DEFAULT_BACKUP_DIR
+   pic_scanner.common.constants.defaults.dirs.TEMP_DIR
+
+
+Module Contents
+---------------
+
+.. py:data:: PROG_DIRS
+
+.. py:data:: DEFAULT_BACKUP_DIR
+
+.. py:data:: TEMP_DIR
+

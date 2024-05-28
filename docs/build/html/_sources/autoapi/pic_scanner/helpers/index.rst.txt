@@ -1,0 +1,414 @@
+pic_scanner.helpers
+===================
+
+.. py:module:: pic_scanner.helpers
+
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/pic_scanner/helpers/filesystem/index
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/pic_scanner/helpers/images/index
+   /autoapi/pic_scanner/helpers/locks/index
+   /autoapi/pic_scanner/helpers/properties/index
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   pic_scanner.helpers.IMAGE_EXTENSIONS
+   pic_scanner.helpers.MAIN_MOD_LOGGER
+   pic_scanner.helpers.MOD_LOGGER
+   pic_scanner.helpers.excluded
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   pic_scanner.helpers.FileCollection
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   pic_scanner.helpers.provision_path
+   pic_scanner.helpers.check_directory
+   pic_scanner.helpers.is_class
+   pic_scanner.helpers.is_instance
+   pic_scanner.helpers.get_picture_files
+   pic_scanner.helpers.get_file_collection
+   pic_scanner.helpers.get_caller_name
+
+
+Package Contents
+----------------
+
+.. py:function:: provision_path(path: Union[str, pathlib.Path], do_not_expand: bool = False, do_not_resolve: bool = False, do_not_convert: bool = False) -> pathlib.Path
+
+   Provision a path.
+
+   :param path: The path to provision.
+   :type path: str
+   :param do_not_convert: A flag indicating whether to convert the path to a string.
+   :type do_not_convert: bool
+   :param do_not_expand: A flag indicating whether to expand the path.
+   :type do_not_expand: bool
+   :param do_not_resolve: A flag indicating whether to resolve the path.
+   :type do_not_resolve: bool
+
+   :returns:     The provisioned path.
+   :rtype: Path
+
+
+.. py:function:: check_directory(path: Union[str, pathlib.Path], **kwargs) -> bool
+
+   Check if a directory is valid.
+
+   This function checks if a directory is valid. If the path is a string, it will be converted to a Path object. If the
+   path is not expanded, it will be expanded. If the path is not resolved, it will be resolved. If the path is not
+   converted to a string, it will be converted to a string. If the path is not provisioned, it will be provisioned.
+
+   .. note:: Provisioning a path involves converting it to a Path object, expanding it, and resolving it.
+
+   :param path: The directory to check.
+   :type path: Union[str, Path]
+   :param \*\*kwargs: Additional keyword arguments.
+
+   :returns:     A flag indicating whether the directory is valid.
+   :rtype: bool
+
+
+.. py:data:: IMAGE_EXTENSIONS
+   :value: ['.png', '.jpg', '.jpeg', '.bmp', '.tiff']
+
+
+   list:
+   A list of valid image extensions.
+
+.. py:class:: FileCollection(paths: List[str] = None)
+
+   A class for managing a collection of files.
+
+   Properties:
+       paths (list):
+           A list of file paths.
+
+       total_size (int):
+           The total size of the collection, in bytes.
+
+       total_files (int):
+           The total number of files in the collection.
+
+       extensions (dict):
+           A dictionary of extensions with properties for total size and number of files.
+
+       needs_reprocessing (bool):
+           A flag indicating whether the collection needs reprocessing.
+
+   .. method:: get_total_size_in_lowest_unit
+
+      
+      Get the total size of the collection in the lowest unit.
+      
+
+   .. method:: get_total_extension_size_in_lowest_unit
+
+      
+      Get the total size of a specific extension in the lowest unit.
+      
+
+   .. method:: remove_file
+
+      
+      Remove a file from the collection.
+      
+
+   .. method:: reprocess_files
+
+      
+      Reprocess the files in the collection.
+      
+
+   .. rubric:: Examples
+
+   >>> collection = FileCollection(paths=['/path/to/file1', '/path/to/file2'])
+   >>> collection.total_size
+   123456  # Total size of the collection, in bytes.
+
+
+   .. py:attribute:: paths
+      :type:  list
+
+
+   .. py:attribute:: total_size
+      :type:  int
+
+
+   .. py:attribute:: total_files
+      :type:  int
+
+
+   .. py:attribute:: extensions
+      :type:  dict
+
+
+   .. py:method:: __post_init__()
+
+      Post-initialization method for the FileCollection class.
+
+      This method processes the files in the collection. It calculates the total size of the collection, the total number
+      of files, and the total size of each extension in the collection. It populates the `total_size`, `total_files`, and
+      `extensions` attributes of the class.
+
+      :returns: None
+
+
+
+   .. py:property:: needs_reprocessing
+      :type: bool
+
+      Returns whether the collection needs reprocessing.
+
+      This property returns a boolean value indicating whether the collection needs reprocessing. If the collection has
+      been modified since the last processing, this property will return `True`. If the collection has not been modified,
+      it will return `False`. The property is read-only.
+
+      :returns:     True if the collection needs reprocessing, False otherwise.
+      :rtype: bool
+
+
+   .. py:method:: _process_files()
+
+      Process the files in the collection.
+
+      This method processes the files in the collection. It calculates the total size of the collection, the total number
+      of files, and the total size of each extension in the collection. It populates the `total_size`, `total_files`, and
+      `extensions` attributes of the class.
+
+      :returns: None
+
+
+
+   .. py:method:: reprocess_files()
+
+      Reprocess the files in the collection.
+
+      This method reprocesses the files in the collection. It recalculates the total size of the collection, the total
+      number of files, and the total size of each extension in the collection. It populates the `total_size`, `total_files`,
+      and `extensions` attributes of the class. This method is used to update the collection after files have been added
+      or removed.
+
+      .. note::
+
+         This method should be called after files have been added or removed from the collection. It will only reprocess
+         the files if the `needs_reprocessing` attribute is set to `True`. After reprocessing, the `needs_reprocessing`
+         attribute will be set to `False`.
+
+      :returns: None
+
+
+
+   .. py:method:: get_total_size_in_lowest_unit() -> tuple[Union[int, float], str]
+
+      Get the total size of the collection in the lowest unit with a size greater than or equal to 1.
+
+      This method calculates the total size of the collection in the lowest unit with a size greater than or equal
+      to 1. It returns the size and the unit as a tuple. The unit is a string representing the unit of the size.
+
+      :returns:     The total size of the collection and the unit.
+      :rtype: tuple[Union[int, float], str]
+
+
+
+   .. py:method:: get_total_extension_size_in_lowest_unit(extension: str, return_as_string: bool = False) -> tuple[Union[int, float], str]
+
+      Get the total size of a specific extension in the lowest unit with a size greater than or equal to 1.
+
+      :param extension: The extension to get the size of.
+      :type extension: str
+      :param return_as_string: A flag indicating whether to return the size as a string. If True, the size will be returned as a string
+                               with the unit. If False, the size will be returned as a tuple with the size and the unit.
+      :type return_as_string: bool
+
+      :returns:     The total size of the extension and the unit.
+      :rtype: tuple[Union[int, float], str]
+
+      :raises ValueError: If the extension is not found in the collection.
+
+
+
+   .. py:method:: remove_file(path: Union[pathlib.Path, str], **kwargs)
+
+      Remove a file from the collection.
+
+      This method removes a file from the collection. It takes a file path as an argument and removes the file from the
+      collection. It then reprocesses the files in the collection to update the total size, total number of files, and
+      total size of each extension.
+
+      .. note::
+
+         This method does not delete the file from the file system. It only removes the file from the collection,
+         and only if the file is in the collection. If the file is not in the collection, this method will raise a
+         `KeyError`. After removing the file, the collection will be reprocessed to update the total size, total number
+         of files, and total size of each extension.
+
+      :param path: The file path to remove.
+      :type path: Union[Path, str]
+      :param \*\*kwargs: Additional keyword arguments.
+
+      :raises KeyError: If the file is not in the collection.
+
+      :returns: None
+
+
+
+   .. py:method:: __getitem__(key: Union[int, str]) -> Union[str, Dict[str, int]]
+
+
+   .. py:method:: __str__()
+
+      Return str(self).
+
+
+
+.. py:data:: MAIN_MOD_LOGGER
+
+.. py:data:: MOD_LOGGER
+
+.. py:data:: excluded
+   :value: []
+
+
+.. py:function:: is_class(obj)
+
+   Determine if an object is a class.
+
+   :param obj: The object to check.
+
+   :returns:     True if the object is a class; False otherwise.
+   :rtype: bool
+
+   .. rubric:: Example
+
+   >>> is_class(str)
+   True
+   >>> is_class('string')
+   False
+
+
+.. py:function:: is_instance(obj)
+
+   Determine if an object is an instance of a class.
+
+   :param obj: The object to check.
+
+   :returns:     True if the object is an instance of a class; False otherwise.
+   :rtype: bool
+
+   .. rubric:: Example
+
+   >>> is_instance(str)
+   False
+   >>> is_instance('string')
+   True
+
+
+.. py:function:: get_picture_files(directory: Union[str, pathlib.Path], recursive: bool = False, do_not_provision: bool = False, exclude_dir_names: list[str] = None, **kwargs) -> list
+
+   Get a list of picture files in a directory.
+
+   This function searches a directory for picture files and returns a list
+   of the picture files found. The search can be performed recursively
+   and specific directories can be excluded from the search.
+
+   .. note::
+
+      Use of the `exclude_dir_names` parameter is case-insensitive, and
+      directory-depth is not considered when excluding directories. **If
+      a nested directory contains an excluded directory name, the nested
+      directory will be excluded.**
+
+   :param directory: The directory to search for picture files.
+   :type directory: str or Path
+   :param recursive: A flag indicating whether to search recursively.
+   :type recursive: bool
+   :param do_not_provision: A flag indicating whether to provision the directory.
+   :type do_not_provision: bool
+   :param exclude_dir_names: A list of directory names to exclude.
+   :type exclude_dir_names: list
+   :param \*\*kwargs: Additional keyword arguments.
+
+   :returns:     A list of picture files in the directory.
+   :rtype: list[Path]
+
+   .. rubric:: Example
+
+   >>> get_picture_files('path/to/directory', recursive=True)
+   [Path('path/to/directory/image1.jpg'), Path('path/to/directory/image2.jpg')]
+
+
+.. py:function:: get_file_collection(directory: Union[str, pathlib.Path], recursive: bool = False, do_not_provision: bool = False, exclude_dir_names: list[str] = None, **kwargs) -> filesystem.classes.FileCollection
+
+   Get a FileCollection object for a directory.
+
+   This function searches a directory for picture files and returns a
+   FileCollection object containing the picture files found. The search
+   can be performed recursively and specific directories can be excluded
+   from the search.
+
+   .. note::
+
+      Use of the `exclude_dir_names` parameter is case-insensitive, and
+      directory-depth is not considered when excluding directories. **If
+      a nested directory contains an excluded directory name, the nested
+      directory will be excluded.**
+
+   :param directory: The directory to search for picture files.
+   :type directory: str or Path
+   :param recursive: A flag indicating whether to search recursively.
+   :type recursive: bool
+   :param do_not_provision: A flag indicating whether to provision the directory.
+   :type do_not_provision: bool
+   :param exclude_dir_names: A list of directory names to exclude.
+   :type exclude_dir_names: list
+   :param \*\*kwargs: Additional keyword arguments.
+
+   :returns:     A FileCollection object containing the picture files in the directory.
+   :rtype: FileCollection
+
+   .. rubric:: Example
+
+   >>> get_file_collection('path/to/directory', recursive=True)
+   FileCollection(paths=[Path('path/to/directory/image1.jpg'), Path('path/to/directory/image2.jpg')])
+
+
+.. py:function:: get_caller_name()
+
+   Get the name of the calling function.
+
+   :returns:     The name of the calling function.
+   :rtype: str
+
+   .. rubric:: Example
+
+   >>> get_caller_name()
+   'get_caller_name'
+
+

@@ -1,0 +1,57 @@
+pic_scanner.common.meta.version
+===============================
+
+.. py:module:: pic_scanner.common.meta.version
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   pic_scanner.common.meta.version.VERSION
+   pic_scanner.common.meta.version.RELEASE_MAP
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   pic_scanner.common.meta.version.get_full_version_name
+   pic_scanner.common.meta.version.parse_version
+
+
+Module Contents
+---------------
+
+.. py:data:: VERSION
+
+   The version information for the project.
+
+.. py:data:: RELEASE_MAP
+
+   The release map for the project.
+
+.. py:function:: get_full_version_name() -> str
+
+   Gets the full version name.
+
+   :returns: The full version name.
+   :rtype: str
+
+   Since:
+       v1.3.2
+
+
+.. py:function:: parse_version() -> str
+
+   Parses the version information into a string.
+
+   :returns: The version information.
+   :rtype: str
+
+   Since:
+       v1.3.2
+
+

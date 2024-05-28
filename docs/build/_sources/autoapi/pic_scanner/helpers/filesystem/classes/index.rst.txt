@@ -1,0 +1,121 @@
+pic_scanner.helpers.filesystem.classes
+======================================
+
+.. py:module:: pic_scanner.helpers.filesystem.classes
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   pic_scanner.helpers.filesystem.classes.File
+   pic_scanner.helpers.filesystem.classes.FileCollection
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   pic_scanner.helpers.filesystem.classes.check_file
+   pic_scanner.helpers.filesystem.classes.provision_paths
+   pic_scanner.helpers.filesystem.classes.get_lowest_unit_size
+
+
+Module Contents
+---------------
+
+.. py:function:: check_file(path: Union[str, pathlib.Path], **kwargs) -> bool
+
+   Check if a file is valid.
+
+   :param path: The file to check.
+   :type path: Union[str, Path]
+
+   :returns:     A flag indicating whether the file is valid.
+   :rtype: bool
+
+
+.. py:function:: provision_paths(path_list: list) -> list
+
+   Provision a list of paths.
+
+   :param path_list: The list of paths to provision.
+   :type path_list: list
+
+   :returns:     The provisioned list of paths.
+   :rtype: list
+
+
+.. py:function:: get_lowest_unit_size(size: int) -> tuple[Union[int, float], str]
+
+   Get the lowest unit size for a given size.
+
+   :param size: The size to convert.
+   :type size: int
+
+   :returns:     The converted size and the unit.
+   :rtype: tuple[Union[int, float], str]
+
+   .. rubric:: Examples
+
+   >>> get_lowest_unit_size(1024)
+   (1.0, 'KB')
+   >>> get_lowest_unit_size(1024 * 1024)
+   (1.0, 'MB')
+   >>> get_lowest_unit_size(1024 * 1024 * 1024)
+   (1.0, 'GB')
+   >>> get_lowest_unit_size(1024 * 1024 * 1024 * 1024)
+   (1.0, 'TB')
+   >>> get_lowest_unit_size(1024 * 1024 * 1024 * 1024 * 1024)
+   (1.0, 'PB')
+   >>> get_lowest_unit_size(1024 * 1024 * 1024 * 1024 * 1024 * 1024)
+   (1.0, 'EB')
+   >>> get_lowest_unit_size(1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024)
+   (1.0, 'ZB')
+   >>> get_lowest_unit_size(1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024)
+   (1.0, 'YB')
+
+
+.. py:class:: File(path: Union[str, pathlib.Path])
+
+.. py:class:: FileCollection
+
+   .. py:attribute:: paths
+      :type:  list
+
+
+   .. py:attribute:: total_size
+      :type:  int
+
+
+   .. py:attribute:: total_files
+      :type:  int
+
+
+   .. py:attribute:: extensions
+      :type:  dict
+
+
+   .. py:method:: __post_init__()
+
+
+   .. py:method:: _process_files()
+
+
+   .. py:method:: get_total_size_in_lowest_unit() -> tuple[Union[int, float], str]
+
+
+   .. py:method:: get_total_extension_size_in_lowest_unit(extension: str, return_as_string: bool = False) -> tuple[Union[int, float], str]
+
+
+   .. py:method:: __getitem__(key: Union[int, str]) -> Union[str, Dict[str, int]]
+
+
+   .. py:method:: __str__()
+
+      Return str(self).
+
+
+

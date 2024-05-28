@@ -1,0 +1,382 @@
+pic_scanner.gui.models.windows.main.blueprint.columns
+=====================================================
+
+.. py:module:: pic_scanner.gui.models.windows.main.blueprint.columns
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   pic_scanner.gui.models.windows.main.blueprint.columns.gui_file_collection
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   pic_scanner.gui.models.windows.main.blueprint.columns.Column
+   pic_scanner.gui.models.windows.main.blueprint.columns.FileCollection
+   pic_scanner.gui.models.windows.main.blueprint.columns.GUIFileCollection
+   pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn
+   pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   pic_scanner.gui.models.windows.main.blueprint.columns.get_caller_name
+   pic_scanner.gui.models.windows.main.blueprint.columns.flag_lock
+   pic_scanner.gui.models.windows.main.blueprint.columns.get_image_data
+
+
+Package Contents
+----------------
+
+.. py:class:: Column(column_key: str, auto_build=False)
+
+   .. py:attribute:: column_key
+
+
+   .. py:property:: auto_build
+
+
+   .. py:method:: build()
+      :abstractmethod:
+
+
+
+   .. py:property:: building
+
+
+   .. py:property:: _built
+
+
+   .. py:property:: column
+
+
+   .. py:property:: _column
+
+
+   .. py:property:: layout
+
+
+   .. py:property:: _layout
+
+
+   .. py:property:: is_built
+
+
+.. py:function:: get_caller_name()
+
+   Get the name of the calling function.
+
+   :returns:     The name of the calling function.
+   :rtype: str
+
+   .. rubric:: Example
+
+   >>> get_caller_name()
+   'get_caller_name'
+
+
+.. py:function:: flag_lock(instance, flag_name)
+
+   Context manager to set and unset a private flag attribute in an instance.
+
+   This context manager ensures that a specified private flag attribute
+   in the given instance is set to True when entering the context and
+   reset to False upon exiting the context. This is useful for indicating
+   that an operation is in progress within a specific scope.
+
+   :param instance: The instance containing the private flag attribute.
+   :type instance: object
+   :param flag_name: The name of the flag attribute (without leading underscore).
+   :type flag_name: str
+
+   :raises AttributeError: If the instance does not have the specified private flag attribute.
+
+   Example usage:
+       handler = OperationHandler()
+       with flag_lock(handler, 'flag'):
+           # Perform some operation
+           pass
+
+   This will automatically set handler._flag to True within the context
+   and reset it to False when exiting the context.
+
+
+.. py:class:: FileCollection
+
+   .. py:attribute:: paths
+      :type:  list
+
+
+   .. py:attribute:: total_size
+      :type:  int
+
+
+   .. py:attribute:: total_files
+      :type:  int
+
+
+   .. py:attribute:: extensions
+      :type:  dict
+
+
+   .. py:method:: __post_init__()
+
+
+   .. py:method:: _process_files()
+
+
+   .. py:method:: get_total_size_in_lowest_unit() -> tuple[Union[int, float], str]
+
+
+   .. py:method:: get_total_extension_size_in_lowest_unit(extension: str, return_as_string: bool = False) -> tuple[Union[int, float], str]
+
+
+   .. py:method:: __getitem__(key: Union[int, str]) -> Union[str, Dict[str, int]]
+
+
+   .. py:method:: __str__()
+
+      Return str(self).
+
+
+
+.. py:function:: get_image_data(file_or_bytes: Union[str, bytes], maxsize: Tuple[int, int] = (1200, 850)) -> bytes
+
+   Get image data from a file or a bytes object.
+
+   This function opens an image file or a bytes object, resizes it to fit within the given maximum size,
+   and returns the image data in PNG format as bytes.
+
+   :param file_or_bytes: The path to the image file or a bytes object containing the image data.
+   :type file_or_bytes: Union[str, bytes]
+   :param maxsize: The maximum size of the image as a (width, height) tuple. Default is (1200, 850).
+   :type maxsize: Tuple[int, int], optional
+
+   :returns: The image data as a byte-string object in PNG format.
+   :rtype: bytes
+
+   :raises FileNotFoundError: If the specified file does not exist.
+   :raises OSError: If the file cannot be opened and identified as an image file.
+   :raises ValueError: If the input bytes object cannot be decoded into an image.
+
+
+.. py:class:: GUIFileCollection(collection: pic_scanner.helpers.filesystem.classes.FileCollection)
+
+   A class to manage a collection of files with a cursor to navigate through them.
+
+   .. attribute:: collection
+
+      The collection of files.
+
+      :type: FileCollection
+
+   .. attribute:: __files
+
+      List of file paths from the collection.
+
+      :type: list[Path]
+
+   .. attribute:: cursor
+
+      Current position of the cursor in the collection.
+
+      :type: int
+
+
+   .. py:attribute:: cursor
+
+
+   .. py:property:: collection
+      :type: pic_scanner.helpers.filesystem.classes.FileCollection
+
+      Returns the collection of files.
+
+      :returns:     The collection of files.
+      :rtype: FileCollection
+
+
+   .. py:property:: files
+      :type: list
+
+      Returns the list of file paths from the collection.
+
+      :returns:     The list of file paths.
+      :rtype: list
+
+
+   .. py:method:: next() -> str
+
+      Moves the cursor to the next file in the collection and returns it.
+
+      :returns: The path of the next file.
+      :rtype: str
+
+
+
+   .. py:method:: prev() -> str
+
+      Moves the cursor to the previous file in the collection and returns it.
+
+      :returns: The path of the previous file.
+      :rtype: str
+
+
+
+   .. py:method:: current() -> str
+
+      Returns the file at the current cursor position.
+
+      :returns: The path of the current file.
+      :rtype: str
+
+
+
+   .. py:method:: set_cursor(index: int)
+
+      Sets the cursor to the specified index, adjusting if out of bounds.
+
+      :param index: The position to set the cursor to.
+      :type index: int
+
+      :raises IndexError: If the index is out of the valid range.
+
+
+
+   .. py:method:: __getitem__(key: int) -> str
+
+      Returns the file at the specified index.
+
+      :param key: The index of the file to retrieve.
+      :type key: int
+
+      :returns: The path of the file at the specified index.
+      :rtype: str
+
+
+
+   .. py:method:: add_cursor_callback(callback, *args, **kwargs)
+
+      Adds a callback to be invoked when the cursor changes.
+
+      :param callback: The callback function.
+      :type callback: callable
+      :param \*args: Additional positional arguments to pass to the callback.
+      :param \*\*kwargs: Additional keyword arguments to pass to the callback.
+
+
+
+   .. py:method:: __len__() -> int
+
+      Returns the number of files in the collection.
+
+      :returns: The number of files.
+      :rtype: int
+
+
+
+.. py:data:: gui_file_collection
+   :value: None
+
+
+.. py:class:: LeftColumn(file_collection: pic_scanner.helpers.filesystem.classes.FileCollection, **kwargs)
+
+   Bases: :py:obj:`pic_scanner.gui.models.element_bases.column.Column`
+
+
+   .. py:attribute:: instances
+      :value: []
+
+
+
+   .. py:property:: file_collection
+
+
+   .. py:property:: file_list_box
+
+
+   .. py:property:: file_names
+
+
+   .. py:property:: next_button
+
+
+   .. py:property:: file_num_display_elem
+
+
+   .. py:property:: prev_button
+
+
+   .. py:method:: build()
+
+
+.. py:class:: FileColumn(file_path, **kwargs)
+
+   Bases: :py:obj:`pic_scanner.gui.models.element_bases.column.Column`
+
+
+   .. py:property:: building
+      :type: bool
+
+
+
+   .. py:property:: changing_image
+      :type: bool
+
+
+
+   .. py:property:: file_name_display_elem
+      :type: pic_scanner.gui.models.element_bases.column.psg.Text
+
+
+
+   .. py:property:: file_path
+      :type: pathlib.Path
+
+      A property that returns the file path.
+
+      :rtype: Path
+
+
+   .. py:property:: gui_file_collection
+
+
+   .. py:property:: image_elem
+      :type: pic_scanner.gui.models.element_bases.column.psg.Image
+
+      A property that returns the image element.
+
+      :returns: The image element.
+
+
+   .. py:method:: build() -> pic_scanner.gui.models.element_bases.column.psg.Column
+
+      Builds the column.
+
+      This method builds the column by creating the layout and column elements and setting the
+      `is_built ` attribute to `True`.
+
+      :returns: The column.
+
+
+
+   .. py:method:: change_image(new_path: Union[pathlib.Path, str, int]) -> None
+
+      Changes the image displayed in the column.
+
+      This method changes the image displayed in the column to the image located at the path and
+      updates the file name display element to show the new file name.
+
+      :param new_path: The new path to the image.
+      :type new_path: Path
+
+
+

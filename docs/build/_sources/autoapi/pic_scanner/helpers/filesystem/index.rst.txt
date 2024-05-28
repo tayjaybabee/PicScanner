@@ -1,0 +1,88 @@
+pic_scanner.helpers.filesystem
+==============================
+
+.. py:module:: pic_scanner.helpers.filesystem
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/pic_scanner/helpers/filesystem/classes/index
+   /autoapi/pic_scanner/helpers/filesystem/units/index
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   pic_scanner.helpers.filesystem.check_path
+   pic_scanner.helpers.filesystem.check_directory
+   pic_scanner.helpers.filesystem.check_file
+   pic_scanner.helpers.filesystem.provision_path
+
+
+Package Contents
+----------------
+
+.. py:function:: check_path(path: Union[str, pathlib.Path], do_not_expand: bool = False, do_not_resolve: bool = False, do_not_convert: bool = False, do_not_provision: bool = False) -> bool
+
+   Check if a path is valid.
+
+   :param path: The path to check.
+   :type path: Union[str, Path]
+   :param do_not_expand: A flag indicating whether to expand the path.
+   :type do_not_expand: bool
+   :param do_not_resolve: A flag indicating whether to resolve the path.
+   :type do_not_resolve: bool
+   :param do_not_convert: A flag indicating whether to convert the path to a string.
+   :type do_not_convert: bool
+   :param do_not_provision: A flag indicating whether to provision the path.
+   :type do_not_provision: bool
+
+   :returns:     A flag indicating whether the path is valid.
+   :rtype: bool
+
+
+.. py:function:: check_directory(path: Union[str, pathlib.Path], **kwargs) -> bool
+
+   Check if a directory is valid.
+
+   :param path: The directory to check.
+   :type path: Union[str, Path]
+
+   :returns:     A flag indicating whether the directory is valid.
+   :rtype: bool
+
+
+.. py:function:: check_file(path: Union[str, pathlib.Path], **kwargs) -> bool
+
+   Check if a file is valid.
+
+   :param path: The file to check.
+   :type path: Union[str, Path]
+
+   :returns:     A flag indicating whether the file is valid.
+   :rtype: bool
+
+
+.. py:function:: provision_path(path: Union[str, pathlib.Path], do_not_expand: bool = False, do_not_resolve: bool = False, do_not_convert: bool = False) -> pathlib.Path
+
+   Provision a path.
+
+   :param path: The path to provision.
+   :type path: str
+   :param do_not_convert: A flag indicating whether to convert the path to a string.
+   :type do_not_convert: bool
+   :param do_not_expand: A flag indicating whether to expand the path.
+   :type do_not_expand: bool
+   :param do_not_resolve: A flag indicating whether to resolve the path.
+   :type do_not_resolve: bool
+
+   :returns:     The provisioned path.
+   :rtype: Path
+
+

@@ -1,0 +1,280 @@
+pic_scanner.gui.models.windows.main
+===================================
+
+.. py:module:: pic_scanner.gui.models.windows.main
+
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/pic_scanner/gui/models/windows/main/blueprint/index
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   pic_scanner.gui.models.windows.main.BluePrint
+   pic_scanner.gui.models.windows.main.Window
+   pic_scanner.gui.models.windows.main.MainWindow
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   pic_scanner.gui.models.windows.main.flag_lock
+
+
+Package Contents
+----------------
+
+.. py:class:: BluePrint(file_collection: pic_scanner.helpers.filesystem.classes.FileCollection, pre_built_left_column=None, pre_built_file_column=None, **kwargs)
+
+   Bases: :py:obj:`pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint`
+
+
+   .. py:attribute:: __left_column
+
+
+   .. py:attribute:: __file_column
+
+
+   .. py:attribute:: __file_collection_cursor
+
+
+   .. py:property:: building
+
+
+   .. py:method:: building()
+
+
+   .. py:property:: file_collection
+
+
+   .. py:property:: file_collection_cursor
+
+
+   .. py:property:: file_column
+
+
+   .. py:property:: left_column
+      A property that returns the left column.
+
+      :returns:     The left column.
+      :rtype: LeftColumn
+
+
+   .. py:method:: build()
+
+      Build the blueprint layout.
+
+      :returns:     The layout of the blueprint.
+      :rtype: list
+
+
+
+   .. py:method:: change_image(new_image)
+
+
+   .. py:method:: current_image()
+
+
+   .. py:method:: next_image()
+
+
+   .. py:method:: update_image()
+
+
+.. py:class:: Window(auto_build=False, auto_run=False, title=None, blueprint: Optional[pic_scanner.BluePrint] = None, blueprint_args: Optional[dict] = None)
+
+   Bases: :py:obj:`inspy_logger.Loggable`
+
+
+   A metaclass to enhance classes with logging capabilities. Classes that inherit from
+   'Loggable' can instantly access a logger without manually setting it up. This logger
+   is derived from a parent logger, ensuring consistent logging behavior and hierarchy.
+
+   .. attribute:: - log_device
+
+      The logger device associated with the instance of the class.
+
+
+   .. py:property:: blueprint
+
+
+   .. py:method:: build()
+      :abstractmethod:
+
+
+      Builds the window.
+
+      :returns: None
+
+
+
+   .. py:property:: event_handler
+
+
+   .. py:method:: close()
+
+      Closes the window.
+
+      :returns: None
+
+
+
+   .. py:method:: run()
+
+      Runs the window.
+
+      :returns: None
+
+
+
+   .. py:property:: auto_build
+      Returns the value of the `auto_build` attribute.
+
+      :returns:     The value of the `auto_build` attribute.
+      :rtype: bool
+
+
+   .. py:property:: auto_run
+      Returns the value of the `auto_run` attribute.
+
+      :returns:     The value of the `auto_run` attribute.
+      :rtype: bool
+
+
+   .. py:property:: blueprint
+
+
+   .. py:property:: is_built
+      Returns the value of the `built` attribute.
+
+      :returns:     The value of the `built` attribute.
+      :rtype: bool
+
+
+   .. py:property:: building
+      Returns the value of the `building` attribute.
+
+      :returns:     The value of the `building` attribute.
+      :rtype: bool
+
+
+   .. py:method:: is_built()
+
+      Deletes the `built` attribute.
+
+      :returns: None
+
+
+
+   .. py:property:: _built
+
+
+   .. py:property:: closed
+      Returns the value of the `closed` attribute.
+
+      :returns:     The value of the `closed` attribute.
+      :rtype: bool
+
+
+   .. py:property:: layout
+      Returns the value of the `layout` attribute.
+
+      :returns:     The value of the `layout` attribute.
+      :rtype: list
+
+
+   .. py:property:: running
+      Returns the value of the `running` attribute.
+
+      :returns:     The value of the `running` attribute.
+      :rtype: bool
+
+
+   .. py:property:: title
+
+
+   .. py:property:: window
+
+
+   .. py:property:: _window
+
+
+.. py:function:: flag_lock(instance, flag_name)
+
+   Context manager to set and unset a private flag attribute in an instance.
+
+   This context manager ensures that a specified private flag attribute
+   in the given instance is set to True when entering the context and
+   reset to False upon exiting the context. This is useful for indicating
+   that an operation is in progress within a specific scope.
+
+   :param instance: The instance containing the private flag attribute.
+   :type instance: object
+   :param flag_name: The name of the flag attribute (without leading underscore).
+   :type flag_name: str
+
+   :raises AttributeError: If the instance does not have the specified private flag attribute.
+
+   Example usage:
+       handler = OperationHandler()
+       with flag_lock(handler, 'flag'):
+           # Perform some operation
+           pass
+
+   This will automatically set handler._flag to True within the context
+   and reset it to False when exiting the context.
+
+
+.. py:class:: MainWindow(*args, **kwargs)
+
+   Bases: :py:obj:`pic_scanner.gui.models.windows.template.Window`
+
+
+   A metaclass to enhance classes with logging capabilities. Classes that inherit from
+   'Loggable' can instantly access a logger without manually setting it up. This logger
+   is derived from a parent logger, ensuring consistent logging behavior and hierarchy.
+
+   .. attribute:: - log_device
+
+      The logger device associated with the instance of the class.
+
+
+   .. py:class:: EventHandler(window)
+
+      .. py:method:: __call__(event, values)
+
+
+      .. py:method:: check_index()
+
+
+
+   .. py:property:: file_cursor
+
+
+   .. py:property:: files
+
+
+   .. py:method:: build()
+
+      Builds the main window.
+
+      :returns: PySimpleGUI.Window
+
+
+
+   .. py:property:: active_image
+
+
+   .. py:property:: file_index
+
+

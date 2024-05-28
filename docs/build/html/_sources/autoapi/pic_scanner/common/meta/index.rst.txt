@@ -1,0 +1,53 @@
+pic_scanner.common.meta
+=======================
+
+.. py:module:: pic_scanner.common.meta
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/pic_scanner/common/meta/constants/index
+   /autoapi/pic_scanner/common/meta/version/index
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   pic_scanner.common.meta.PROG_NAME
+   pic_scanner.common.meta.URLS
+   pic_scanner.common.meta.AUTHORS
+   pic_scanner.common.meta.RELEASE_MAP
+   pic_scanner.common.meta.VERSION
+
+
+Package Contents
+----------------
+
+.. py:data:: PROG_NAME
+   :value: 'IS-NSFW-Scanner'
+
+
+   The name of the program.
+
+.. py:data:: URLS
+
+   The URLs used in the project.
+
+.. py:data:: AUTHORS
+
+   The authors of the project.
+
+.. py:data:: RELEASE_MAP
+
+   The release map for the project.
+
+.. py:data:: VERSION
+
+   The version information for the project.
+

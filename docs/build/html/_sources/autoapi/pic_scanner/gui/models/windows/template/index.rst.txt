@@ -1,0 +1,199 @@
+pic_scanner.gui.models.windows.template
+=======================================
+
+.. py:module:: pic_scanner.gui.models.windows.template
+
+.. autoapi-nested-parse::
+
+   Created on Thu Apr 11 13:11:16 2024
+
+   @author: tayja
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   pic_scanner.gui.models.windows.template.PROG_LOGGER
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   pic_scanner.gui.models.windows.template.AutoBuildRunMeta
+   pic_scanner.gui.models.windows.template.Window
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   pic_scanner.gui.models.windows.template.is_class
+   pic_scanner.gui.models.windows.template.event_handler
+   pic_scanner.gui.models.windows.template.layout
+
+
+Module Contents
+---------------
+
+.. py:function:: is_class(obj)
+
+   Determine if an object is a class.
+
+   :param obj: The object to check.
+
+   :returns:     True if the object is a class; False otherwise.
+   :rtype: bool
+
+   .. rubric:: Example
+
+   >>> is_class(str)
+   True
+   >>> is_class('string')
+   False
+
+
+.. py:class:: AutoBuildRunMeta
+
+   Bases: :py:obj:`abc.ABCMeta`
+
+
+   Metaclass for classes that should build and run themselves upon instantiation when the `auto_build`
+   and `auto_run` attributes are True.
+
+   This metaclass overrides the `__call__` method to build and run the instance if the `auto_build`
+   and `auto_run` attributes are True.
+
+
+   .. py:method:: __call__(*args, **kwargs)
+
+      Call self as a function.
+
+
+
+.. py:data:: PROG_LOGGER
+
+.. py:function:: event_handler(event, values, window)
+
+.. py:function:: layout()
+
+.. py:class:: Window(auto_build=False, auto_run=False, title=None, blueprint: Optional[pic_scanner.BluePrint] = None, blueprint_args: Optional[dict] = None)
+
+   Bases: :py:obj:`inspy_logger.Loggable`
+
+
+   A metaclass to enhance classes with logging capabilities. Classes that inherit from
+   'Loggable' can instantly access a logger without manually setting it up. This logger
+   is derived from a parent logger, ensuring consistent logging behavior and hierarchy.
+
+   .. attribute:: - log_device
+
+      The logger device associated with the instance of the class.
+
+
+   .. py:property:: blueprint
+
+
+   .. py:method:: build()
+      :abstractmethod:
+
+
+      Builds the window.
+
+      :returns: None
+
+
+
+   .. py:property:: event_handler
+
+
+   .. py:method:: close()
+
+      Closes the window.
+
+      :returns: None
+
+
+
+   .. py:method:: run()
+
+      Runs the window.
+
+      :returns: None
+
+
+
+   .. py:property:: auto_build
+      Returns the value of the `auto_build` attribute.
+
+      :returns:     The value of the `auto_build` attribute.
+      :rtype: bool
+
+
+   .. py:property:: auto_run
+      Returns the value of the `auto_run` attribute.
+
+      :returns:     The value of the `auto_run` attribute.
+      :rtype: bool
+
+
+   .. py:property:: is_built
+      Returns the value of the `built` attribute.
+
+      :returns:     The value of the `built` attribute.
+      :rtype: bool
+
+
+   .. py:property:: building
+      Returns the value of the `building` attribute.
+
+      :returns:     The value of the `building` attribute.
+      :rtype: bool
+
+
+   .. py:method:: is_built()
+
+      Deletes the `built` attribute.
+
+      :returns: None
+
+
+
+   .. py:property:: _built
+
+
+   .. py:property:: closed
+      Returns the value of the `closed` attribute.
+
+      :returns:     The value of the `closed` attribute.
+      :rtype: bool
+
+
+   .. py:property:: layout
+      Returns the value of the `layout` attribute.
+
+      :returns:     The value of the `layout` attribute.
+      :rtype: list
+
+
+   .. py:property:: running
+      Returns the value of the `running` attribute.
+
+      :returns:     The value of the `running` attribute.
+      :rtype: bool
+
+
+   .. py:property:: title
+
+
+   .. py:property:: window
+
+
+   .. py:property:: _window
+
+

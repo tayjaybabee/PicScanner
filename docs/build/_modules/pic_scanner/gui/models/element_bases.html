@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pic_scanner.gui.models.element_bases &mdash; PicScanner 1.0.0-dev.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=fd3f3429" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=3992bef7"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            PicScanner
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">PicScanner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">pic_scanner.gui.models.element_bases</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for pic_scanner.gui.models.element_bases</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">pic_scanner.helpers.filesystem.classes</span> <span class="kn">import</span> <span class="n">FileCollection</span>
+<span class="kn">from</span> <span class="nn">pic_scanner.helpers.properties</span> <span class="kn">import</span> <span class="n">ReactiveProperty</span>
+
+
+<div class="viewcode-block" id="GUIFileCollection">
+<a class="viewcode-back" href="../../../../pic_scanner.gui.models.element_bases.html#pic_scanner.gui.models.element_bases.GUIFileCollection">[docs]</a>
+<span class="k">class</span> <span class="nc">GUIFileCollection</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class to manage a collection of files with a cursor to navigate through them.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        collection (FileCollection): The collection of files.</span>
+<span class="sd">        __files (list[Path]): List of file paths from the collection.</span>
+<span class="sd">        cursor (int): Current position of the cursor in the collection.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="GUIFileCollection.cursor">
+<a class="viewcode-back" href="../../../../pic_scanner.gui.models.element_bases.html#pic_scanner.gui.models.element_bases.GUIFileCollection.cursor">[docs]</a>
+    <span class="n">cursor</span> <span class="o">=</span> <span class="n">ReactiveProperty</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="GUIFileCollection.__init__">
+<a class="viewcode-back" href="../../../../pic_scanner.gui.models.element_bases.html#pic_scanner.gui.models.element_bases.GUIFileCollection.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="n">FileCollection</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the GUIFileCollection with a given FileCollection.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            collection (FileCollection): The file collection to manage.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            TypeError: If the collection is not an instance of FileCollection.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">FileCollection</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;The `collection` attribute must be of type `FileCollection`.&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__collection</span> <span class="o">=</span> <span class="n">collection</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__files</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">paths</span></div>
+
+
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="GUIFileCollection.collection">
+<a class="viewcode-back" href="../../../../pic_scanner.gui.models.element_bases.html#pic_scanner.gui.models.element_bases.GUIFileCollection.collection">[docs]</a>
+    <span class="k">def</span> <span class="nf">collection</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FileCollection</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the collection of files.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            FileCollection:</span>
+<span class="sd">                The collection of files.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__collection</span></div>
+
+
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="GUIFileCollection.files">
+<a class="viewcode-back" href="../../../../pic_scanner.gui.models.element_bases.html#pic_scanner.gui.models.element_bases.GUIFileCollection.files">[docs]</a>
+    <span class="k">def</span> <span class="nf">files</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the list of file paths from the collection.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list:</span>
+<span class="sd">                The list of file paths.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__files</span></div>
+
+
+<div class="viewcode-block" id="GUIFileCollection.next">
+<a class="viewcode-back" href="../../../../pic_scanner.gui.models.element_bases.html#pic_scanner.gui.models.element_bases.GUIFileCollection.next">[docs]</a>
+    <span class="k">def</span> <span class="nf">next</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Moves the cursor to the next file in the collection and returns it.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: The path of the next file.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__files</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__files</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="GUIFileCollection.prev">
+<a class="viewcode-back" href="../../../../pic_scanner.gui.models.element_bases.html#pic_scanner.gui.models.element_bases.GUIFileCollection.prev">[docs]</a>
+    <span class="k">def</span> <span class="nf">prev</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Moves the cursor to the previous file in the collection and returns it.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: The path of the previous file.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__files</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="GUIFileCollection.current">
+<a class="viewcode-back" href="../../../../pic_scanner.gui.models.element_bases.html#pic_scanner.gui.models.element_bases.GUIFileCollection.current">[docs]</a>
+    <span class="k">def</span> <span class="nf">current</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the file at the current cursor position.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: The path of the current file.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__files</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="GUIFileCollection.set_cursor">
+<a class="viewcode-back" href="../../../../pic_scanner.gui.models.element_bases.html#pic_scanner.gui.models.element_bases.GUIFileCollection.set_cursor">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_cursor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets the cursor to the specified index, adjusting if out of bounds.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            index (int): The position to set the cursor to.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            IndexError: If the index is out of the valid range.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">index</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__files</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s1">&#39;Cursor index out of range.&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span> <span class="o">=</span> <span class="n">index</span></div>
+
+
+<div class="viewcode-block" id="GUIFileCollection.__getitem__">
+<a class="viewcode-back" href="../../../../autoapi/pic_scanner/gui/models/windows/main/blueprint/index.html#pic_scanner.gui.models.element_bases.GUIFileCollection.__getitem__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the file at the specified index.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            key (int): The index of the file to retrieve.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: The path of the file at the specified index.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__files</span><span class="p">[</span><span class="n">key</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="GUIFileCollection.add_cursor_callback">
+<a class="viewcode-back" href="../../../../pic_scanner.gui.models.element_bases.html#pic_scanner.gui.models.element_bases.GUIFileCollection.add_cursor_callback">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_cursor_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds a callback to be invoked when the cursor changes.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            callback (callable): The callback function.</span>
+<span class="sd">            *args: Additional positional arguments to pass to the callback.</span>
+<span class="sd">            **kwargs: Additional keyword arguments to pass to the callback.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="GUIFileCollection.__len__">
+<a class="viewcode-back" href="../../../../autoapi/pic_scanner/gui/models/windows/main/blueprint/index.html#pic_scanner.gui.models.element_bases.GUIFileCollection.__len__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the number of files in the collection.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            int: The number of files.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__files</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Inspyre-Softworks.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

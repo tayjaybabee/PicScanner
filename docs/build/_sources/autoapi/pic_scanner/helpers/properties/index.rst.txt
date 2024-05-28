@@ -1,0 +1,108 @@
+pic_scanner.helpers.properties
+==============================
+
+.. py:module:: pic_scanner.helpers.properties
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   pic_scanner.helpers.properties.ReactiveProperty
+   pic_scanner.helpers.properties.FrozenProperty
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   pic_scanner.helpers.properties.freeze_property
+
+
+Module Contents
+---------------
+
+.. py:class:: ReactiveProperty(default_value=None, callback=None, *args, **kwargs)
+
+   .. py:method:: __set_name__(owner, name)
+
+
+   .. py:method:: __get__(instance, owner)
+
+
+   .. py:method:: __set__(instance, value)
+
+
+   .. py:method:: add_callback(callback, *args, **kwargs)
+
+
+.. py:class:: FrozenProperty(*args, **kwargs)
+
+   Bases: :py:obj:`inspyre_toolbox.syntactic_sweets.properties.RestrictedSetter`
+
+
+   A descriptor class that restricts the setting of a property based on type, value, and custom conditions.
+
+   This class is designed to be used as a descriptor for class properties, allowing for the definition of restrictions
+   on the setting of the property. These restrictions can include type checking, value checking, and custom conditions
+   that must be met for the property to be set. If any of the restrictions are violated, an exception is raised.
+
+   The `RestrictedSetter` class also allows for the definition of an initial value for the property, which is used if
+   the property has not been set. This can be useful for defining default values for properties.
+
+   .. rubric:: Notes
+
+   - If a `preferred_type` is specified, the value will be converted to that type if possible. If the value cannot be converted to the preferred type, a `TypeError` will be raised.
+
+   - If a custom condition is specified, the condition must be met for the property to be set. If the condition is not met, an `UnmetConditionError` will be raised.
+
+   - If an exception is specified, it will be raised instead of the default `UnmetConditionError` if the custom condition is not met.
+
+   - If `allowed_values` is specified, the value must be in the set of allowed values for the property to be set. If the value is not in the set, a `ValueError` will be raised.
+
+   - If `restrict_setter` is set to `True`, the setter can only be called within class methods. If the setter is called outside of class methods, a `PermissionError` will be raised.
+
+
+   .. py:method:: __get__(instance, owner)
+
+      Retrieves the value of the property.
+
+      This method is a getter for the property, returning its current value. If the property has not been set,
+      it returns the initial value specified during the creation of the `RestrictedSetter` instance.
+
+      :param obj: The instance of the class whose property is being retrieved.
+      :type obj: object
+      :param obj_type: The type of the object. This parameter is not used but is part of the descriptor protocol.
+      :type obj_type: type, optional
+
+      :returns: The current value of the property.
+
+
+
+   .. py:method:: __set__(instance, value)
+
+      Sets the value of the property, enforcing any restrictions.
+
+      This method acts as a setter for the property, applying the defined restrictions such as type checking,
+      value restrictions, and custom conditions. If any restriction is violated, an appropriate exception is raised.
+
+      :param obj: The instance of the class whose property is being set.
+      :type obj: object
+      :param value: The new value for the property.
+      :type value: Any
+
+      :raises PermissionError: If the setter is called outside-of class methods when `restrict_setter` is True.
+      :raises ValueError: If the provided value is not in the `allowed_values` set.
+      :raises PermissionError: If a custom `condition` is not satisfied.
+      :raises TypeError: If the provided value is not of an allowed type.
+      :raises Any exception specified by the `exception` attribute,: if the custom condition fails.
+
+
+
+   .. py:method:: __set_name__(owner, name)
+
+
+.. py:function:: freeze_property(cls)
+

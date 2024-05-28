@@ -3,22 +3,58 @@ from typing import Union
 
 from inspyre_toolbox.syntactic_sweets.properties import validate_path
 
+from pic_scanner.gui.models.element_bases import GUIFileCollection
 from pic_scanner.gui.models.element_bases.column import Column, psg
-from pic_scanner.helpers import get_caller_name
-from pic_scanner.helpers.locks import flag_lock
 from pic_scanner.helpers.filesystem.classes import FileCollection
 from pic_scanner.helpers.images import get_image_data
-from pic_scanner.gui.models.element_bases import GUIFileCollection
-
+from pic_scanner.helpers.locks import flag_lock
 
 gui_file_collection = None
 
 
-
 class LeftColumn(Column):
+    """
+    A class that represents the left column of the main window.
+
+    Properties:
+        file_collection (FileCollection):
+            The collection of files.
+
+        file_list_box (psg.Listbox):
+            The listbox displaying the file names.
+
+        file_names (list[str]):
+            The list of file names.
+
+        next_button (psg.Button):
+            The button to go to the next file.
+
+        file_num_display_elem (psg.Text):
+            The element displaying the current file number.
+
+        prev_button (psg.Button):
+            The button to go to the previous file.
+
+        remove_button (psg.Button):
+            The button to remove the current image.
+    """
     instances = []
 
     def __init__(self, file_collection: FileCollection, **kwargs):
+        """
+        Initializes the LeftColumn with a given FileCollection.
+
+        Parameters:
+
+            file_collection (FileCollection):
+                The collection of files.
+
+            **kwargs:
+                Additional keyword arguments.
+
+        Raises:
+            TypeError: If the `file_collection` attribute is not an instance of FileCollection.
+        """
         global gui_file_collection
 
         if not isinstance(file_collection, FileCollection):
@@ -35,31 +71,63 @@ class LeftColumn(Column):
         self.__file_num_display_elem = None
         self.__next_button = None
         self.__prev_button = None
+        self.__remove_button = None
 
         self.instances.append(self)
 
     @property
     def file_collection(self):
+        """
+        Gets the file collection.
+
+        Returns:
+            FileCollection:
+                The collection of files.
+        """
         return self.__file_collection
 
     @property
     def file_list_box(self):
+        """
+        Gets the file list box.
+
+        Returns:
+            psg.Listbox:
+                The listbox displaying the file names.
+        """
         if self.building and not self.is_built and self.file_collection is not None and self.__file_list_box is None:
             print('Creating file listbox')
             self.__file_list_box = psg.Listbox(
                 self.file_names,
                 size=(80, 20),
                 key='FILE_LIST_BOX',
-                enable_events=True
+                enable_events=True,
             )
         return self.__file_list_box
 
     @property
     def file_names(self):
+        """
+        Gets the file names.
+
+        Returns:
+            list[str]:
+                The list of file names.
+
+        """
         return self.file_collection.paths
 
     @property
     def next_button(self):
+        """
+        Gets the next button.
+
+
+        Returns:
+            psg.Button:
+                The button to go to the next file.
+
+        """
         if self.building and not self.is_built and self.__next_button is None:
             self.__next_button = psg.Button(
                 'Next file',
@@ -70,6 +138,13 @@ class LeftColumn(Column):
 
     @property
     def file_num_display_elem(self):
+        """
+        Gets the file number display element.
+
+        Returns:
+            psg.Text:
+                The element displaying the current file number.
+        """
         if self.building and not self.is_built and self.file_collection is not None and self.__file_num_display_elem is None:
             self.__file_num_display_elem = psg.Text(
                 f'File 1 of {self.file_collection.total_files}',
@@ -80,6 +155,15 @@ class LeftColumn(Column):
 
     @property
     def prev_button(self):
+        """
+        Gets the previous button.
+
+        Returns:
+            psg.Button:
+                The button to go to the previous file.
+
+        """
+
         if self.building and not self.is_built and self.__prev_button is None:
             self.__prev_button = psg.Button(
                 'Previous file',
@@ -89,7 +173,33 @@ class LeftColumn(Column):
             )
         return self.__prev_button
 
+    @property
+    def remove_button(self):
+        """
+        Gets the remove button.
+
+        Returns:
+            psg.Button:
+                The button to remove the current image.
+        """
+        if self.building and not self.is_built and self.__remove_button is None:
+            self.__remove_button = psg.Button(
+                    'Remove image',
+                    size=(8, 2),
+                    key='REMOVE_BUTTON',
+                    disabled=True
+                    )
+        return self.__remove_button
+
     def build(self):
+        """
+        Builds the left column layout.
+
+        Returns:
+            psg.Column: The column layout.
+        """
+
+
         print(
             f"Starting build: is_built={self.is_built}, file_collection is not None={self.file_collection is not None}, building={self.building}")  # Debugging
         if not self.is_built and self.file_collection is not None and not self.building:
@@ -100,6 +210,7 @@ class LeftColumn(Column):
                         [
                                 self.next_button,
                                 self.prev_button,
+                                self.remove_button,
                                 ]
                         ]
                 self._column = psg.Column(self.layout, key='LEFT_COLUMN')
@@ -189,8 +300,10 @@ class FileColumn(Column):
 
         if self.building and not self.is_built:
             self.__image_elem = psg.Image(
-                    data=get_image_data(str(self.file_path)),
-                    key='IMAGE_DISPLAY'
+                    data=get_image_data(
+                            str(self.file_path,),
+                            maxsize=(800, 800)),
+                    key='IMAGE_DISPLAY',
                     )
 
         if not self.building and not self.is_built:

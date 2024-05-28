@@ -26,10 +26,30 @@ extensions = [
         'sphinx.ext.autosummary',
         'sphinx.ext.autosectionlabel',
         'sphinx.ext.inheritance_diagram',
-        'sphinx.ext.ifconfig'
+        'sphinx.ext.ifconfig',
+        'sphinx_autodoc_typehints',
+        'autoapi.extension',
         ]
 
 templates_path = ['_templates']
+
+autodoc_default_options = {
+    'members': True,
+    'undoc-members': True,
+    'private-members': True,
+    'special-members': '__init__',
+    'inherited-members': True,
+    'show-inheritance': True,
+    'class-doc-from': 'class'
+}
+
+autodoc_member_order = 'alphabetical'
+
+
+autoapi_dirs = ['../../pic_scanner']
+autoapi_type = 'python'
+
+
 exclude_patterns = []
 
 

@@ -1,0 +1,24 @@
+pic_scanner.gui.models.windows
+==============================
+
+.. py:module:: pic_scanner.gui.models.windows
+
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/pic_scanner/gui/models/windows/main/index
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/pic_scanner/gui/models/windows/template/index
+
+

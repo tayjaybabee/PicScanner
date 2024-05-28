@@ -1,0 +1,54 @@
+pic_scanner.gui.models.element_bases.metas
+==========================================
+
+.. py:module:: pic_scanner.gui.models.element_bases.metas
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   pic_scanner.gui.models.element_bases.metas.AutoBuildMeta
+   pic_scanner.gui.models.element_bases.metas.AutoBuildRunMeta
+
+
+Module Contents
+---------------
+
+.. py:class:: AutoBuildMeta
+
+   Bases: :py:obj:`abc.ABCMeta`
+
+
+   Metaclass for classes that should build themselves upon instantiation when the `auto_build`
+   attribute is True.
+
+   This metaclass overrides the `__call__` method to build the instance if the `auto_build`
+   attribute is True.
+
+
+   .. py:method:: __call__(*args, **kwargs)
+
+      Call self as a function.
+
+
+
+.. py:class:: AutoBuildRunMeta
+
+   Bases: :py:obj:`abc.ABCMeta`
+
+
+   Metaclass for classes that should build and run themselves upon instantiation when the `auto_build`
+   and `auto_run` attributes are True.
+
+   This metaclass overrides the `__call__` method to build and run the instance if the `auto_build`
+   and `auto_run` attributes are True.
+
+
+   .. py:method:: __call__(*args, **kwargs)
+
+      Call self as a function.
+
+
+

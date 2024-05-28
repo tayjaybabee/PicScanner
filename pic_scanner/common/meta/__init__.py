@@ -3,9 +3,14 @@ __all__ = [
         'RELEASE_MAP',
         'URLS',
         'VERSION',
+        'PROG_DESC',
         'PROG_NAME'
 
         ]
+
+
+PROG_DESC = 'A tool for scanning (and managing) images for NSFW content.'
+"""The description of the program."""
 
 
 PROG_NAME = 'IS-NSFW-Scanner'

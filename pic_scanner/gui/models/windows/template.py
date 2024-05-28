@@ -74,12 +74,12 @@ class Window(Loggable, metaclass=AutoBuildRunMeta):
 
             self.__layout = self._blueprint.layout
 
-        if self.auto_build:
-            print('Auto-building window')
-            self.build()
-            if self.auto_run:
-                print('Auto-running window')
-                self.run()
+        #if self.auto_build:
+        #    print('Auto-building window')
+        #    self.build()
+        #    if self.auto_run:
+        #        print('Auto-running window')
+        #        self.run()
 
     print('Window instance created!')
 
@@ -141,7 +141,7 @@ class Window(Loggable, metaclass=AutoBuildRunMeta):
                 sleep(.3)
                 log.debug('Focus forced.')
 
-                force_focused = True
+                focus_forced = True
 
             self.event_handler(event, values)
 
@@ -166,10 +166,6 @@ class Window(Loggable, metaclass=AutoBuildRunMeta):
                 The value of the `auto_run` attribute.
         """
         return self._auto_run
-
-    @property
-    def blueprint(self):
-        return self._blueprint
 
     @property
     def is_built(self):
@@ -251,7 +247,7 @@ class Window(Loggable, metaclass=AutoBuildRunMeta):
             bool:
                 The value of the `running` attribute.
         """
-        return self.__running
+        return self._running
 
     @running.setter
     def running(self, new):
@@ -268,7 +264,7 @@ class Window(Loggable, metaclass=AutoBuildRunMeta):
         if not isinstance(new, bool):
             raise TypeError(f'Invalid type ({type(new)}) for `Window.running`. Value must be a bool!')
 
-        self.__running = new
+        self._running = new
 
     @property
     def title(self):
