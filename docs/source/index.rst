@@ -10,6 +10,8 @@ Welcome to PicScanner's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   button_schematic
+
 
 
 Indices and tables
