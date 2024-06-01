@@ -51,6 +51,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../../../index.html">pic_scanner</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="../../../index.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="../../../api/index.html">pic_scanner.api</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../cli/index.html">pic_scanner.cli</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../common/index.html">pic_scanner.common</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/index.html">pic_scanner.core</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../download_scanner/index.html">pic_scanner.download_scanner</a></li>
@@ -60,6 +61,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../models/index.html">pic_scanner.models</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../index.html#submodules">Submodules</a></li>
 </ul>
 </li>
 </ul>
@@ -234,16 +236,11 @@ individual files in the future.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.NeedsReprocessingTag">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pic_scanner.helpers.filesystem.classes.</span></span><span class="sig-name descname"><span class="pre">NeedsReprocessingTag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#NeedsReprocessingTag"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.NeedsReprocessingTag" title="Link to this definition"></a></dt>
-<dd><dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.NeedsReprocessingTag.__get__">
-<span class="sig-name descname"><span class="pre">__get__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">owner</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#NeedsReprocessingTag.__get__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.NeedsReprocessingTag.__get__" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.NeedsReprocessingTag.__set__">
-<span class="sig-name descname"><span class="pre">__set__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#NeedsReprocessingTag.__set__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.NeedsReprocessingTag.__set__" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>)</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -285,7 +282,12 @@ individual files in the future.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.File">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pic_scanner.helpers.filesystem.classes.</span></span><span class="sig-name descname"><span class="pre">File</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">pathlib.Path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#File"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.File" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><em>pathlib.Path</em><em>]</em>)</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.FileCollection">
@@ -306,22 +308,48 @@ individual files in the future.</p>
 </dl>
 </dd>
 </dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paths</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>)</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.FileCollection.get_total_size_in_lowest_unit">
 <span class="sig-name descname"><span class="pre">get_total_size_in_lowest_unit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.get_total_size_in_lowest_unit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.FileCollection.get_total_size_in_lowest_unit" title="Link to this definition"></a></dt>
 <dd><p>Get the total size of the collection in the lowest unit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[Union[int, float], str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.FileCollection.get_total_extension_size_in_lowest_unit">
 <span class="sig-name descname"><span class="pre">get_total_extension_size_in_lowest_unit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.get_total_extension_size_in_lowest_unit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.FileCollection.get_total_extension_size_in_lowest_unit" title="Link to this definition"></a></dt>
 <dd><p>Get the total size of a specific extension in the lowest unit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>extension</strong> (<em>str</em>)</p></li>
+<li><p><strong>return_as_string</strong> (<em>bool</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[Union[int, float], str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.FileCollection.remove_file">
 <span class="sig-name descname"><span class="pre">remove_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.remove_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.FileCollection.remove_file" title="Link to this definition"></a></dt>
 <dd><p>Remove a file from the collection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>Union</em><em>[</em><em>pathlib.Path</em><em>, </em><em>str</em><em>]</em>)</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -356,20 +384,6 @@ individual files in the future.</p>
 <span class="sig-name descname"><span class="pre">extensions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="reference internal" href="../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.extensions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.FileCollection.extensions" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.FileCollection.__post_init__">
-<span class="sig-name descname"><span class="pre">__post_init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.__post_init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.FileCollection.__post_init__" title="Link to this definition"></a></dt>
-<dd><p>Post-initialization method for the FileCollection class.</p>
-<p>This method processes the files in the collection. It calculates the total size of the collection, the total number
-of files, and the total size of each extension in the collection. It populates the <cite>total_size</cite>, <cite>total_files</cite>, and
-<cite>extensions</cite> attributes of the class.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.FileCollection.needs_reprocessing">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">needs_reprocessing</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="reference internal" href="../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.needs_reprocessing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.FileCollection.needs_reprocessing" title="Link to this definition"></a></dt>
@@ -383,20 +397,6 @@ it will return <cite>False</cite>. The property is read-only.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.FileCollection._process_files">
-<span class="sig-name descname"><span class="pre">_process_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection._process_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.FileCollection._process_files" title="Link to this definition"></a></dt>
-<dd><p>Process the files in the collection.</p>
-<p>This method processes the files in the collection. It calculates the total size of the collection, the total number
-of files, and the total size of each extension in the collection. It populates the <cite>total_size</cite>, <cite>total_files</cite>, and
-<cite>extensions</cite> attributes of the class.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -490,17 +490,6 @@ of files, and total size of each extension.</p>
 <dd class="field-odd"><p>None</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.FileCollection.__getitem__">
-<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.__getitem__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.FileCollection.__getitem__" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.classes.FileCollection.__str__">
-<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.__str__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.classes.FileCollection.__str__" title="Link to this definition"></a></dt>
-<dd><p>Return str(self).</p>
 </dd></dl>
 
 </dd></dl>

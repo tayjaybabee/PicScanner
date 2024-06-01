@@ -1,0 +1,25 @@
+pic_scanner.cli.subcommands
+===========================
+
+.. py:module:: pic_scanner.cli.subcommands
+
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/pic_scanner/cli/subcommands/community/index
+   /autoapi/pic_scanner/cli/subcommands/core/index
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/pic_scanner/cli/subcommands/registry/index
+
+

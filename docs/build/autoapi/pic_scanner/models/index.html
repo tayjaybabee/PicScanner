@@ -51,6 +51,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">pic_scanner</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="../index.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="../api/index.html">pic_scanner.api</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cli/index.html">pic_scanner.cli</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../common/index.html">pic_scanner.common</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../core/index.html">pic_scanner.core</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../download_scanner/index.html">pic_scanner.download_scanner</a></li>
@@ -60,6 +61,7 @@
 <li class="toctree-l4 current"><a class="current reference internal" href="#">pic_scanner.models</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../index.html#submodules">Submodules</a></li>
 </ul>
 </li>
 </ul>
@@ -151,6 +153,11 @@
 <dt>concern_names (list):</dt><dd><p>The names of the concerns associated with the image.</p>
 </dd>
 </dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>image_path</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><em>pathlib.Path</em><em>]</em>)</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -654,6 +661,16 @@
 <dt class="sig sig-object py" id="pic_scanner.models.Concern">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pic_scanner.models.</span></span><span class="sig-name descname"><span class="pre">Concern</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pic_scanner/models/concern.html#Concern"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.models.Concern" title="Link to this definition"></a></dt>
 <dd><p>A class detailing a NSFW concern (or ‘detection’) found on an image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>)</p></li>
+<li><p><strong>score</strong> (<em>float</em>)</p></li>
+<li><p><strong>location</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>)</p></li>
+<li><p><strong>description</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>)</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pic_scanner.models.Concern.name">
 <span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#pic_scanner.models.Concern.name" title="Link to this definition"></a></dt>
@@ -697,34 +714,6 @@
 <dt class="sig sig-object py" id="id10">
 <span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#id10" title="Link to this definition"></a></dt>
 <dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.models.Concern.__str__">
-<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pic_scanner/models/concern.html#Concern.__str__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.models.Concern.__str__" title="Link to this definition"></a></dt>
-<dd><p>Return a string representation of the concern.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The string representation of the concern.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.models.Concern.__repr__">
-<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pic_scanner/models/concern.html#Concern.__repr__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.models.Concern.__repr__" title="Link to this definition"></a></dt>
-<dd><p>Return a string representation of the concern.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The string representation of the concern.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
 
 </dd></dl>
 

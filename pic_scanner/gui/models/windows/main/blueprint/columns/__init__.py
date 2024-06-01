@@ -9,6 +9,9 @@ from pic_scanner.helpers.filesystem.classes import FileCollection
 from pic_scanner.helpers.images import get_image_data
 from pic_scanner.helpers.locks import flag_lock
 
+from pic_scanner.gui.models.element_bases.button import ButtonSchematic
+from pic_scanner.gui.models.element_bases.button.factories import ButtonFactory, GUIElementKeyFactory
+
 gui_file_collection = None
 
 
@@ -69,11 +72,18 @@ class LeftColumn(Column):
 
         self.__file_list_box = None
         self.__file_num_display_elem = None
+
+        self.__button_factory = ButtonFactory('main window')
+
         self.__next_button = None
+
         self.__prev_button = None
         self.__remove_button = None
 
         self.instances.append(self)
+
+    @property
+    def 
 
     @property
     def file_collection(self):
@@ -97,6 +107,7 @@ class LeftColumn(Column):
         """
         if self.building and not self.is_built and self.file_collection is not None and self.__file_list_box is None:
             print('Creating file listbox')
+
             self.__file_list_box = psg.Listbox(
                 self.file_names,
                 size=(80, 20),
@@ -129,11 +140,8 @@ class LeftColumn(Column):
 
         """
         if self.building and not self.is_built and self.__next_button is None:
-            self.__next_button = psg.Button(
-                'Next file',
-                size=(8, 2),
-                key='NEXT_BUTTON'
-            )
+
+            self.__next_button = self.
         return self.__next_button
 
     @property
@@ -165,12 +173,11 @@ class LeftColumn(Column):
         """
 
         if self.building and not self.is_built and self.__prev_button is None:
-            self.__prev_button = psg.Button(
-                'Previous file',
-                size=(8, 2),
-                key='PREV_BUTTON',
-                disabled=True
-            )
+            self.__prev_button = ButtonSchematic(
+                    'Previous file',
+                    create_disabled=True,
+                    auto_build=True
+                    )
         return self.__prev_button
 
     @property
@@ -183,11 +190,10 @@ class LeftColumn(Column):
                 The button to remove the current image.
         """
         if self.building and not self.is_built and self.__remove_button is None:
-            self.__remove_button = psg.Button(
-                    'Remove image',
-                    size=(8, 2),
-                    key='REMOVE_BUTTON',
-                    disabled=True
+            self.__remove_button = ButtonSchematic(
+                    'Remove file',
+                    create_disabled=True,
+                    auto_build=True
                     )
         return self.__remove_button
 
@@ -208,9 +214,10 @@ class LeftColumn(Column):
                 self._layout = [
                         [self.file_list_box],
                         [
-                                self.next_button,
-                                self.prev_button,
-                                self.remove_button,
+                                self.next_button.button,
+                                self.prev_button.button,
+                                self.remove_button.button
+
                                 ]
                         ]
                 self._column = psg.Column(self.layout, key='LEFT_COLUMN')

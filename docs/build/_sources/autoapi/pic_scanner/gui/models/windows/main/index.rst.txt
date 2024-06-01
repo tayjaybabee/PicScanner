@@ -13,13 +13,21 @@ Subpackages
    /autoapi/pic_scanner/gui/models/windows/main/blueprint/index
 
 
+Attributes
+----------
+
+.. autoapisummary::
+
+   pic_scanner.gui.models.windows.main.PARENT_LOGGER
+   pic_scanner.gui.models.windows.main.MOD_LOGGER
+   pic_scanner.gui.models.windows.main.Window
+
+
 Classes
 -------
 
 .. autoapisummary::
 
-   pic_scanner.gui.models.windows.main.BluePrint
-   pic_scanner.gui.models.windows.main.Window
    pic_scanner.gui.models.windows.main.MainWindow
 
 
@@ -29,185 +37,11 @@ Functions
 .. autoapisummary::
 
    pic_scanner.gui.models.windows.main.flag_lock
+   pic_scanner.gui.models.windows.main.make_window_template
 
 
 Package Contents
 ----------------
-
-.. py:class:: BluePrint(file_collection: pic_scanner.helpers.filesystem.classes.FileCollection, pre_built_left_column=None, pre_built_file_column=None, **kwargs)
-
-   Bases: :py:obj:`pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint`
-
-
-   .. py:attribute:: __left_column
-
-
-   .. py:attribute:: __file_column
-
-
-   .. py:attribute:: __file_collection_cursor
-
-
-   .. py:property:: building
-
-
-   .. py:method:: building()
-
-
-   .. py:property:: file_collection
-
-
-   .. py:property:: file_collection_cursor
-
-
-   .. py:property:: file_column
-
-
-   .. py:property:: left_column
-      A property that returns the left column.
-
-      :returns:     The left column.
-      :rtype: LeftColumn
-
-
-   .. py:method:: build()
-
-      Build the blueprint layout.
-
-      :returns:     The layout of the blueprint.
-      :rtype: list
-
-
-
-   .. py:method:: change_image(new_image)
-
-
-   .. py:method:: current_image()
-
-
-   .. py:method:: next_image()
-
-
-   .. py:method:: update_image()
-
-
-.. py:class:: Window(auto_build=False, auto_run=False, title=None, blueprint: Optional[pic_scanner.BluePrint] = None, blueprint_args: Optional[dict] = None)
-
-   Bases: :py:obj:`inspy_logger.Loggable`
-
-
-   A metaclass to enhance classes with logging capabilities. Classes that inherit from
-   'Loggable' can instantly access a logger without manually setting it up. This logger
-   is derived from a parent logger, ensuring consistent logging behavior and hierarchy.
-
-   .. attribute:: - log_device
-
-      The logger device associated with the instance of the class.
-
-
-   .. py:property:: blueprint
-
-
-   .. py:method:: build()
-      :abstractmethod:
-
-
-      Builds the window.
-
-      :returns: None
-
-
-
-   .. py:property:: event_handler
-
-
-   .. py:method:: close()
-
-      Closes the window.
-
-      :returns: None
-
-
-
-   .. py:method:: run()
-
-      Runs the window.
-
-      :returns: None
-
-
-
-   .. py:property:: auto_build
-      Returns the value of the `auto_build` attribute.
-
-      :returns:     The value of the `auto_build` attribute.
-      :rtype: bool
-
-
-   .. py:property:: auto_run
-      Returns the value of the `auto_run` attribute.
-
-      :returns:     The value of the `auto_run` attribute.
-      :rtype: bool
-
-
-   .. py:property:: blueprint
-
-
-   .. py:property:: is_built
-      Returns the value of the `built` attribute.
-
-      :returns:     The value of the `built` attribute.
-      :rtype: bool
-
-
-   .. py:property:: building
-      Returns the value of the `building` attribute.
-
-      :returns:     The value of the `building` attribute.
-      :rtype: bool
-
-
-   .. py:method:: is_built()
-
-      Deletes the `built` attribute.
-
-      :returns: None
-
-
-
-   .. py:property:: _built
-
-
-   .. py:property:: closed
-      Returns the value of the `closed` attribute.
-
-      :returns:     The value of the `closed` attribute.
-      :rtype: bool
-
-
-   .. py:property:: layout
-      Returns the value of the `layout` attribute.
-
-      :returns:     The value of the `layout` attribute.
-      :rtype: list
-
-
-   .. py:property:: running
-      Returns the value of the `running` attribute.
-
-      :returns:     The value of the `running` attribute.
-      :rtype: bool
-
-
-   .. py:property:: title
-
-
-   .. py:property:: window
-
-
-   .. py:property:: _window
-
 
 .. py:function:: flag_lock(instance, flag_name)
 
@@ -235,9 +69,17 @@ Package Contents
    and reset it to False when exiting the context.
 
 
+.. py:data:: PARENT_LOGGER
+
+.. py:data:: MOD_LOGGER
+
+.. py:function:: make_window_template()
+
+.. py:data:: Window
+
 .. py:class:: MainWindow(*args, **kwargs)
 
-   Bases: :py:obj:`pic_scanner.gui.models.windows.template.Window`
+   Bases: :py:obj:`Window`, :py:obj:`pic_scanner.log_engine.Loggable`
 
 
    A metaclass to enhance classes with logging capabilities. Classes that inherit from
@@ -251,11 +93,40 @@ Package Contents
 
    .. py:class:: EventHandler(window)
 
-      .. py:method:: __call__(event, values)
+      Bases: :py:obj:`pic_scanner.log_engine.Loggable`
 
 
-      .. py:method:: check_index()
+      A metaclass to enhance classes with logging capabilities. Classes that inherit from
+      'Loggable' can instantly access a logger without manually setting it up. This logger
+      is derived from a parent logger, ensuring consistent logging behavior and hierarchy.
 
+      .. attribute:: - log_device
+
+         The logger device associated with the instance of the class.
+
+
+      .. py:property:: announced_start
+
+
+
+   .. py:method:: check_index()
+
+
+   .. py:method:: check_prev_button()
+
+
+   .. py:method:: check_remove_button()
+
+      Checks if the remove button should be enabled or disabled.
+
+      If no image is selected, the button is disabled. If an image is selected, the button is
+      enabled.
+
+      :returns: None
+
+
+
+   .. py:property:: event_handler
 
 
    .. py:property:: file_cursor
@@ -272,9 +143,47 @@ Package Contents
 
 
 
+   .. py:method:: close()
+
+      Closes the window.
+
+      This method is called when the window is closed by the user or by the program. It facilitates
+      the safe closing of the window and the logging of the event. It also sets the `running` flag
+      to `False`.
+
+      :returns: None
+
+
+
+   .. py:method:: remove_current_file()
+
+
+   .. py:method:: update_remove_button_state(state: bool)
+
+      Updates the state of the remove button.
+
+      This method takes a boolean value and sets the 'disabled' state of the remove button to the
+      opposite of that value. If this value is `True`, the button is enabled. If the value is
+      `False`, the button is disabled. This method is used to enable or disable the remove button
+      based on the state of the window. If no image is selected, this method will ensure the button
+      remains disabled. If the user has an image selected, this method will enable the `Remove`
+      button.
+
+      :param state: The state to set the button to.
+      :type state: bool
+
+      :returns: None
+
+
+
    .. py:property:: active_image
 
 
    .. py:property:: file_index
+
+
+   .. py:property:: setting_index
+      :type: bool
+
 
 

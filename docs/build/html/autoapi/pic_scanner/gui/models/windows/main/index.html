@@ -51,6 +51,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../../../../index.html">pic_scanner</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="../../../../index.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="../../../../api/index.html">pic_scanner.api</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../cli/index.html">pic_scanner.cli</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../common/index.html">pic_scanner.common</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../core/index.html">pic_scanner.core</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../download_scanner/index.html">pic_scanner.download_scanner</a></li>
@@ -60,6 +61,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../../models/index.html">pic_scanner.models</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../index.html#submodules">Submodules</a></li>
 </ul>
 </li>
 </ul>
@@ -115,6 +117,9 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#pic_scanner.gui.models.windows.main.MOD_LOGGER" title="pic_scanner.gui.models.windows.main.MOD_LOGGER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MOD_LOGGER</span></code></a></p></td>
 <td><p></p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pic_scanner.gui.models.windows.main.Window" title="pic_scanner.gui.models.windows.main.Window"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Window</span></code></a></p></td>
+<td><p></p></td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -122,13 +127,7 @@
 <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h2>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#pic_scanner.gui.models.windows.main.BluePrint" title="pic_scanner.gui.models.windows.main.BluePrint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BluePrint</span></code></a></p></td>
-<td><p>A base class for building blueprints.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#pic_scanner.gui.models.windows.main.Window" title="pic_scanner.gui.models.windows.main.Window"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Window</span></code></a></p></td>
-<td><p>A metaclass to enhance classes with logging capabilities. Classes that inherit from</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#pic_scanner.gui.models.windows.main.MainWindow" title="pic_scanner.gui.models.windows.main.MainWindow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MainWindow</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../../../pic_scanner.gui.models.windows.main.html#pic_scanner.gui.models.windows.main.MainWindow" title="pic_scanner.gui.models.windows.main.MainWindow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MainWindow</span></code></a></p></td>
 <td><p>A metaclass to enhance classes with logging capabilities. Classes that inherit from</p></td>
 </tr>
 </tbody>
@@ -141,404 +140,14 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#pic_scanner.gui.models.windows.main.flag_lock" title="pic_scanner.gui.models.windows.main.flag_lock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flag_lock</span></code></a>(instance, flag_name)</p></td>
 <td><p>Context manager to set and unset a private flag attribute in an instance.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../../../pic_scanner.gui.models.windows.main.html#pic_scanner.gui.models.windows.main.make_window_template" title="pic_scanner.gui.models.windows.main.make_window_template"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_window_template</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
 </tbody>
 </table>
 </section>
 <section id="package-contents">
 <h2>Package Contents<a class="headerlink" href="#package-contents" title="Link to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.BluePrint">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pic_scanner.gui.models.windows.main.</span></span><span class="sig-name descname"><span class="pre">BluePrint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_collection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../../../../pic_scanner.helpers.filesystem.html#pic_scanner.helpers.filesystem.classes.FileCollection" title="pic_scanner.helpers.filesystem.classes.FileCollection"><span class="pre">pic_scanner.helpers.filesystem.classes.FileCollection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_built_left_column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_built_file_column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint.html#BluePrint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.BluePrint" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="../../../../../../pic_scanner.gui.models.element_bases.html#pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint" title="pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">pic_scanner.log_engine.Loggable</span></code></p>
-<p>A base class for building blueprints.</p>
-<p>This class is used to create blueprints for building GUI elements. A blueprint is a set of
-instructions that are used to build a GUI element.</p>
-<p>Properties:</p>
-<blockquote>
-<div><dl class="simple">
-<dt>auto_build (bool):</dt><dd><p>A boolean value that determines whether the class should automatically build itself when
-instantiated.</p>
-</dd>
-<dt>building (bool):</dt><dd><p>A boolean value that determines whether the class is currently building itself.</p>
-</dd>
-<dt>is_built (bool):</dt><dd><p>A boolean value that determines whether the class has been built.</p>
-</dd>
-<dt>layout (list):</dt><dd><p>A list of elements that make up the layout of the class.</p>
-</dd>
-</dl>
-</div></blockquote>
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.BluePrint.build">
-<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint.html#BluePrint.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.BluePrint.build" title="Link to this definition"></a></dt>
-<dd><p>An abstract method that builds the class.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.BluePrint.__left_column">
-<span class="sig-name descname"><span class="pre">__left_column</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.BluePrint.__left_column" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.BluePrint.__file_column">
-<span class="sig-name descname"><span class="pre">__file_column</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.BluePrint.__file_column" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.BluePrint.__file_collection_cursor">
-<span class="sig-name descname"><span class="pre">__file_collection_cursor</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.BluePrint.__file_collection_cursor" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.BluePrint.building">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">building</span></span><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint.html#BluePrint.building"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.BluePrint.building" title="Link to this definition"></a></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">Returns</span> <span class="pre">the</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">`building`</span> <span class="pre">attribute.</span></span></dt>
-<dd><p>The <cite>building</cite> attribute is a boolean value that determines whether the class is currently building
-itself.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The value of the <cite>building</cite> attribute.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="id0">
-<span class="sig-name descname"><span class="pre">building</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint.html#BluePrint.building"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
-<dd><p>Returns the value of the <cite>building</cite> attribute.</p>
-<p>The <cite>building</cite> attribute is a boolean value that determines whether the class is currently building
-itself.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The value of the <cite>building</cite> attribute.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.BluePrint.file_collection">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">file_collection</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.BluePrint.file_collection" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.BluePrint.file_collection_cursor">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">file_collection_cursor</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.BluePrint.file_collection_cursor" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.BluePrint.file_column">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">file_column</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.BluePrint.file_column" title="Link to this definition"></a></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">A</span> <span class="pre">property</span> <span class="pre">that</span> <span class="pre">returns</span> <span class="pre">the</span> <span class="pre">file</span> <span class="pre">column.</span></span></dt>
-<dd><p>The file column is the column that displays the image in the GUI representation of the blueprint. This is the
-right column in the blueprint layout. This property is a RestrictedSetter, and can only be set to an instance of
-FileColumn. The initial value is None.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The file column.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="../../../../../../pic_scanner.gui.models.windows.main.blueprint.columns.html#pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn" title="pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn">FileColumn</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.BluePrint.left_column">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">left_column</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.BluePrint.left_column" title="Link to this definition"></a></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">A</span> <span class="pre">property</span> <span class="pre">that</span> <span class="pre">returns</span> <span class="pre">the</span> <span class="pre">left</span> <span class="pre">column.</span></span></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The left column.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="../../../../../../pic_scanner.gui.models.windows.main.blueprint.columns.html#pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn" title="pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn">LeftColumn</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="id1">
-<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint.html#BluePrint.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id1" title="Link to this definition"></a></dt>
-<dd><p>Build the blueprint layout.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The layout of the blueprint.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>list</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.BluePrint.change_image">
-<span class="sig-name descname"><span class="pre">change_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_image</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint.html#BluePrint.change_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.BluePrint.change_image" title="Link to this definition"></a></dt>
-<dd><p>Change the image in the file column.</p>
-<p>This method changes the image in the image element of the file column to the new image provided. The new image
-must be a path to an image file. This method is used to change the image displayed in the GUI when the user
-navigates through the images in the file collection. This method is called by the blueprint controller when the
-user changes the image.</p>
-<dl class="simple">
-<dt>Parameters::</dt><dd><dl class="simple">
-<dt>new_image:</dt><dd><p>The new image to display in the file column.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.BluePrint.current_image">
-<span class="sig-name descname"><span class="pre">current_image</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint.html#BluePrint.current_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.BluePrint.current_image" title="Link to this definition"></a></dt>
-<dd><p>Get the current image.</p>
-<p>This method returns the path to the current image in the file column. This is the image that is currently
-displayed in the GUI. This method is used by the blueprint controller to determine which image is currently
-displayed in the GUI. This method is called by the blueprint controller when the user changes the image. The
-blueprint controller uses this method to determine the current image. The blueprint controller then uses this
-information to update the current image in the GUI.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The path to the current image.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.BluePrint.next_image">
-<span class="sig-name descname"><span class="pre">next_image</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint.html#BluePrint.next_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.BluePrint.next_image" title="Link to this definition"></a></dt>
-<dd><p>Get the next image.</p>
-<p>This method moves the cursor to the next image in the file collection and returns the path to that image. This
-method is used by the blueprint controller to move the cursor to the next image in the file collection. This
-method is called by the blueprint controller when the user clicks the ‘Next’ button in the GUI. The blueprint
-controller uses this method to move the cursor to the next image in the file collection. The blueprint controller
-then uses this information to update the current image in the GUI.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The path to the next image.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.BluePrint.update_image">
-<span class="sig-name descname"><span class="pre">update_image</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint.html#BluePrint.update_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.BluePrint.update_image" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.Window">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pic_scanner.gui.models.windows.main.</span></span><span class="sig-name descname"><span class="pre">Window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">auto_build</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_run</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blueprint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pic_scanner.BluePrint</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blueprint_args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/windows/template.html#Window"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.Window" title="Link to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">inspy_logger.Loggable</span></code></p>
-<p>A metaclass to enhance classes with logging capabilities. Classes that inherit from
-‘Loggable’ can instantly access a logger without manually setting it up. This logger
-is derived from a parent logger, ensuring consistent logging behavior and hierarchy.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">-</span> <span class="pre">log_device</span></span></dt>
-<dd><p>The logger device associated with the instance of the class.</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.Window.blueprint">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">blueprint</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.Window.blueprint" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.Window.build">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/windows/template.html#Window.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.Window.build" title="Link to this definition"></a></dt>
-<dd><p>Builds the window.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.Window.event_handler">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">event_handler</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.Window.event_handler" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.Window.close">
-<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/windows/template.html#Window.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.Window.close" title="Link to this definition"></a></dt>
-<dd><p>Closes the window.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.Window.run">
-<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/windows/template.html#Window.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.Window.run" title="Link to this definition"></a></dt>
-<dd><p>Runs the window.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.Window.auto_build">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">auto_build</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.Window.auto_build" title="Link to this definition"></a></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">Returns</span> <span class="pre">the</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">`auto_build`</span> <span class="pre">attribute.</span></span></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The value of the <cite>auto_build</cite> attribute.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.Window.auto_run">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">auto_run</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.Window.auto_run" title="Link to this definition"></a></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">Returns</span> <span class="pre">the</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">`auto_run`</span> <span class="pre">attribute.</span></span></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The value of the <cite>auto_run</cite> attribute.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.Window.is_built">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_built</span></span><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/windows/template.html#Window.is_built"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.Window.is_built" title="Link to this definition"></a></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">Returns</span> <span class="pre">the</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">`built`</span> <span class="pre">attribute.</span></span></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The value of the <cite>built</cite> attribute.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.Window.building">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">building</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.Window.building" title="Link to this definition"></a></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">Returns</span> <span class="pre">the</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">`building`</span> <span class="pre">attribute.</span></span></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The value of the <cite>building</cite> attribute.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="id2">
-<span class="sig-name descname"><span class="pre">is_built</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/windows/template.html#Window.is_built"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id2" title="Link to this definition"></a></dt>
-<dd><p>Deletes the <cite>built</cite> attribute.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.Window._built">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_built</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.Window._built" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.Window.closed">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">closed</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.Window.closed" title="Link to this definition"></a></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">Returns</span> <span class="pre">the</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">`closed`</span> <span class="pre">attribute.</span></span></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The value of the <cite>closed</cite> attribute.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.Window.layout">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">layout</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.Window.layout" title="Link to this definition"></a></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">Returns</span> <span class="pre">the</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">`layout`</span> <span class="pre">attribute.</span></span></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The value of the <cite>layout</cite> attribute.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>list</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.Window.running">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">running</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.Window.running" title="Link to this definition"></a></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">Returns</span> <span class="pre">the</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">`running`</span> <span class="pre">attribute.</span></span></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The value of the <cite>running</cite> attribute.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.Window.title">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">title</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.Window.title" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.Window.window">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">window</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.Window.window" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.Window._window">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_window</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.Window._window" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
 <dl class="py function">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.flag_lock">
 <span class="sig-prename descclassname"><span class="pre">pic_scanner.gui.models.windows.main.</span></span><span class="sig-name descname"><span class="pre">flag_lock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../_modules/pic_scanner/helpers/locks.html#flag_lock"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.flag_lock" title="Link to this definition"></a></dt>
@@ -581,10 +190,20 @@ and reset it to False when exiting the context.</p>
 <span class="sig-prename descclassname"><span class="pre">pic_scanner.gui.models.windows.main.</span></span><span class="sig-name descname"><span class="pre">MOD_LOGGER</span></span><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/windows/main.html#MOD_LOGGER"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.MOD_LOGGER" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.make_window_template">
+<span class="sig-prename descclassname"><span class="pre">pic_scanner.gui.models.windows.main.</span></span><span class="sig-name descname"><span class="pre">make_window_template</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/windows/main.html#make_window_template"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.make_window_template" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.Window">
+<span class="sig-prename descclassname"><span class="pre">pic_scanner.gui.models.windows.main.</span></span><span class="sig-name descname"><span class="pre">Window</span></span><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/windows/main.html#Window"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.Window" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.MainWindow">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pic_scanner.gui.models.windows.main.</span></span><span class="sig-name descname"><span class="pre">MainWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/windows/main.html#MainWindow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.MainWindow" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="../../../../../../pic_scanner.gui.models.windows.html#pic_scanner.gui.models.windows.template.Window" title="pic_scanner.gui.models.windows.template.Window"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pic_scanner.gui.models.windows.template.Window</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">pic_scanner.log_engine.Loggable</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="#pic_scanner.gui.models.windows.main.Window" title="pic_scanner.gui.models.windows.main.Window"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Window</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">pic_scanner.log_engine.Loggable</span></code></p>
 <p>A metaclass to enhance classes with logging capabilities. Classes that inherit from
 ‘Loggable’ can instantly access a logger without manually setting it up. This logger
 is derived from a parent logger, ensuring consistent logging behavior and hierarchy.</p>
@@ -606,11 +225,6 @@ is derived from a parent logger, ensuring consistent logging behavior and hierar
 <span class="sig-name descname"><span class="pre">-</span> <span class="pre">log_device</span></span></dt>
 <dd><p>The logger device associated with the instance of the class.</p>
 </dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.MainWindow.EventHandler.__call__">
-<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/windows/main.html#MainWindow.EventHandler.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.MainWindow.EventHandler.__call__" title="Link to this definition"></a></dt>
-<dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.MainWindow.EventHandler.announced_start">
@@ -720,7 +334,12 @@ button.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.MainWindow.setting_index">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">setting_index</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/windows/main.html#MainWindow.setting_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.MainWindow.setting_index" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 

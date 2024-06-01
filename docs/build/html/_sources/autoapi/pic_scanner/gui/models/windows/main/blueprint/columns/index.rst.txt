@@ -20,6 +20,7 @@ Classes
    pic_scanner.gui.models.windows.main.blueprint.columns.GUIFileCollection
    pic_scanner.gui.models.windows.main.blueprint.columns.Column
    pic_scanner.gui.models.windows.main.blueprint.columns.FileCollection
+   pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic
    pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn
    pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn
 
@@ -128,18 +129,6 @@ Package Contents
 
 
 
-   .. py:method:: __getitem__(key: int) -> str
-
-      Returns the file at the specified index.
-
-      :param key: The index of the file to retrieve.
-      :type key: int
-
-      :returns:     The path of the file at the specified index.
-      :rtype: str
-
-
-
    .. py:method:: add_cursor_callback(callback, *args, **kwargs)
 
       Adds a callback to be invoked when the cursor changes.
@@ -148,15 +137,6 @@ Package Contents
       :type callback: callable
       :param \*args: Additional positional arguments to pass to the callback.
       :param \*\*kwargs: Additional keyword arguments to pass to the callback.
-
-
-
-   .. py:method:: __len__() -> int
-
-      Returns the number of files in the collection.
-
-      :returns:     The number of files.
-      :rtype: int
 
 
 
@@ -218,26 +198,10 @@ Package Contents
       :rtype: bool
 
 
-   .. py:property:: _built
-      Returns the value of the `built` attribute.
-
-      The `built` attribute is a boolean value that determines whether the class has been built.
-
-      :returns:     The value of the `built` attribute.
-      :rtype: bool (bool)
-
-
    .. py:property:: column
       Returns the column.
 
       The column is built from the layout, and will only have a value if the class is built; otherwise it will be `None`.
-
-      :returns:     The column.
-      :rtype: psg.Column
-
-
-   .. py:property:: _column
-      Returns the column.
 
       :returns:     The column.
       :rtype: psg.Column
@@ -248,13 +212,6 @@ Package Contents
 
       The layout is a list of elements that make up the layout of the class. This is used to build the column, and is
       set to an empty list by default.
-
-      :returns:     The layout.
-      :rtype: list
-
-
-   .. py:property:: _layout
-      Returns the layout.
 
       :returns:     The layout.
       :rtype: list
@@ -334,18 +291,6 @@ Package Contents
       :type:  dict
 
 
-   .. py:method:: __post_init__()
-
-      Post-initialization method for the FileCollection class.
-
-      This method processes the files in the collection. It calculates the total size of the collection, the total number
-      of files, and the total size of each extension in the collection. It populates the `total_size`, `total_files`, and
-      `extensions` attributes of the class.
-
-      :returns: None
-
-
-
    .. py:property:: needs_reprocessing
       :type: bool
 
@@ -357,18 +302,6 @@ Package Contents
 
       :returns:     True if the collection needs reprocessing, False otherwise.
       :rtype: bool
-
-
-   .. py:method:: _process_files()
-
-      Process the files in the collection.
-
-      This method processes the files in the collection. It calculates the total size of the collection, the total number
-      of files, and the total size of each extension in the collection. It populates the `total_size`, `total_files`, and
-      `extensions` attributes of the class.
-
-      :returns: None
-
 
 
    .. py:method:: reprocess_files()
@@ -444,15 +377,6 @@ Package Contents
 
 
 
-   .. py:method:: __getitem__(key: Union[int, str]) -> Union[str, Dict[str, int]]
-
-
-   .. py:method:: __str__()
-
-      Return str(self).
-
-
-
 .. py:function:: get_image_data(file_or_bytes: Union[str, bytes], maxsize: Tuple[int, int] = (1200, 850)) -> bytes
 
    Get image data from a file or a bytes object.
@@ -497,6 +421,271 @@ Package Contents
 
    This will automatically set handler._flag to True within the context
    and reset it to False when exiting the context.
+
+
+.. py:class:: ButtonSchematic(text: str, auto_build=False, key: str = None, create_disabled=False, create_hidden=False, skip_enforcing_unique_keys=False, **kwargs)
+
+   Bases: :py:obj:`pic_scanner.log_engine.Loggable`
+
+
+   A metaclass to enhance classes with logging capabilities. Classes that inherit from
+   'Loggable' can instantly access a logger without manually setting it up. This logger
+   is derived from a parent logger, ensuring consistent logging behavior and hierarchy.
+
+   .. attribute:: - log_device
+
+      The logger device associated with the instance of the class.
+
+
+   .. py:attribute:: instances
+
+
+   .. py:attribute:: built_instances
+
+
+   .. py:attribute:: DEFAULT_SUFFIX
+      :value: 'button'
+
+
+
+   .. py:attribute:: suffix
+
+
+   .. py:method:: has_key(key: str, case_sensitive=False, return_instance=False) -> Union[bool, ButtonSchematic, None]
+      :classmethod:
+
+
+      Checks if the class instances dictionary contains the provided key with optional case sensitivity and instance return.
+
+      :param key: The key to check in the `ButtonSchematic.instances` dictionary.
+      :type key: str
+      :param case_sensitive: Whether the key comparison should be case-sensitive. Default is False.
+      :type case_sensitive: bool
+      :param return_instance: Whether to return the instance corresponding to the key. Default is False.
+      :type return_instance: bool
+
+      :returns:     - If return_instance is False: True if the key is present in the instances dictionary, False otherwise.
+                    - If return_instance is True: The instance corresponding to the key, or None if the key is not found.
+      :rtype: Union[bool, 'ButtonSchematic', None]
+
+      .. rubric:: Examples
+
+      >>> ButtonSchematic.has_key('MY_BUTTON')
+      False
+
+      >>> ButtonSchematic.has_key('MY_BUTTON', case_sensitive=True)
+      True
+
+      >>> ButtonSchematic.has_key('MY_BUTTON', return_instance=True)
+      None
+
+      >>> ButtonSchematic.has_key('MY_BUTTON', case_sensitive=True, return_instance=True)
+      <ButtonSchematic object at 0x000001>
+
+
+
+   .. py:method:: get_instance(key: str, default=None, case_sensitive=False) -> 'ButtonSchematic' or None
+      :classmethod:
+
+
+      Returns an instance from the class instances dictionary based on the provided key.
+
+      :param key: The key to look up in the `ButtonSchematic.instances` dictionary.
+      :type key: str
+      :param default: The default value to return if the key is not found. Default is None.
+      :param case_sensitive: Whether the key lookup should be case-sensitive. Default is False.
+      :type case_sensitive: bool
+
+      :returns: The instance corresponding to the key, or the default value if the key is not found.
+
+      .. rubric:: Examples
+
+      >>> ButtonSchematic.get_instance('MY_BUTTON')
+      None
+
+      >>> ButtonSchematic.get_instance('MY_BUTTON', default='DEFAULT')
+      'DEFAULT'
+
+      >>> ButtonSchematic.get_instance('MY_BUTTON', default='DEFAULT', case_sensitive=True)
+      None
+
+
+
+   .. py:method:: check_key(key: str, case_sensitive=False) -> bool
+      :classmethod:
+
+
+      Check if the key is in the `ButtonSchematic.instances` dictionary.
+
+      :param key: The key to check in the `ButtonSchematics.instances` dictionary.
+      :type key: str
+      :param case_sensitive: Whether the key comparison should be case-sensitive. Default is False.
+      :type case_sensitive: bool
+
+      :returns:     True if the key is in the instances dictionary, False otherwise.
+      :rtype: bool
+
+      .. rubric:: Examples
+
+      >>> ButtonSchematic.check_key('MY_BUTTON')
+      False
+
+      >>> ButtonSchematic.check_key('MY_BUTTON', case_sensitive=True)
+      True
+
+
+
+   .. py:method:: build()
+
+      Build the button.
+
+      Building the button will create the button object and store it in the `ButtonSchematic.instances` dictionary.
+
+      :returns: None
+
+
+
+   .. py:method:: disable()
+
+      Disables the button.
+
+      :returns: None
+
+
+
+   .. py:method:: enable()
+
+      Enables the button.
+
+      :returns: None
+
+
+
+   .. py:method:: hide()
+
+      Hides the button.
+
+      :returns: None
+
+
+
+   .. py:method:: unhide()
+
+      Unhides the button.
+
+      :returns: None
+
+
+
+   .. py:method:: update(**kwargs)
+
+      Updates the button.
+
+      :returns: None
+
+
+
+   .. py:property:: auto_build
+      Whether the button should be built automatically.
+
+      :returns:     True if the button should be built automatically, False otherwise.
+      :rtype: bool
+
+      .. rubric:: Examples
+
+      >>> button = ButtonSchematic('My Button')
+      >>> button.auto_build
+      False
+
+
+   .. py:property:: built
+      Whether the button has been built.
+
+      :returns:     True if the button has been built, False otherwise.
+      :rtype: bool
+
+
+   .. py:property:: button
+      :type: Button or None
+
+      The PySimpleGUI button object.
+
+
+   .. py:property:: create_disabled
+      :type: bool
+
+      Whether the button should be created in a disabled state.
+
+      :returns:     True if the button should be created in a disabled state, False otherwise.
+      :rtype: bool
+
+
+   .. py:property:: create_hidden
+      Whether the button should be created in a hidden state.
+
+      :returns:     True if the button should be created in a hidden state, False otherwise.
+      :rtype: bool
+
+
+   .. py:property:: disabled
+      Whether the button is disabled.
+
+      :returns:     True if the button is disabled, False otherwise.
+      :rtype: bool
+
+
+   .. py:property:: enabled
+      Whether the button is enabled.
+
+      :returns:     True if the button is enabled, False otherwise.
+      :rtype: bool
+
+
+   .. py:property:: enforce_unique_keys
+      Whether to enforce unique keys for buttons.
+
+      :returns:     True if unique keys are enforced, False otherwise.
+      :rtype: bool
+
+
+   .. py:property:: hidden
+
+
+   .. py:property:: key
+      The key for the button.
+
+      :returns:     The key for the button.
+      :rtype: str
+
+
+   .. py:property:: state
+      Returns a `Box` object containing the state of the button, including whether it is enabled
+      and visible.
+
+      :returns:     A `Box` object with the button's state attributes.
+      :rtype: Box
+
+      .. rubric:: Examples
+
+      >>> button = ButtonSchematic('My Button')
+      >>> button.state
+      {'enabled': False, 'visible': False}
+
+
+   .. py:property:: text
+      :type: str
+
+      The text for display on the button.
+
+      :returns:     The text for the button.
+      :rtype: str
+
+
+   .. py:property:: visible
+      Whether the button is visible.
+
+      :returns:     True if the button is visible, False otherwise.
+      :rtype: bool
 
 
 .. py:data:: gui_file_collection

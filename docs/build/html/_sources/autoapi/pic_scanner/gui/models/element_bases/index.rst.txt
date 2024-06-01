@@ -11,6 +11,7 @@ Submodules
    :maxdepth: 1
 
    /autoapi/pic_scanner/gui/models/element_bases/blueprint/index
+   /autoapi/pic_scanner/gui/models/element_bases/button/index
    /autoapi/pic_scanner/gui/models/element_bases/column/index
    /autoapi/pic_scanner/gui/models/element_bases/metas/index
 
@@ -104,18 +105,6 @@ Package Contents
       :type:  dict
 
 
-   .. py:method:: __post_init__()
-
-      Post-initialization method for the FileCollection class.
-
-      This method processes the files in the collection. It calculates the total size of the collection, the total number
-      of files, and the total size of each extension in the collection. It populates the `total_size`, `total_files`, and
-      `extensions` attributes of the class.
-
-      :returns: None
-
-
-
    .. py:property:: needs_reprocessing
       :type: bool
 
@@ -127,18 +116,6 @@ Package Contents
 
       :returns:     True if the collection needs reprocessing, False otherwise.
       :rtype: bool
-
-
-   .. py:method:: _process_files()
-
-      Process the files in the collection.
-
-      This method processes the files in the collection. It calculates the total size of the collection, the total number
-      of files, and the total size of each extension in the collection. It populates the `total_size`, `total_files`, and
-      `extensions` attributes of the class.
-
-      :returns: None
-
 
 
    .. py:method:: reprocess_files()
@@ -214,25 +191,7 @@ Package Contents
 
 
 
-   .. py:method:: __getitem__(key: Union[int, str]) -> Union[str, Dict[str, int]]
-
-
-   .. py:method:: __str__()
-
-      Return str(self).
-
-
-
 .. py:class:: ReactiveProperty(default_value=None, callback=None, *args, **kwargs)
-
-   .. py:method:: __set_name__(owner, name)
-
-
-   .. py:method:: __get__(instance, owner)
-
-
-   .. py:method:: __set__(instance, value)
-
 
    .. py:method:: add_callback(callback, *args, **kwargs)
 
@@ -333,18 +292,6 @@ Package Contents
 
 
 
-   .. py:method:: __getitem__(key: int) -> str
-
-      Returns the file at the specified index.
-
-      :param key: The index of the file to retrieve.
-      :type key: int
-
-      :returns:     The path of the file at the specified index.
-      :rtype: str
-
-
-
    .. py:method:: add_cursor_callback(callback, *args, **kwargs)
 
       Adds a callback to be invoked when the cursor changes.
@@ -353,15 +300,6 @@ Package Contents
       :type callback: callable
       :param \*args: Additional positional arguments to pass to the callback.
       :param \*\*kwargs: Additional keyword arguments to pass to the callback.
-
-
-
-   .. py:method:: __len__() -> int
-
-      Returns the number of files in the collection.
-
-      :returns:     The number of files.
-      :rtype: int
 
 
 

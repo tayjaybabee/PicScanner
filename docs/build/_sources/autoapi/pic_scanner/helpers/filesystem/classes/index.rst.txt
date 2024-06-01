@@ -3,12 +3,55 @@ pic_scanner.helpers.filesystem.classes
 
 .. py:module:: pic_scanner.helpers.filesystem.classes
 
+.. autoapi-nested-parse::
+
+   classes.py
+
+   This module provides a class for managing a collection of files and a class for managing a single file. The FileCollection
+   class takes a list of file paths and creates a class representing a collection of files with properties for total size and
+   number of files and a dictionary of extensions with properties for total size and number of files. The File class is a
+   placeholder for future development. It is not currently used in the application. It is intended to be used for managing
+   individual files in the future.
+
+   Classes:
+       File:
+           A placeholder class for managing individual files.
+
+       FileCollection:
+           A class for managing a collection of files.
+
+           Methods:
+               get_total_size_in_lowest_unit:
+                   Get the total size of the collection in the lowest unit.
+
+               get_total_extension_size_in_lowest_unit:
+                   Get the total size of a specific extension in the lowest unit.
+
+               remove_file:
+                   Remove a file from the collection.
+
+               reprocess_files:
+                   Reprocess the files in the collection.
+
+       NeedsReprocessingTag:
+           A descriptor class for managing the needs_reprocessing attribute of the FileCollection class.
+
+   Functions:
+       get_lowest_unit_size:
+           Get the lowest unit size for a given size.
+
+
+   Since:
+       1.0
+
+
 
 Classes
 -------
 
 .. autoapisummary::
 
+   pic_scanner.helpers.filesystem.classes.NeedsReprocessingTag
    pic_scanner.helpers.filesystem.classes.File
    pic_scanner.helpers.filesystem.classes.FileCollection
 
@@ -20,6 +63,7 @@ Functions
 
    pic_scanner.helpers.filesystem.classes.check_file
    pic_scanner.helpers.filesystem.classes.provision_paths
+   pic_scanner.helpers.filesystem.classes.provision_path
    pic_scanner.helpers.filesystem.classes.get_lowest_unit_size
 
 
@@ -41,12 +85,35 @@ Module Contents
 
    Provision a list of paths.
 
+   This function takes a list of paths and provisions them.
+
+   .. note:: Provisioning a path involves converting it to a Path object, expanding it, and resolving it.
+
    :param path_list: The list of paths to provision.
    :type path_list: list
 
    :returns:     The provisioned list of paths.
    :rtype: list
 
+
+.. py:function:: provision_path(path: Union[str, pathlib.Path], do_not_expand: bool = False, do_not_resolve: bool = False, do_not_convert: bool = False) -> pathlib.Path
+
+   Provision a path.
+
+   :param path: The path to provision.
+   :type path: str
+   :param do_not_convert: A flag indicating whether to convert the path to a string.
+   :type do_not_convert: bool
+   :param do_not_expand: A flag indicating whether to expand the path.
+   :type do_not_expand: bool
+   :param do_not_resolve: A flag indicating whether to resolve the path.
+   :type do_not_resolve: bool
+
+   :returns:     The provisioned path.
+   :rtype: Path
+
+
+.. py:class:: NeedsReprocessingTag(value: bool = False)
 
 .. py:function:: get_lowest_unit_size(size: int) -> tuple[Union[int, float], str]
 
@@ -80,7 +147,56 @@ Module Contents
 
 .. py:class:: File(path: Union[str, pathlib.Path])
 
-.. py:class:: FileCollection
+.. py:class:: FileCollection(paths: List[str] = None)
+
+   A class for managing a collection of files.
+
+   Properties:
+       paths (list):
+           A list of file paths.
+
+       total_size (int):
+           The total size of the collection, in bytes.
+
+       total_files (int):
+           The total number of files in the collection.
+
+       extensions (dict):
+           A dictionary of extensions with properties for total size and number of files.
+
+       needs_reprocessing (bool):
+           A flag indicating whether the collection needs reprocessing.
+
+   .. method:: get_total_size_in_lowest_unit
+
+      
+      Get the total size of the collection in the lowest unit.
+      
+
+   .. method:: get_total_extension_size_in_lowest_unit
+
+      
+      Get the total size of a specific extension in the lowest unit.
+      
+
+   .. method:: remove_file
+
+      
+      Remove a file from the collection.
+      
+
+   .. method:: reprocess_files
+
+      
+      Reprocess the files in the collection.
+      
+
+   .. rubric:: Examples
+
+   >>> collection = FileCollection(paths=['/path/to/file1', '/path/to/file2'])
+   >>> collection.total_size
+   123456  # Total size of the collection, in bytes.
+
 
    .. py:attribute:: paths
       :type:  list
@@ -98,24 +214,89 @@ Module Contents
       :type:  dict
 
 
-   .. py:method:: __post_init__()
+   .. py:property:: needs_reprocessing
+      :type: bool
+
+      Returns whether the collection needs reprocessing.
+
+      This property returns a boolean value indicating whether the collection needs reprocessing. If the collection has
+      been modified since the last processing, this property will return `True`. If the collection has not been modified,
+      it will return `False`. The property is read-only.
+
+      :returns:     True if the collection needs reprocessing, False otherwise.
+      :rtype: bool
 
 
-   .. py:method:: _process_files()
+   .. py:method:: reprocess_files()
+
+      Reprocess the files in the collection.
+
+      This method reprocesses the files in the collection. It recalculates the total size of the collection, the total
+      number of files, and the total size of each extension in the collection. It populates the `total_size`, `total_files`,
+      and `extensions` attributes of the class. This method is used to update the collection after files have been added
+      or removed.
+
+      .. note::
+
+         This method should be called after files have been added or removed from the collection. It will only reprocess
+         the files if the `needs_reprocessing` attribute is set to `True`. After reprocessing, the `needs_reprocessing`
+         attribute will be set to `False`.
+
+      :returns: None
+
 
 
    .. py:method:: get_total_size_in_lowest_unit() -> tuple[Union[int, float], str]
 
+      Get the total size of the collection in the lowest unit with a size greater than or equal to 1.
+
+      This method calculates the total size of the collection in the lowest unit with a size greater than or equal
+      to 1. It returns the size and the unit as a tuple. The unit is a string representing the unit of the size.
+
+      :returns:     The total size of the collection and the unit.
+      :rtype: tuple[Union[int, float], str]
+
+
 
    .. py:method:: get_total_extension_size_in_lowest_unit(extension: str, return_as_string: bool = False) -> tuple[Union[int, float], str]
 
+      Get the total size of a specific extension in the lowest unit with a size greater than or equal to 1.
 
-   .. py:method:: __getitem__(key: Union[int, str]) -> Union[str, Dict[str, int]]
+      :param extension: The extension to get the size of.
+      :type extension: str
+      :param return_as_string: A flag indicating whether to return the size as a string. If True, the size will be returned as a string
+                               with the unit. If False, the size will be returned as a tuple with the size and the unit.
+      :type return_as_string: bool
+
+      :returns:     The total size of the extension and the unit.
+      :rtype: tuple[Union[int, float], str]
+
+      :raises ValueError: If the extension is not found in the collection.
 
 
-   .. py:method:: __str__()
 
-      Return str(self).
+   .. py:method:: remove_file(path: Union[pathlib.Path, str], **kwargs)
+
+      Remove a file from the collection.
+
+      This method removes a file from the collection. It takes a file path as an argument and removes the file from the
+      collection. It then reprocesses the files in the collection to update the total size, total number of files, and
+      total size of each extension.
+
+      .. note::
+
+         This method does not delete the file from the file system. It only removes the file from the collection,
+         and only if the file is in the collection. If the file is not in the collection, this method will raise a
+         `KeyError`. After removing the file, the collection will be reprocessed to update the total size, total number
+         of files, and total size of each extension.
+
+      :param path: The file path to remove.
+      :type path: Union[Path, str]
+      :param \*\*kwargs: Additional keyword arguments.
+
+      :raises KeyError: If the file is not in the collection.
+
+      :returns: None
 
 
 

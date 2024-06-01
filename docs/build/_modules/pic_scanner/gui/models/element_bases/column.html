@@ -62,6 +62,8 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../../../index.html">Module code</a></li>
+          <li class="breadcrumb-item"><a href="../../../gui.html">pic_scanner.gui</a></li>
+          <li class="breadcrumb-item"><a href="../../models.html">pic_scanner.gui.models</a></li>
           <li class="breadcrumb-item"><a href="../element_bases.html">pic_scanner.gui.models.element_bases</a></li>
       <li class="breadcrumb-item active">pic_scanner.gui.models.element_bases.column</li>
       <li class="wy-breadcrumbs-aside">
@@ -83,12 +85,57 @@
 <div class="viewcode-block" id="Column">
 <a class="viewcode-back" href="../../../../../autoapi/pic_scanner/gui/models/windows/main/blueprint/columns/index.html#pic_scanner.gui.models.element_bases.column.Column">[docs]</a>
 <span class="k">class</span> <span class="nc">Column</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">AutoBuildMeta</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class for building a PySimpleGUI Column.</span>
+
+<span class="sd">    This class is used to build a PySimpleGUI Column. It is a subclass of the `AutoBuildMeta` metaclass.</span>
+
+<span class="sd">    Properties:</span>
+<span class="sd">        auto_build (bool):</span>
+<span class="sd">            A boolean value that determines whether the class should automatically build itself when</span>
+<span class="sd">            instantiated. This is set to `False` by default. This property is read-only.</span>
+
+<span class="sd">        building (bool):</span>
+<span class="sd">            A boolean value that determines whether the class is currently building itself. This is set to `False` by</span>
+<span class="sd">            default.</span>
+
+<span class="sd">        column (psg.Column):</span>
+<span class="sd">            The PySimpleGUI Column object. This is built from the layout, and will only have a value if the class is built.</span>
+
+<span class="sd">        column_key (str):</span>
+<span class="sd">            The key for the column. This is used to identify the column in the layout. It is set to `None` by default, and</span>
+<span class="sd">            after instantiation it is frozen and cannot be changed.</span>
+
+<span class="sd">        is_built (bool):</span>
+<span class="sd">            A boolean value that determines whether the class has been built.</span>
+
+<span class="sd">        layout (list):</span>
+<span class="sd">            A list of elements that make up the layout of the class. This is used to build the column, and is set to</span>
+<span class="sd">            an empty list by default.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="Column.column_key">
 <a class="viewcode-back" href="../../../../../autoapi/pic_scanner/gui/models/element_bases/column/index.html#pic_scanner.gui.models.element_bases.column.Column.column_key">[docs]</a>
     <span class="n">column_key</span> <span class="o">=</span> <span class="n">FrozenProperty</span><span class="p">(</span><span class="s1">&#39;column_key&#39;</span><span class="p">,</span> <span class="n">allowed_types</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span></div>
 
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">auto_build</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the class.</span>
+
+<span class="sd">        This method initializes the class by setting the `building` and `is_built` attributes to `False` and the `layout`</span>
+<span class="sd">        attribute to an empty list. It also sets the `auto_build` attribute to the value of the `auto_build` argument if</span>
+<span class="sd">        it is a boolean value, otherwise it sets it to `False`.</span>
+
+<span class="sd">        Parameters:</span>
+
+<span class="sd">            column_key (str):</span>
+<span class="sd">                The key for the column. This is used to identify the column in the layout. It is set to `None` by default,</span>
+<span class="sd">                and after instantiation it is frozen and cannot be changed.</span>
+
+<span class="sd">            auto_build (bool):</span>
+<span class="sd">                A boolean value that determines whether the class should automatically build itself when instantiated.</span>
+<span class="sd">                Defaults to `False`. This property is read-only.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_building</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__column</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">column_key</span> <span class="o">=</span> <span class="n">column_key</span>
@@ -99,12 +146,33 @@
     <span class="nd">@property</span>
 <div class="viewcode-block" id="Column.auto_build">
 <a class="viewcode-back" href="../../../../../autoapi/pic_scanner/gui/models/element_bases/column/index.html#pic_scanner.gui.models.element_bases.column.Column.auto_build">[docs]</a>
-    <span class="k">def</span> <span class="nf">auto_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">auto_build</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the value of the `auto_build` attribute.</span>
+
+<span class="sd">        The `auto_build` attribute is a boolean value that determines whether the class should automatically build itself</span>
+<span class="sd">        when instantiated.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__auto_build</span></div>
 
 
     <span class="nd">@auto_build</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">auto_build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets the value of the `auto_build` attribute.</span>
+
+<span class="sd">        This method is not implemented and will raise a `NotImplementedError` if called.</span>
+
+<span class="sd">        Parameters::</span>
+<span class="sd">            value (Any):</span>
+<span class="sd">                The value to set the `auto_build` attribute to.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;The `auto_build` attribute is read-only.&#39;</span><span class="p">)</span>
 
     <span class="nd">@abstractmethod</span>
@@ -118,62 +186,147 @@
 <div class="viewcode-block" id="Column.building">
 <a class="viewcode-back" href="../../../../../autoapi/pic_scanner/gui/models/element_bases/column/index.html#pic_scanner.gui.models.element_bases.column.Column.building">[docs]</a>
     <span class="k">def</span> <span class="nf">building</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the value of the `building` attribute.</span>
+
+<span class="sd">        The `building` attribute is a boolean value that determines whether the class is currently building itself.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool:</span>
+<span class="sd">                The value of the `building` attribute.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_building</span></div>
 
 
     <span class="nd">@property</span>
-<div class="viewcode-block" id="Column._built">
-<a class="viewcode-back" href="../../../../../autoapi/pic_scanner/gui/models/element_bases/column/index.html#pic_scanner.gui.models.element_bases.column.Column._built">[docs]</a>
     <span class="k">def</span> <span class="nf">_built</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__built</span></div>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the value of the `built` attribute.</span>
 
+<span class="sd">        The `built` attribute is a boolean value that determines whether the class has been built.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool (bool):</span>
+<span class="sd">                The value of the `built` attribute.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__built</span>
 
     <span class="nd">@_built</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">_built</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets the value of the `built` attribute.</span>
+
+<span class="sd">        Parameters::</span>
+<span class="sd">            new (bool):</span>
+<span class="sd">                The value to set the `built` attribute to.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__built</span> <span class="o">=</span> <span class="n">new</span>
 
     <span class="nd">@property</span>
 <div class="viewcode-block" id="Column.column">
 <a class="viewcode-back" href="../../../../../autoapi/pic_scanner/gui/models/element_bases/column/index.html#pic_scanner.gui.models.element_bases.column.Column.column">[docs]</a>
     <span class="k">def</span> <span class="nf">column</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the column.</span>
+
+<span class="sd">        The column is built from the layout, and will only have a value if the class is built; otherwise it will be `None`.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            psg.Column:</span>
+<span class="sd">                The column.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">layout</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">building</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_built</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">__column</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__column</span> <span class="o">=</span> <span class="n">psg</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">column_key</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__column</span></div>
 
 
     <span class="nd">@property</span>
-<div class="viewcode-block" id="Column._column">
-<a class="viewcode-back" href="../../../../../autoapi/pic_scanner/gui/models/element_bases/column/index.html#pic_scanner.gui.models.element_bases.column.Column._column">[docs]</a>
     <span class="k">def</span> <span class="nf">_column</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__column</span></div>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the column.</span>
 
+<span class="sd">        Returns:</span>
+<span class="sd">            psg.Column:</span>
+<span class="sd">                The column.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__column</span>
 
     <span class="nd">@_column</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">_column</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets the column.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            new (psg.Column):</span>
+<span class="sd">                The new column.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__column</span> <span class="o">=</span> <span class="n">new</span>
 
     <span class="nd">@property</span>
 <div class="viewcode-block" id="Column.layout">
 <a class="viewcode-back" href="../../../../../autoapi/pic_scanner/gui/models/element_bases/column/index.html#pic_scanner.gui.models.element_bases.column.Column.layout">[docs]</a>
     <span class="k">def</span> <span class="nf">layout</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the layout.</span>
+
+<span class="sd">        The layout is a list of elements that make up the layout of the class. This is used to build the column, and is</span>
+<span class="sd">        set to an empty list by default.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list:</span>
+<span class="sd">                The layout.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__layout</span></div>
 
 
     <span class="nd">@property</span>
-<div class="viewcode-block" id="Column._layout">
-<a class="viewcode-back" href="../../../../../autoapi/pic_scanner/gui/models/element_bases/column/index.html#pic_scanner.gui.models.element_bases.column.Column._layout">[docs]</a>
     <span class="k">def</span> <span class="nf">_layout</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__layout</span></div>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the layout.</span>
 
+<span class="sd">        Returns:</span>
+<span class="sd">            list:</span>
+<span class="sd">                The layout.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__layout</span>
 
     <span class="nd">@_layout</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">_layout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets the layout.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            new (list):</span>
+<span class="sd">                The new layout.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__layout</span> <span class="o">=</span> <span class="n">new</span>
 
     <span class="nd">@property</span>
 <div class="viewcode-block" id="Column.is_built">
 <a class="viewcode-back" href="../../../../../autoapi/pic_scanner/gui/models/element_bases/column/index.html#pic_scanner.gui.models.element_bases.column.Column.is_built">[docs]</a>
     <span class="k">def</span> <span class="nf">is_built</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns whether the class has been built.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool:</span>
+<span class="sd">                True if the class has been built, False otherwise.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">)</span></div>
 </div>
 

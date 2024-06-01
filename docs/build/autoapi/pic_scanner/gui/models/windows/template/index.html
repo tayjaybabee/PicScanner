@@ -22,7 +22,7 @@
     <script src="../../../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../../search.html" />
-    <link rel="next" title="pic_scanner.helpers" href="../../../../helpers/index.html" />
+    <link rel="next" title="pic_scanner.gui.helpers" href="../../../helpers/index.html" />
     <link rel="prev" title="pic_scanner.gui.models.windows.main.blueprint.columns" href="../main/blueprint/columns/index.html" /> 
 </head>
 
@@ -51,6 +51,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../../../../index.html">pic_scanner</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="../../../../index.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="../../../../api/index.html">pic_scanner.api</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../cli/index.html">pic_scanner.cli</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../common/index.html">pic_scanner.common</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../core/index.html">pic_scanner.core</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../download_scanner/index.html">pic_scanner.download_scanner</a></li>
@@ -60,6 +61,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../../models/index.html">pic_scanner.models</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../index.html#submodules">Submodules</a></li>
 </ul>
 </li>
 </ul>
@@ -172,12 +174,6 @@
 and <cite>auto_run</cite> attributes are True.</p>
 <p>This metaclass overrides the <cite>__call__</cite> method to build and run the instance if the <cite>auto_build</cite>
 and <cite>auto_run</cite> attributes are True.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.template.AutoBuildRunMeta.__call__">
-<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/element_bases/metas.html#AutoBuildRunMeta.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.template.AutoBuildRunMeta.__call__" title="Link to this definition"></a></dt>
-<dd><p>Call self as a function.</p>
-</dd></dl>
-
 </dd></dl>
 
 <dl class="py data">
@@ -202,6 +198,14 @@ and <cite>auto_run</cite> attributes are True.</p>
 <p>A metaclass to enhance classes with logging capabilities. Classes that inherit from
 ‘Loggable’ can instantly access a logger without manually setting it up. This logger
 is derived from a parent logger, ensuring consistent logging behavior and hierarchy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>blueprint</strong> (<em>Optional</em><em>[</em><em>pic_scanner.BluePrint</em><em>]</em>)</p></li>
+<li><p><strong>blueprint_args</strong> (<em>Optional</em><em>[</em><em>dict</em><em>]</em>)</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py attribute">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">-</span> <span class="pre">log_device</span></span></dt>
@@ -282,11 +286,6 @@ is derived from a parent logger, ensuring consistent logging behavior and hierar
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id0">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">blueprint</span></span><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/windows/template.html#Window.blueprint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.template.Window.is_built">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_built</span></span><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/windows/template.html#Window.is_built"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.template.Window.is_built" title="Link to this definition"></a></dt>
 <dt class="sig sig-object py">
@@ -317,8 +316,8 @@ is derived from a parent logger, ensuring consistent logging behavior and hierar
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id1">
-<span class="sig-name descname"><span class="pre">is_built</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/windows/template.html#Window.is_built"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id1" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">is_built</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/windows/template.html#Window.is_built"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
 <dd><p>Deletes the <cite>built</cite> attribute.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -326,11 +325,6 @@ is derived from a parent logger, ensuring consistent logging behavior and hierar
 </dd>
 </dl>
 </dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.template.Window._built">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_built</span></span><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/windows/template.html#Window._built"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.template.Window._built" title="Link to this definition"></a></dt>
-<dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.template.Window.closed">
@@ -387,11 +381,6 @@ is derived from a parent logger, ensuring consistent logging behavior and hierar
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">window</span></span><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/windows/template.html#Window.window"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.template.Window.window" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="py property">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.template.Window._window">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_window</span></span><a class="reference internal" href="../../../../../../_modules/pic_scanner/gui/models/windows/template.html#Window._window"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.template.Window._window" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 </section>
@@ -402,7 +391,7 @@ is derived from a parent logger, ensuring consistent logging behavior and hierar
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../main/blueprint/columns/index.html" class="btn btn-neutral float-left" title="pic_scanner.gui.models.windows.main.blueprint.columns" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../../../../helpers/index.html" class="btn btn-neutral float-right" title="pic_scanner.helpers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../../../helpers/index.html" class="btn btn-neutral float-right" title="pic_scanner.gui.helpers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

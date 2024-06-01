@@ -19,6 +19,7 @@ Attributes
 
 .. autoapisummary::
 
+   pic_scanner.common.meta.PROG_DESC
    pic_scanner.common.meta.PROG_NAME
    pic_scanner.common.meta.URLS
    pic_scanner.common.meta.AUTHORS
@@ -28,6 +29,12 @@ Attributes
 
 Package Contents
 ----------------
+
+.. py:data:: PROG_DESC
+   :value: 'A tool for scanning (and managing) images for NSFW content.'
+
+
+   The description of the program.
 
 .. py:data:: PROG_NAME
    :value: 'IS-NSFW-Scanner'

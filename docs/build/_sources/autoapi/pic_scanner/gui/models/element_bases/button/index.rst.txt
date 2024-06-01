@@ -1,0 +1,454 @@
+pic_scanner.gui.models.element_bases.button
+===========================================
+
+.. py:module:: pic_scanner.gui.models.element_bases.button
+
+.. autoapi-nested-parse::
+
+   This module provides base functionality for creating buttons in the GUI.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   pic_scanner.gui.models.element_bases.button.PARENT_LOGGER
+   pic_scanner.gui.models.element_bases.button.MOD_LOGGER
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   pic_scanner.gui.models.element_bases.button.GUIElementKey
+   pic_scanner.gui.models.element_bases.button.ButtonSchematic
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   pic_scanner.gui.models.element_bases.button.format_button_text
+
+
+Module Contents
+---------------
+
+.. py:data:: PARENT_LOGGER
+
+.. py:data:: MOD_LOGGER
+
+.. py:class:: GUIElementKey(key: str, enable_prefix: bool = False, enable_suffix: bool = False, prefix: str = None, suffix: str = None, replace_spaces: bool = False, replacement_char: str = '_', part_delimiter: str = '_', all_upper: bool = True, *args, **kwargs)
+
+   Bases: :py:obj:`str`
+
+
+   A class to represent the key for a GUI element.
+
+   The class is a subclass of the `str
+
+   Properties:
+       prefix_enabled (bool):
+           Whether the prefix is enabled.
+
+       prefix (str):
+           The prefix for the key.
+
+       suffix_enabled (bool):
+           Whether the suffix is enabled.
+
+       suffix (str):
+           The suffix for the key.
+
+       pre_formatted (str):
+           The pre-formatted key.
+
+       replacement_char (str):
+           The character to replace spaces with.
+
+       replace_spaces (bool):
+           Whether to replace spaces in the key.
+
+       formatted_key (str):
+           The formatted key.
+
+           This property is read-only and consists of the prefix, key, and suffix.
+
+       part_delimiter (str):
+           The delimiter for the key parts.
+
+
+   .. py:property:: all_upper
+
+
+   .. py:property:: part_delimiter_1
+
+
+   .. py:property:: part_delimiter_2
+
+
+   .. py:property:: prefix_enabled
+      :type: bool
+
+      Whether the prefix is enabled.
+
+      :returns:     True if the prefix is enabled, False otherwise.
+      :rtype: bool
+
+
+   .. py:property:: prefix
+      :type: str
+
+      The prefix for the key.
+
+      :returns:     The prefix for the key.
+      :rtype: str
+
+
+   .. py:property:: suffix_enabled
+      :type: bool
+
+      Whether the suffix is enabled.
+
+      :returns:     True if the suffix is enabled, False otherwise.
+      :rtype: bool
+
+
+   .. py:property:: suffix
+      :type: str
+
+      The suffix for the key.
+
+      :returns:     The suffix for the key.
+      :rtype: str
+
+
+   .. py:property:: pre_formatted
+      :type: str
+
+      The pre-formatted key.
+
+      :returns:     The pre-formatted key.
+      :rtype: str
+
+
+   .. py:property:: replacement_char
+      :type: str
+
+      The character to replace spaces with.
+
+      :returns:     The character to replace spaces with.
+      :rtype: str
+
+
+   .. py:property:: replace_spaces
+      :type: bool
+
+      Whether to replace spaces in the key.
+
+      :returns:     True if spaces should be replaced, False otherwise.
+      :rtype: bool
+
+
+   .. py:property:: formatted_key
+      :type: str
+
+      The formatted key.
+
+      :returns:     The formatted key.
+      :rtype: str
+
+
+   .. py:property:: formatted
+
+
+.. py:class:: ButtonSchematic(text: str, auto_build=False, key: str = None, create_disabled=False, create_hidden=False, skip_enforcing_unique_keys=False, **kwargs)
+
+   Bases: :py:obj:`pic_scanner.log_engine.Loggable`
+
+
+   A metaclass to enhance classes with logging capabilities. Classes that inherit from
+   'Loggable' can instantly access a logger without manually setting it up. This logger
+   is derived from a parent logger, ensuring consistent logging behavior and hierarchy.
+
+   .. attribute:: - log_device
+
+      The logger device associated with the instance of the class.
+
+
+   .. py:attribute:: instances
+
+
+   .. py:attribute:: built_instances
+
+
+   .. py:attribute:: DEFAULT_SUFFIX
+      :value: 'button'
+
+
+
+   .. py:attribute:: suffix
+
+
+   .. py:method:: has_key(key: str, case_sensitive=False, return_instance=False) -> Union[bool, ButtonSchematic, None]
+      :classmethod:
+
+
+      Checks if the class instances dictionary contains the provided key with optional case sensitivity and instance return.
+
+      :param key: The key to check in the `ButtonSchematic.instances` dictionary.
+      :type key: str
+      :param case_sensitive: Whether the key comparison should be case-sensitive. Default is False.
+      :type case_sensitive: bool
+      :param return_instance: Whether to return the instance corresponding to the key. Default is False.
+      :type return_instance: bool
+
+      :returns:     - If return_instance is False: True if the key is present in the instances dictionary, False otherwise.
+                    - If return_instance is True: The instance corresponding to the key, or None if the key is not found.
+      :rtype: Union[bool, 'ButtonSchematic', None]
+
+      .. rubric:: Examples
+
+      >>> ButtonSchematic.has_key('MY_BUTTON')
+      False
+
+      >>> ButtonSchematic.has_key('MY_BUTTON', case_sensitive=True)
+      True
+
+      >>> ButtonSchematic.has_key('MY_BUTTON', return_instance=True)
+      None
+
+      >>> ButtonSchematic.has_key('MY_BUTTON', case_sensitive=True, return_instance=True)
+      <ButtonSchematic object at 0x000001>
+
+
+
+   .. py:method:: get_instance(key: str, default=None, case_sensitive=False) -> 'ButtonSchematic' or None
+      :classmethod:
+
+
+      Returns an instance from the class instances dictionary based on the provided key.
+
+      :param key: The key to look up in the `ButtonSchematic.instances` dictionary.
+      :type key: str
+      :param default: The default value to return if the key is not found. Default is None.
+      :param case_sensitive: Whether the key lookup should be case-sensitive. Default is False.
+      :type case_sensitive: bool
+
+      :returns: The instance corresponding to the key, or the default value if the key is not found.
+
+      .. rubric:: Examples
+
+      >>> ButtonSchematic.get_instance('MY_BUTTON')
+      None
+
+      >>> ButtonSchematic.get_instance('MY_BUTTON', default='DEFAULT')
+      'DEFAULT'
+
+      >>> ButtonSchematic.get_instance('MY_BUTTON', default='DEFAULT', case_sensitive=True)
+      None
+
+
+
+   .. py:method:: check_key(key: str, case_sensitive=False) -> bool
+      :classmethod:
+
+
+      Check if the key is in the `ButtonSchematic.instances` dictionary.
+
+      :param key: The key to check in the `ButtonSchematics.instances` dictionary.
+      :type key: str
+      :param case_sensitive: Whether the key comparison should be case-sensitive. Default is False.
+      :type case_sensitive: bool
+
+      :returns:     True if the key is in the instances dictionary, False otherwise.
+      :rtype: bool
+
+      .. rubric:: Examples
+
+      >>> ButtonSchematic.check_key('MY_BUTTON')
+      False
+
+      >>> ButtonSchematic.check_key('MY_BUTTON', case_sensitive=True)
+      True
+
+
+
+   .. py:method:: build()
+
+      Build the button.
+
+      Building the button will create the button object and store it in the `ButtonSchematic.instances` dictionary.
+
+      :returns: None
+
+
+
+   .. py:method:: disable()
+
+      Disables the button.
+
+      :returns: None
+
+
+
+   .. py:method:: enable()
+
+      Enables the button.
+
+      :returns: None
+
+
+
+   .. py:method:: hide()
+
+      Hides the button.
+
+      :returns: None
+
+
+
+   .. py:method:: unhide()
+
+      Unhides the button.
+
+      :returns: None
+
+
+
+   .. py:method:: update(**kwargs)
+
+      Updates the button.
+
+      :returns: None
+
+
+
+   .. py:property:: auto_build
+      Whether the button should be built automatically.
+
+      :returns:     True if the button should be built automatically, False otherwise.
+      :rtype: bool
+
+      .. rubric:: Examples
+
+      >>> button = ButtonSchematic('My Button')
+      >>> button.auto_build
+      False
+
+
+   .. py:property:: built
+      Whether the button has been built.
+
+      :returns:     True if the button has been built, False otherwise.
+      :rtype: bool
+
+
+   .. py:property:: button
+      :type: Button or None
+
+      The PySimpleGUI button object.
+
+
+   .. py:property:: create_disabled
+      :type: bool
+
+      Whether the button should be created in a disabled state.
+
+      :returns:     True if the button should be created in a disabled state, False otherwise.
+      :rtype: bool
+
+
+   .. py:property:: create_hidden
+      Whether the button should be created in a hidden state.
+
+      :returns:     True if the button should be created in a hidden state, False otherwise.
+      :rtype: bool
+
+
+   .. py:property:: disabled
+      Whether the button is disabled.
+
+      :returns:     True if the button is disabled, False otherwise.
+      :rtype: bool
+
+
+   .. py:property:: enabled
+      Whether the button is enabled.
+
+      :returns:     True if the button is enabled, False otherwise.
+      :rtype: bool
+
+
+   .. py:property:: enforce_unique_keys
+      Whether to enforce unique keys for buttons.
+
+      :returns:     True if unique keys are enforced, False otherwise.
+      :rtype: bool
+
+
+   .. py:property:: hidden
+
+
+   .. py:property:: key
+      The key for the button.
+
+      :returns:     The key for the button.
+      :rtype: str
+
+
+   .. py:property:: state
+      Returns a `Box` object containing the state of the button, including whether it is enabled
+      and visible.
+
+      :returns:     A `Box` object with the button's state attributes.
+      :rtype: Box
+
+      .. rubric:: Examples
+
+      >>> button = ButtonSchematic('My Button')
+      >>> button.state
+      {'enabled': False, 'visible': False}
+
+
+   .. py:property:: text
+      :type: str
+
+      The text for display on the button.
+
+      :returns:     The text for the button.
+      :rtype: str
+
+
+   .. py:property:: visible
+      Whether the button is visible.
+
+      :returns:     True if the button is visible, False otherwise.
+      :rtype: bool
+
+
+.. py:function:: format_button_text(text: str, skip_titalize=False)
+
+   Format a button text.
+
+   :param text: The text to format.
+   :type text: str
+   :param skip_titalize: Whether to skip titalizing the text. (Default: False)
+   :type skip_titalize: bool
+
+   :returns:     The formatted button text.
+   :rtype: str
+
+   .. rubric:: Examples
+
+   >>> format_button_text('my button')
+   'My Button'
+
+   >>> format_button_text('my button', skip_titalize=True)
+   'my button'
+
+

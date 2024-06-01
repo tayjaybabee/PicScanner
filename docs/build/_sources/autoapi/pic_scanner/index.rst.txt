@@ -11,6 +11,7 @@ Subpackages
    :maxdepth: 1
 
    /autoapi/pic_scanner/api/index
+   /autoapi/pic_scanner/cli/index
    /autoapi/pic_scanner/common/index
    /autoapi/pic_scanner/core/index
    /autoapi/pic_scanner/download_scanner/index
@@ -18,5 +19,14 @@ Subpackages
    /autoapi/pic_scanner/helpers/index
    /autoapi/pic_scanner/log_engine/index
    /autoapi/pic_scanner/models/index
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/pic_scanner/main/index
 
 

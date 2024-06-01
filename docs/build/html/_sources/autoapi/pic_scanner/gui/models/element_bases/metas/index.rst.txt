@@ -28,12 +28,6 @@ Module Contents
    attribute is True.
 
 
-   .. py:method:: __call__(*args, **kwargs)
-
-      Call self as a function.
-
-
-
 .. py:class:: AutoBuildRunMeta
 
    Bases: :py:obj:`abc.ABCMeta`
@@ -44,11 +38,5 @@ Module Contents
 
    This metaclass overrides the `__call__` method to build and run the instance if the `auto_build`
    and `auto_run` attributes are True.
-
-
-   .. py:method:: __call__(*args, **kwargs)
-
-      Call self as a function.
-
 
 

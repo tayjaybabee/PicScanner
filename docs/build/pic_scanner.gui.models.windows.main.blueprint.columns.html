@@ -83,7 +83,21 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#FileColumn.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.__init__" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Initializes the class.</p>
+<p>This method initializes the class by setting the <cite>building</cite> and <cite>is_built</cite> attributes to <cite>False</cite> and the <cite>layout</cite>
+attribute to an empty list. It also sets the <cite>auto_build</cite> attribute to the value of the <cite>auto_build</cite> argument if
+it is a boolean value, otherwise it sets it to <cite>False</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column_key</strong> (<em>str</em>) – The key for the column. This is used to identify the column in the layout. It is set to <cite>None</cite> by default,
+and after instantiation it is frozen and cannot be changed.</p></li>
+<li><p><strong>auto_build</strong> (<em>bool</em>) – A boolean value that determines whether the class should automatically build itself when instantiated.
+Defaults to <cite>False</cite>. This property is read-only.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn._abc_impl">
@@ -93,22 +107,58 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn._built">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_built</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#FileColumn._built"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn._built" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Returns the value of the <cite>built</cite> attribute.</p>
+<p>The <cite>built</cite> attribute is a boolean value that determines whether the class has been built.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The value of the <cite>built</cite> attribute.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool (bool)</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn._column">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_column</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#FileColumn._column"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn._column" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Returns the column.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The column.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>psg.Column</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn._layout">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_layout</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#FileColumn._layout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn._layout" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Returns the layout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The layout.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.auto_build">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">auto_build</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#FileColumn.auto_build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.auto_build" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">auto_build</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#FileColumn.auto_build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.auto_build" title="Link to this definition"></a></dt>
+<dd><p>Returns the value of the <cite>auto_build</cite> attribute.</p>
+<p>The <cite>auto_build</cite> attribute is a boolean value that determines whether the class should automatically build itself
+when instantiated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.build">
@@ -129,7 +179,17 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.building">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">building</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#FileColumn.building"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.building" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Returns the value of the <cite>building</cite> attribute.</p>
+<p>The <cite>building</cite> attribute is a boolean value that determines whether the class is currently building itself.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The value of the <cite>building</cite> attribute.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.change_image">
@@ -150,12 +210,27 @@ updates the file name display element to show the new file name.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.changing_image">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">changing_image</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#FileColumn.changing_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.changing_image" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.column">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">column</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#FileColumn.column"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.column" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Returns the column.</p>
+<p>The column is built from the layout, and will only have a value if the class is built; otherwise it will be <cite>None</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The column.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>psg.Column</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.column_key">
@@ -165,7 +240,12 @@ updates the file name display element to show the new file name.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.file_name_display_elem">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">file_name_display_elem</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Text</span></em><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#FileColumn.file_name_display_elem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.file_name_display_elem" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pic_scanner.gui.models.element_bases.column.psg.Text</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.file_path">
@@ -191,18 +271,41 @@ updates the file name display element to show the new file name.</p>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The image element.</p>
 </dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pic_scanner.gui.models.element_bases.column.psg.Image</p>
+</dd>
 </dl>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.is_built">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_built</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#FileColumn.is_built"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.is_built" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Returns whether the class has been built.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the class has been built, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.layout">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">layout</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#FileColumn.layout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.layout" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Returns the layout.</p>
+<p>The layout is a list of elements that make up the layout of the class. This is used to build the column, and is
+set to an empty list by default.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The layout.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -210,10 +313,47 @@ updates the file name display element to show the new file name.</p>
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pic_scanner.gui.models.windows.main.blueprint.columns.</span></span><span class="sig-name descname"><span class="pre">LeftColumn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_collection</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#LeftColumn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">FrozenPropertyClass</span></code></p>
+<p>A class that represents the left column of the main window.</p>
+<dl class="simple">
+<dt>Properties:</dt><dd><dl class="simple">
+<dt>file_collection (FileCollection):</dt><dd><p>The collection of files.</p>
+</dd>
+<dt>file_list_box (psg.Listbox):</dt><dd><p>The listbox displaying the file names.</p>
+</dd>
+<dt>file_names (list[str]):</dt><dd><p>The list of file names.</p>
+</dd>
+<dt>next_button (psg.Button):</dt><dd><p>The button to go to the next file.</p>
+</dd>
+<dt>file_num_display_elem (psg.Text):</dt><dd><p>The element displaying the current file number.</p>
+</dd>
+<dt>prev_button (psg.Button):</dt><dd><p>The button to go to the previous file.</p>
+</dd>
+<dt>remove_button (psg.Button):</dt><dd><p>The button to remove the current image.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_collection</strong> (<a class="reference internal" href="pic_scanner.helpers.filesystem.html#pic_scanner.helpers.filesystem.classes.FileCollection" title="pic_scanner.helpers.filesystem.classes.FileCollection"><em>pic_scanner.helpers.filesystem.classes.FileCollection</em></a>)</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_collection</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#LeftColumn.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.__init__" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Initializes the LeftColumn with a given FileCollection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_collection</strong> (<a class="reference internal" href="autoapi/pic_scanner/gui/models/windows/main/blueprint/columns/index.html#pic_scanner.gui.models.windows.main.blueprint.columns.FileCollection" title="pic_scanner.gui.models.windows.main.blueprint.columns.FileCollection"><em>FileCollection</em></a>) – The collection of files.</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the <cite>file_collection</cite> attribute is not an instance of FileCollection.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn._abc_impl">
@@ -223,37 +363,102 @@ updates the file name display element to show the new file name.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn._built">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_built</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#LeftColumn._built"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn._built" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Returns the value of the <cite>built</cite> attribute.</p>
+<p>The <cite>built</cite> attribute is a boolean value that determines whether the class has been built.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The value of the <cite>built</cite> attribute.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool (bool)</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn._column">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_column</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#LeftColumn._column"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn._column" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Returns the column.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The column.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>psg.Column</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn._layout">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_layout</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#LeftColumn._layout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn._layout" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Returns the layout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The layout.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.auto_build">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">auto_build</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#LeftColumn.auto_build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.auto_build" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">auto_build</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#LeftColumn.auto_build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.auto_build" title="Link to this definition"></a></dt>
+<dd><p>Returns the value of the <cite>auto_build</cite> attribute.</p>
+<p>The <cite>auto_build</cite> attribute is a boolean value that determines whether the class should automatically build itself
+when instantiated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.build">
 <span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#LeftColumn.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.build" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Builds the left column layout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The column layout.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>psg.Column</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.building">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">building</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#LeftColumn.building"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.building" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Returns the value of the <cite>building</cite> attribute.</p>
+<p>The <cite>building</cite> attribute is a boolean value that determines whether the class is currently building itself.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The value of the <cite>building</cite> attribute.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.column">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">column</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#LeftColumn.column"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.column" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Returns the column.</p>
+<p>The column is built from the layout, and will only have a value if the class is built; otherwise it will be <cite>None</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The column.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>psg.Column</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.column_key">
@@ -263,22 +468,58 @@ updates the file name display element to show the new file name.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.file_collection">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">file_collection</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#LeftColumn.file_collection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.file_collection" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Gets the file collection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The collection of files.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="autoapi/pic_scanner/gui/models/windows/main/blueprint/columns/index.html#pic_scanner.gui.models.windows.main.blueprint.columns.FileCollection" title="pic_scanner.gui.models.windows.main.blueprint.columns.FileCollection">FileCollection</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.file_list_box">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">file_list_box</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#LeftColumn.file_list_box"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.file_list_box" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Gets the file list box.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The listbox displaying the file names.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>psg.Listbox</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.file_names">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">file_names</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#LeftColumn.file_names"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.file_names" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Gets the file names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The list of file names.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.file_num_display_elem">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">file_num_display_elem</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#LeftColumn.file_num_display_elem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.file_num_display_elem" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Gets the file number display element.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The element displaying the current file number.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>psg.Text</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.instances">
@@ -288,22 +529,74 @@ updates the file name display element to show the new file name.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.is_built">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_built</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#LeftColumn.is_built"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.is_built" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Returns whether the class has been built.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the class has been built, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.layout">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">layout</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#LeftColumn.layout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.layout" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Returns the layout.</p>
+<p>The layout is a list of elements that make up the layout of the class. This is used to build the column, and is
+set to an empty list by default.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The layout.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.next_button">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">next_button</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#LeftColumn.next_button"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.next_button" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Gets the next button.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The button to go to the next file.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>psg.Button</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.prev_button">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">prev_button</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#LeftColumn.prev_button"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.prev_button" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Gets the previous button.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The button to go to the previous file.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>psg.Button</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.remove_button">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">remove_button</span></span><a class="reference internal" href="_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#LeftColumn.remove_button"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn.remove_button" title="Link to this definition"></a></dt>
+<dd><p>Gets the remove button.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The button to remove the current image.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>psg.Button</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 

@@ -122,16 +122,16 @@
 <span class="sd">            TypeError:</span>
 <span class="sd">                If the collection is not an instance of FileCollection.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__collection</span> <span class="o">=</span> <span class="n">collection</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent_log_device</span><span class="o">=</span><span class="n">MOD_LOGGER</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__files</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">paths</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">FileCollection</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;The `collection` attribute must be of type `FileCollection`.&#39;</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">log_device</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Received a collection with </span><span class="si">{</span><span class="n">collection</span><span class="o">.</span><span class="n">total_files</span><span class="si">}</span><span class="s1"> files. With the following &#39;</span>
-                              <span class="sa">f</span><span class="s1">&#39;extensions represented: </span><span class="si">{</span><span class="n">collection</span><span class="o">.</span><span class="n">extensions</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                              <span class="sa">f</span><span class="s1">&#39;extensions represented: </span><span class="si">{</span><span class="n">collection</span><span class="o">.</span><span class="n">extensions</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">__collection</span> <span class="o">=</span> <span class="n">collection</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__files</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">paths</span></div>
 
 
     <span class="nd">@property</span>
@@ -165,7 +165,7 @@
 <span class="sd">            list:</span>
 <span class="sd">                The list of file paths.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__files</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">paths</span></div>
 
 
     <span class="nd">@property</span>
@@ -313,8 +313,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span> <span class="o">=</span> <span class="n">index</span></div>
 
 
-<div class="viewcode-block" id="GUIFileCollection.__getitem__">
-<a class="viewcode-back" href="../../../../autoapi/pic_scanner/gui/models/windows/main/blueprint/index.html#pic_scanner.gui.models.element_bases.GUIFileCollection.__getitem__">[docs]</a>
     <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns the file at the specified index.</span>
@@ -327,8 +325,7 @@
 <span class="sd">            str:</span>
 <span class="sd">                The path of the file at the specified index.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__files</span><span class="p">[</span><span class="n">key</span><span class="p">]</span></div>
-
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__files</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
 
 <div class="viewcode-block" id="GUIFileCollection.add_cursor_callback">
 <a class="viewcode-back" href="../../../../pic_scanner.gui.models.element_bases.html#pic_scanner.gui.models.element_bases.GUIFileCollection.add_cursor_callback">[docs]</a>
@@ -358,8 +355,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="GUIFileCollection.__len__">
-<a class="viewcode-back" href="../../../../autoapi/pic_scanner/gui/models/windows/main/blueprint/index.html#pic_scanner.gui.models.element_bases.GUIFileCollection.__len__">[docs]</a>
     <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns the number of files in the collection.</span>
@@ -368,8 +363,7 @@
 <span class="sd">            int:</span>
 <span class="sd">                The number of files.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__files</span><span class="p">)</span></div>
-</div>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">files</span><span class="p">)</span></div>
 
 </pre></div>
 

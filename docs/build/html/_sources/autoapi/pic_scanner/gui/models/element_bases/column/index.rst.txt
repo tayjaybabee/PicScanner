@@ -52,45 +52,6 @@ Module Contents
    - If `restrict_setter` is set to `True`, the setter can only be called within class methods. If the setter is called outside of class methods, a `PermissionError` will be raised.
 
 
-   .. py:method:: __get__(instance, owner)
-
-      Retrieves the value of the property.
-
-      This method is a getter for the property, returning its current value. If the property has not been set,
-      it returns the initial value specified during the creation of the `RestrictedSetter` instance.
-
-      :param obj: The instance of the class whose property is being retrieved.
-      :type obj: object
-      :param obj_type: The type of the object. This parameter is not used but is part of the descriptor protocol.
-      :type obj_type: type, optional
-
-      :returns: The current value of the property.
-
-
-
-   .. py:method:: __set__(instance, value)
-
-      Sets the value of the property, enforcing any restrictions.
-
-      This method acts as a setter for the property, applying the defined restrictions such as type checking,
-      value restrictions, and custom conditions. If any restriction is violated, an appropriate exception is raised.
-
-      :param obj: The instance of the class whose property is being set.
-      :type obj: object
-      :param value: The new value for the property.
-      :type value: Any
-
-      :raises PermissionError: If the setter is called outside-of class methods when `restrict_setter` is True.
-      :raises ValueError: If the provided value is not in the `allowed_values` set.
-      :raises PermissionError: If a custom `condition` is not satisfied.
-      :raises TypeError: If the provided value is not of an allowed type.
-      :raises Any exception specified by the `exception` attribute,: if the custom condition fails.
-
-
-
-   .. py:method:: __set_name__(owner, name)
-
-
 .. py:function:: freeze_property(cls)
 
 .. py:class:: AutoBuildMeta
@@ -103,12 +64,6 @@ Module Contents
 
    This metaclass overrides the `__call__` method to build the instance if the `auto_build`
    attribute is True.
-
-
-   .. py:method:: __call__(*args, **kwargs)
-
-      Call self as a function.
-
 
 
 .. py:class:: Column(column_key: str, auto_build=False)
@@ -169,26 +124,10 @@ Module Contents
       :rtype: bool
 
 
-   .. py:property:: _built
-      Returns the value of the `built` attribute.
-
-      The `built` attribute is a boolean value that determines whether the class has been built.
-
-      :returns:     The value of the `built` attribute.
-      :rtype: bool (bool)
-
-
    .. py:property:: column
       Returns the column.
 
       The column is built from the layout, and will only have a value if the class is built; otherwise it will be `None`.
-
-      :returns:     The column.
-      :rtype: psg.Column
-
-
-   .. py:property:: _column
-      Returns the column.
 
       :returns:     The column.
       :rtype: psg.Column
@@ -199,13 +138,6 @@ Module Contents
 
       The layout is a list of elements that make up the layout of the class. This is used to build the column, and is
       set to an empty list by default.
-
-      :returns:     The layout.
-      :rtype: list
-
-
-   .. py:property:: _layout
-      Returns the layout.
 
       :returns:     The layout.
       :rtype: list

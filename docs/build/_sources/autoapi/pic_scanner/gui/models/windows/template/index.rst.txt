@@ -70,12 +70,6 @@ Module Contents
    and `auto_run` attributes are True.
 
 
-   .. py:method:: __call__(*args, **kwargs)
-
-      Call self as a function.
-
-
-
 .. py:data:: PROG_LOGGER
 
 .. py:function:: event_handler(event, values, window)
@@ -142,9 +136,6 @@ Module Contents
       :rtype: bool
 
 
-   .. py:property:: blueprint
-
-
    .. py:property:: is_built
       Returns the value of the `built` attribute.
 
@@ -165,9 +156,6 @@ Module Contents
 
       :returns: None
 
-
-
-   .. py:property:: _built
 
 
    .. py:property:: closed
@@ -195,8 +183,5 @@ Module Contents
 
 
    .. py:property:: window
-
-
-   .. py:property:: _window
 
 

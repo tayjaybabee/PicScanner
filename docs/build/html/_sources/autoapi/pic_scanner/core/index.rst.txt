@@ -4,6 +4,15 @@ pic_scanner.core
 .. py:module:: pic_scanner.core
 
 
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/pic_scanner/core/cli/index
+
+
 Functions
 ---------
 

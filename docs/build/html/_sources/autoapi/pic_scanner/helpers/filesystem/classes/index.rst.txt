@@ -115,12 +115,6 @@ Module Contents
 
 .. py:class:: NeedsReprocessingTag(value: bool = False)
 
-   .. py:method:: __get__(instance, owner)
-
-
-   .. py:method:: __set__(instance, value)
-
-
 .. py:function:: get_lowest_unit_size(size: int) -> tuple[Union[int, float], str]
 
    Get the lowest unit size for a given size.
@@ -220,18 +214,6 @@ Module Contents
       :type:  dict
 
 
-   .. py:method:: __post_init__()
-
-      Post-initialization method for the FileCollection class.
-
-      This method processes the files in the collection. It calculates the total size of the collection, the total number
-      of files, and the total size of each extension in the collection. It populates the `total_size`, `total_files`, and
-      `extensions` attributes of the class.
-
-      :returns: None
-
-
-
    .. py:property:: needs_reprocessing
       :type: bool
 
@@ -243,18 +225,6 @@ Module Contents
 
       :returns:     True if the collection needs reprocessing, False otherwise.
       :rtype: bool
-
-
-   .. py:method:: _process_files()
-
-      Process the files in the collection.
-
-      This method processes the files in the collection. It calculates the total size of the collection, the total number
-      of files, and the total size of each extension in the collection. It populates the `total_size`, `total_files`, and
-      `extensions` attributes of the class.
-
-      :returns: None
-
 
 
    .. py:method:: reprocess_files()
@@ -327,15 +297,6 @@ Module Contents
       :raises KeyError: If the file is not in the collection.
 
       :returns: None
-
-
-
-   .. py:method:: __getitem__(key: Union[int, str]) -> Union[str, Dict[str, int]]
-
-
-   .. py:method:: __str__()
-
-      Return str(self).
 
 
 

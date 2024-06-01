@@ -431,21 +431,3 @@ Package Contents
    .. py:attribute:: description
 
 
-   .. py:method:: __str__()
-
-      Return a string representation of the concern.
-
-      :returns:     The string representation of the concern.
-      :rtype: str
-
-
-
-   .. py:method:: __repr__()
-
-      Return a string representation of the concern.
-
-      :returns:     The string representation of the concern.
-      :rtype: str
-
-
-

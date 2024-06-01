@@ -1,0 +1,6 @@
+pic_scanner.cli.subcommands.community
+=====================================
+
+.. py:module:: pic_scanner.cli.subcommands.community
+
+

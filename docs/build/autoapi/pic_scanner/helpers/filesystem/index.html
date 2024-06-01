@@ -51,6 +51,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../../index.html">pic_scanner</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="../../index.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="../../api/index.html">pic_scanner.api</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cli/index.html">pic_scanner.cli</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../common/index.html">pic_scanner.common</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/index.html">pic_scanner.core</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../download_scanner/index.html">pic_scanner.download_scanner</a></li>
@@ -60,6 +61,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../models/index.html">pic_scanner.models</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../index.html#submodules">Submodules</a></li>
 </ul>
 </li>
 </ul>
@@ -95,6 +97,32 @@
              
   <section id="module-pic_scanner.helpers.filesystem">
 <span id="pic-scanner-helpers-filesystem"></span><h1>pic_scanner.helpers.filesystem<a class="headerlink" href="#module-pic_scanner.helpers.filesystem" title="Link to this heading"></a></h1>
+<p>__init__.py</p>
+<p>The filesystem module provides functions for working with the filesystem.</p>
+<p>This module provides functions for checking if a path is valid, checking if a directory is valid, checking if a file is
+valid, provisioning a path, provisioning a list of paths, gathering files in a directory, and getting the abbreviation
+for a storage unit.</p>
+<dl class="simple">
+<dt>Functions:</dt><dd><dl class="simple">
+<dt>check_path:</dt><dd><p>Check if a path is valid.</p>
+</dd>
+<dt>check_directory:</dt><dd><p>Check if a directory is valid.</p>
+</dd>
+<dt>check_file:</dt><dd><p>Check if a file is valid.</p>
+</dd>
+<dt>provision_path:</dt><dd><p>Provision a path.</p>
+</dd>
+<dt>provision_paths:</dt><dd><p>Provision a list of paths.</p>
+</dd>
+<dt>gather_files_in_dir:</dt><dd><p>Gather all files in a directory.</p>
+</dd>
+<dt>get_storage_unit_abbreviation:</dt><dd><p>Get the abbreviation for a storage unit.</p>
+</dd>
+</dl>
+</dd>
+<dt>Since:</dt><dd><p>1.0</p>
+</dd>
+</dl>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 <div class="toctree-wrapper compound">
@@ -129,6 +157,13 @@
 <dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.check_path">
 <span class="sig-prename descclassname"><span class="pre">pic_scanner.helpers.filesystem.</span></span><span class="sig-name descname"><span class="pre">check_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_not_expand</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_not_resolve</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_not_convert</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_not_provision</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../../../../_modules/pic_scanner/helpers/filesystem.html#check_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.check_path" title="Link to this definition"></a></dt>
 <dd><p>Check if a path is valid.</p>
+<p>This function checks if a path is valid. If the path is a string, it will be converted to a Path object. If the path
+is not expanded, it will be expanded. If the path is not resolved, it will be resolved. If the path is not converted
+to a string, it will be converted to a string. If the path is not provisioned, it will be provisioned.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Provisioning a path involves converting it to a Path object, expanding it, and resolving it.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -152,9 +187,19 @@
 <dt class="sig sig-object py" id="pic_scanner.helpers.filesystem.check_directory">
 <span class="sig-prename descclassname"><span class="pre">pic_scanner.helpers.filesystem.</span></span><span class="sig-name descname"><span class="pre">check_directory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../../../../_modules/pic_scanner/helpers/filesystem.html#check_directory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.filesystem.check_directory" title="Link to this definition"></a></dt>
 <dd><p>Check if a directory is valid.</p>
+<p>This function checks if a directory is valid. If the path is a string, it will be converted to a Path object. If the
+path is not expanded, it will be expanded. If the path is not resolved, it will be resolved. If the path is not
+converted to a string, it will be converted to a string. If the path is not provisioned, it will be provisioned.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Provisioning a path involves converting it to a Path object, expanding it, and resolving it.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>path</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><em>Path</em><em>]</em>) – The directory to check.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><em>Path</em><em>]</em>) – The directory to check.</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A flag indicating whether the directory is valid.</p>

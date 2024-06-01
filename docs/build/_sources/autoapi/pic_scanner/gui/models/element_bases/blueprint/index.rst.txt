@@ -28,34 +28,92 @@ Module Contents
    attribute is True.
 
 
-   .. py:method:: __call__(*args, **kwargs)
+.. py:class:: BaseBlueprint(auto_build: bool = False)
 
-      Call self as a function.
+   A base class for building blueprints.
 
+   This class is used to create blueprints for building GUI elements. A blueprint is a set of
+   instructions that are used to build a GUI element.
 
+   Properties:
 
-.. py:class:: BaseBlueprint(auto_build=False)
+       auto_build (bool):
+           A boolean value that determines whether the class should automatically build itself when
+           instantiated.
+
+       building (bool):
+           A boolean value that determines whether the class is currently building itself.
+
+       is_built (bool):
+           A boolean value that determines whether the class has been built.
+
+       layout (list):
+           A list of elements that make up the layout of the class.
+
+   .. method:: build()
+
+      
+      An abstract method that builds the class.
+      
+
 
    .. py:property:: auto_build
+      Returns the value of the `auto_build` attribute.
+
+      The `auto_build` attribute is a boolean value that determines whether the class should
+      automatically build itself when instantiated.
+
+      :returns:     The value of the `auto_build` attribute.
+      :rtype: bool
 
 
    .. py:property:: building
+      Returns the value of the `building` attribute.
+
+      The `building` attribute is a boolean value that determines whether the class is currently building
+      itself.
+
+      :returns:     The value of the `building` attribute.
+      :rtype: bool
 
 
    .. py:method:: building()
 
+      Deletes the `building` attribute.
 
-   .. py:property:: _built
+      This method sets the `building` attribute to `False`.
+
+      :returns: None
+
 
 
    .. py:property:: is_built
+      Returns the value of the `is_built` attribute.
+
+      The `is_built` attribute is a boolean value that determines whether the class has been built.
+
+      :returns:     The value of the `is_built` attribute.
+      :rtype: bool
 
 
    .. py:property:: layout
+      Returns the value of the `layout` attribute.
+
+      The `layout` attribute is a list of elements that make up the layout of the class.
+
+      :returns:     The value of the `layout` attribute.
+      :rtype: list
 
 
    .. py:method:: build()
       :abstractmethod:
+
+
+      An abstract method that builds the class.
+
+      This method is called to build the class by creating and must be implemented by subclasses.
+
+      :returns: None
 
 
 

@@ -28,12 +28,6 @@ Module Contents
    attribute is True.
 
 
-   .. py:method:: __call__(*args, **kwargs)
-
-      Call self as a function.
-
-
-
 .. py:class:: BaseBlueprint(auto_build: bool = False)
 
    A base class for building blueprints.
@@ -91,15 +85,6 @@ Module Contents
 
       :returns: None
 
-
-
-   .. py:property:: _built
-      Returns the value of the `_built` attribute.
-
-      The `_built` attribute is a boolean value that determines whether the class has been built.
-
-      :returns:     The value of the `_built` attribute.
-      :rtype: bool
 
 
    .. py:property:: is_built

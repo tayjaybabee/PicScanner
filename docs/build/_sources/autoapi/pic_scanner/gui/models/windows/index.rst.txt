@@ -22,3 +22,19 @@ Submodules
    /autoapi/pic_scanner/gui/models/windows/template/index
 
 
+Attributes
+----------
+
+.. autoapisummary::
+
+   pic_scanner.gui.models.windows.PARENT_LOGGER
+   pic_scanner.gui.models.windows.MOD_LOGGER
+
+
+Package Contents
+----------------
+
+.. py:data:: PARENT_LOGGER
+
+.. py:data:: MOD_LOGGER
+

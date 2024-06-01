@@ -1,0 +1,60 @@
+pic_scanner.gui.helpers
+=======================
+
+.. py:module:: pic_scanner.gui.helpers
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   pic_scanner.gui.helpers.format_button_key
+
+
+Module Contents
+---------------
+
+.. py:function:: format_button_key(text: str, skip_space_replacement=False, replace_spaces_with='_', skip_uppercase_conversion=False, skip_suffix=False, suffix='button') -> str
+
+   Format a button key based on the provided text.
+
+   The function will optionally perform the following actions:
+       - Replace spaces in the string with a specified character (default is '_')
+       - Convert the text to uppercase
+       - Append a suffix to the text (default is 'button')
+
+   :param text: The text to format.
+   :type text: str
+   :param skip_space_replacement: Whether to skip replacing spaces in the text. Default is False.
+   :type skip_space_replacement: bool
+   :param replace_spaces_with: The character to replace spaces with. Default is '_'.
+   :type replace_spaces_with: str
+   :param skip_uppercase_conversion: Whether to skip converting the text to uppercase. Default is False.
+   :type skip_uppercase_conversion: bool
+   :param skip_suffix: Whether to skip appending a suffix to the text. Default is False.
+   :type skip_suffix: bool
+   :param suffix: The suffix to append to the text. Default is 'button'.
+   :type suffix: str
+
+   :returns:     The formatted button key.
+   :rtype: str
+
+   .. rubric:: Examples
+
+   >>> format_button_key('My Button')
+   'MY_BUTTON_BUTTON'
+
+   >>> format_button_key('My Button', skip_suffix=True)
+   'MY_BUTTON'
+
+   >>> format_button_key('My Button', skip_uppercase_conversion=True)
+   'My_button'
+
+   >>> format_button_key('My Button', skip_space_replacement=True)
+   'MY BUTTON button'
+
+   >>> format_button_key('My Button', replace_spaces_with='-')
+   'MY-BUTTON_button'
+
+

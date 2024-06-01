@@ -5,7 +5,7 @@ Subpackages
 -----------
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 8
 
    pic_scanner.gui.models.windows.main.blueprint
 
@@ -16,8 +16,3 @@ Module contents
    :members:
    :undoc-members:
    :show-inheritance:
-
-   .. autoclass:: pic_scanner.gui.models.windows.main.MainWindow
-      :members:
-      :undoc-members:
-      :show-inheritance:

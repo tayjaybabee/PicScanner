@@ -20,6 +20,7 @@ Attributes
 
    pic_scanner.gui.models.windows.main.PARENT_LOGGER
    pic_scanner.gui.models.windows.main.MOD_LOGGER
+   pic_scanner.gui.models.windows.main.Window
 
 
 Classes
@@ -27,8 +28,6 @@ Classes
 
 .. autoapisummary::
 
-   pic_scanner.gui.models.windows.main.BluePrint
-   pic_scanner.gui.models.windows.main.Window
    pic_scanner.gui.models.windows.main.MainWindow
 
 
@@ -38,271 +37,11 @@ Functions
 .. autoapisummary::
 
    pic_scanner.gui.models.windows.main.flag_lock
+   pic_scanner.gui.models.windows.main.make_window_template
 
 
 Package Contents
 ----------------
-
-.. py:class:: BluePrint(file_collection: pic_scanner.helpers.filesystem.classes.FileCollection, pre_built_left_column=None, pre_built_file_column=None, **kwargs)
-
-   Bases: :py:obj:`pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint`, :py:obj:`pic_scanner.log_engine.Loggable`
-
-
-   A base class for building blueprints.
-
-   This class is used to create blueprints for building GUI elements. A blueprint is a set of
-   instructions that are used to build a GUI element.
-
-   Properties:
-
-       auto_build (bool):
-           A boolean value that determines whether the class should automatically build itself when
-           instantiated.
-
-       building (bool):
-           A boolean value that determines whether the class is currently building itself.
-
-       is_built (bool):
-           A boolean value that determines whether the class has been built.
-
-       layout (list):
-           A list of elements that make up the layout of the class.
-
-   .. method:: build()
-
-      
-      An abstract method that builds the class.
-      
-
-
-   .. py:attribute:: __left_column
-
-
-   .. py:attribute:: __file_column
-
-
-   .. py:attribute:: __file_collection_cursor
-
-
-   .. py:property:: building
-      Returns the value of the `building` attribute.
-
-      The `building` attribute is a boolean value that determines whether the class is currently building
-      itself.
-
-      :returns:     The value of the `building` attribute.
-      :rtype: bool
-
-
-   .. py:method:: building()
-
-      Returns the value of the `building` attribute.
-
-      The `building` attribute is a boolean value that determines whether the class is currently building
-      itself.
-
-      :returns:     The value of the `building` attribute.
-      :rtype: bool
-
-
-
-   .. py:property:: file_collection
-
-
-   .. py:property:: file_collection_cursor
-
-
-   .. py:property:: file_column
-      A property that returns the file column.
-
-      The file column is the column that displays the image in the GUI representation of the blueprint. This is the
-      right column in the blueprint layout. This property is a RestrictedSetter, and can only be set to an instance of
-      FileColumn. The initial value is None.
-
-      :returns:     The file column.
-      :rtype: FileColumn
-
-
-   .. py:property:: left_column
-      A property that returns the left column.
-
-      :returns:     The left column.
-      :rtype: LeftColumn
-
-
-   .. py:method:: build()
-
-      Build the blueprint layout.
-
-      :returns:     The layout of the blueprint.
-      :rtype: list
-
-
-
-   .. py:method:: change_image(new_image)
-
-      Change the image in the file column.
-
-      This method changes the image in the image element of the file column to the new image provided. The new image
-      must be a path to an image file. This method is used to change the image displayed in the GUI when the user
-      navigates through the images in the file collection. This method is called by the blueprint controller when the
-      user changes the image.
-
-      Parameters::
-          new_image:
-              The new image to display in the file column.
-
-      :returns: None
-
-
-
-   .. py:method:: current_image()
-
-      Get the current image.
-
-      This method returns the path to the current image in the file column. This is the image that is currently
-      displayed in the GUI. This method is used by the blueprint controller to determine which image is currently
-      displayed in the GUI. This method is called by the blueprint controller when the user changes the image. The
-      blueprint controller uses this method to determine the current image. The blueprint controller then uses this
-      information to update the current image in the GUI.
-
-      :returns:     The path to the current image.
-      :rtype: str
-
-
-
-   .. py:method:: next_image()
-
-      Get the next image.
-
-      This method moves the cursor to the next image in the file collection and returns the path to that image. This
-      method is used by the blueprint controller to move the cursor to the next image in the file collection. This
-      method is called by the blueprint controller when the user clicks the 'Next' button in the GUI. The blueprint
-      controller uses this method to move the cursor to the next image in the file collection. The blueprint controller
-      then uses this information to update the current image in the GUI.
-
-      :returns:     The path to the next image.
-      :rtype: str
-
-
-
-   .. py:method:: update_image()
-
-
-.. py:class:: Window(auto_build=False, auto_run=False, title=None, blueprint: Optional[pic_scanner.BluePrint] = None, blueprint_args: Optional[dict] = None)
-
-   Bases: :py:obj:`inspy_logger.Loggable`
-
-
-   A metaclass to enhance classes with logging capabilities. Classes that inherit from
-   'Loggable' can instantly access a logger without manually setting it up. This logger
-   is derived from a parent logger, ensuring consistent logging behavior and hierarchy.
-
-   .. attribute:: - log_device
-
-      The logger device associated with the instance of the class.
-
-
-   .. py:property:: blueprint
-
-
-   .. py:method:: build()
-      :abstractmethod:
-
-
-      Builds the window.
-
-      :returns: None
-
-
-
-   .. py:property:: event_handler
-
-
-   .. py:method:: close()
-
-      Closes the window.
-
-      :returns: None
-
-
-
-   .. py:method:: run()
-
-      Runs the window.
-
-      :returns: None
-
-
-
-   .. py:property:: auto_build
-      Returns the value of the `auto_build` attribute.
-
-      :returns:     The value of the `auto_build` attribute.
-      :rtype: bool
-
-
-   .. py:property:: auto_run
-      Returns the value of the `auto_run` attribute.
-
-      :returns:     The value of the `auto_run` attribute.
-      :rtype: bool
-
-
-   .. py:property:: is_built
-      Returns the value of the `built` attribute.
-
-      :returns:     The value of the `built` attribute.
-      :rtype: bool
-
-
-   .. py:property:: building
-      Returns the value of the `building` attribute.
-
-      :returns:     The value of the `building` attribute.
-      :rtype: bool
-
-
-   .. py:method:: is_built()
-
-      Deletes the `built` attribute.
-
-      :returns: None
-
-
-
-   .. py:property:: _built
-
-
-   .. py:property:: closed
-      Returns the value of the `closed` attribute.
-
-      :returns:     The value of the `closed` attribute.
-      :rtype: bool
-
-
-   .. py:property:: layout
-      Returns the value of the `layout` attribute.
-
-      :returns:     The value of the `layout` attribute.
-      :rtype: list
-
-
-   .. py:property:: running
-      Returns the value of the `running` attribute.
-
-      :returns:     The value of the `running` attribute.
-      :rtype: bool
-
-
-   .. py:property:: title
-
-
-   .. py:property:: window
-
-
-   .. py:property:: _window
-
 
 .. py:function:: flag_lock(instance, flag_name)
 
@@ -334,9 +73,13 @@ Package Contents
 
 .. py:data:: MOD_LOGGER
 
+.. py:function:: make_window_template()
+
+.. py:data:: Window
+
 .. py:class:: MainWindow(*args, **kwargs)
 
-   Bases: :py:obj:`pic_scanner.gui.models.windows.template.Window`, :py:obj:`pic_scanner.log_engine.Loggable`
+   Bases: :py:obj:`Window`, :py:obj:`pic_scanner.log_engine.Loggable`
 
 
    A metaclass to enhance classes with logging capabilities. Classes that inherit from
@@ -360,9 +103,6 @@ Package Contents
       .. attribute:: - log_device
 
          The logger device associated with the instance of the class.
-
-
-      .. py:method:: __call__(event, values)
 
 
       .. py:property:: announced_start

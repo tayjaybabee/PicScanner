@@ -13,4 +13,17 @@ def load_modules():
 
 def main():
     # Load core modules
-    import pic_scanner.cli.subcommands
+    import pic_scanner.cli.subcommands.core.version_info
+
+    # Load community modules
+    load_modules()
+
+    args = REGISTRY.parser.parse_args()
+    if args.command is None:
+        REGISTRY.parser.print_help()
+    else:
+        args.func(args)
+
+
+if __name__ == '__main__':
+    main()

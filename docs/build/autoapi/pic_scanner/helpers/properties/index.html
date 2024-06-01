@@ -51,6 +51,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../../index.html">pic_scanner</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="../../index.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="../../api/index.html">pic_scanner.api</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cli/index.html">pic_scanner.cli</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../common/index.html">pic_scanner.common</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/index.html">pic_scanner.core</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../download_scanner/index.html">pic_scanner.download_scanner</a></li>
@@ -60,6 +61,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../models/index.html">pic_scanner.models</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../index.html#submodules">Submodules</a></li>
 </ul>
 </li>
 </ul>
@@ -124,21 +126,6 @@
 <dt class="sig sig-object py" id="pic_scanner.helpers.properties.ReactiveProperty">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pic_scanner.helpers.properties.</span></span><span class="sig-name descname"><span class="pre">ReactiveProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">default_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pic_scanner/helpers/properties.html#ReactiveProperty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.properties.ReactiveProperty" title="Link to this definition"></a></dt>
 <dd><dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.helpers.properties.ReactiveProperty.__set_name__">
-<span class="sig-name descname"><span class="pre">__set_name__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">owner</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pic_scanner/helpers/properties.html#ReactiveProperty.__set_name__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.properties.ReactiveProperty.__set_name__" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.helpers.properties.ReactiveProperty.__get__">
-<span class="sig-name descname"><span class="pre">__get__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">owner</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pic_scanner/helpers/properties.html#ReactiveProperty.__get__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.properties.ReactiveProperty.__get__" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.helpers.properties.ReactiveProperty.__set__">
-<span class="sig-name descname"><span class="pre">__set__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pic_scanner/helpers/properties.html#ReactiveProperty.__set__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.properties.ReactiveProperty.__set__" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="pic_scanner.helpers.properties.ReactiveProperty.add_callback">
 <span class="sig-name descname"><span class="pre">add_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pic_scanner/helpers/properties.html#ReactiveProperty.add_callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.properties.ReactiveProperty.add_callback" title="Link to this definition"></a></dt>
 <dd></dd></dl>
@@ -163,55 +150,6 @@ the property has not been set. This can be useful for defining default values fo
 <li><p>If <cite>allowed_values</cite> is specified, the value must be in the set of allowed values for the property to be set. If the value is not in the set, a <cite>ValueError</cite> will be raised.</p></li>
 <li><p>If <cite>restrict_setter</cite> is set to <cite>True</cite>, the setter can only be called within class methods. If the setter is called outside of class methods, a <cite>PermissionError</cite> will be raised.</p></li>
 </ul>
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.helpers.properties.FrozenProperty.__get__">
-<span class="sig-name descname"><span class="pre">__get__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">owner</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pic_scanner/helpers/properties.html#FrozenProperty.__get__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.properties.FrozenProperty.__get__" title="Link to this definition"></a></dt>
-<dd><p>Retrieves the value of the property.</p>
-<p>This method is a getter for the property, returning its current value. If the property has not been set,
-it returns the initial value specified during the creation of the <cite>RestrictedSetter</cite> instance.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>obj</strong> (<em>object</em>) – The instance of the class whose property is being retrieved.</p></li>
-<li><p><strong>obj_type</strong> (<em>type</em><em>, </em><em>optional</em>) – The type of the object. This parameter is not used but is part of the descriptor protocol.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The current value of the property.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.helpers.properties.FrozenProperty.__set__">
-<span class="sig-name descname"><span class="pre">__set__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pic_scanner/helpers/properties.html#FrozenProperty.__set__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.properties.FrozenProperty.__set__" title="Link to this definition"></a></dt>
-<dd><p>Sets the value of the property, enforcing any restrictions.</p>
-<p>This method acts as a setter for the property, applying the defined restrictions such as type checking,
-value restrictions, and custom conditions. If any restriction is violated, an appropriate exception is raised.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>obj</strong> (<em>object</em>) – The instance of the class whose property is being set.</p></li>
-<li><p><strong>value</strong> (<em>Any</em>) – The new value for the property.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>PermissionError</strong> – If the setter is called outside-of class methods when <cite>restrict_setter</cite> is True.</p></li>
-<li><p><strong>ValueError</strong> – If the provided value is not in the <cite>allowed_values</cite> set.</p></li>
-<li><p><strong>PermissionError</strong> – If a custom <cite>condition</cite> is not satisfied.</p></li>
-<li><p><strong>TypeError</strong> – If the provided value is not of an allowed type.</p></li>
-<li><p><strong>Any exception specified by the exception attribute</strong><strong>,</strong> – if the custom condition fails.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.helpers.properties.FrozenProperty.__set_name__">
-<span class="sig-name descname"><span class="pre">__set_name__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">owner</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pic_scanner/helpers/properties.html#FrozenProperty.__set_name__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.properties.FrozenProperty.__set_name__" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="py function">

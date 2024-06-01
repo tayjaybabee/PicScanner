@@ -26,15 +26,6 @@ Module Contents
 
 .. py:class:: ReactiveProperty(default_value=None, callback=None, *args, **kwargs)
 
-   .. py:method:: __set_name__(owner, name)
-
-
-   .. py:method:: __get__(instance, owner)
-
-
-   .. py:method:: __set__(instance, value)
-
-
    .. py:method:: add_callback(callback, *args, **kwargs)
 
 
@@ -63,45 +54,6 @@ Module Contents
    - If `allowed_values` is specified, the value must be in the set of allowed values for the property to be set. If the value is not in the set, a `ValueError` will be raised.
 
    - If `restrict_setter` is set to `True`, the setter can only be called within class methods. If the setter is called outside of class methods, a `PermissionError` will be raised.
-
-
-   .. py:method:: __get__(instance, owner)
-
-      Retrieves the value of the property.
-
-      This method is a getter for the property, returning its current value. If the property has not been set,
-      it returns the initial value specified during the creation of the `RestrictedSetter` instance.
-
-      :param obj: The instance of the class whose property is being retrieved.
-      :type obj: object
-      :param obj_type: The type of the object. This parameter is not used but is part of the descriptor protocol.
-      :type obj_type: type, optional
-
-      :returns: The current value of the property.
-
-
-
-   .. py:method:: __set__(instance, value)
-
-      Sets the value of the property, enforcing any restrictions.
-
-      This method acts as a setter for the property, applying the defined restrictions such as type checking,
-      value restrictions, and custom conditions. If any restriction is violated, an appropriate exception is raised.
-
-      :param obj: The instance of the class whose property is being set.
-      :type obj: object
-      :param value: The new value for the property.
-      :type value: Any
-
-      :raises PermissionError: If the setter is called outside-of class methods when `restrict_setter` is True.
-      :raises ValueError: If the provided value is not in the `allowed_values` set.
-      :raises PermissionError: If a custom `condition` is not satisfied.
-      :raises TypeError: If the provided value is not of an allowed type.
-      :raises Any exception specified by the `exception` attribute,: if the custom condition fails.
-
-
-
-   .. py:method:: __set_name__(owner, name)
 
 
 .. py:function:: freeze_property(cls)

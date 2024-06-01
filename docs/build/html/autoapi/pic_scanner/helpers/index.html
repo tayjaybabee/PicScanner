@@ -23,7 +23,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="pic_scanner.helpers.filesystem" href="filesystem/index.html" />
-    <link rel="prev" title="pic_scanner.gui.models.windows.template" href="../gui/models/windows/template/index.html" /> 
+    <link rel="prev" title="pic_scanner.gui.helpers" href="../gui/helpers/index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -51,6 +51,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">pic_scanner</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="../index.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="../api/index.html">pic_scanner.api</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cli/index.html">pic_scanner.cli</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../common/index.html">pic_scanner.common</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../core/index.html">pic_scanner.core</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../download_scanner/index.html">pic_scanner.download_scanner</a></li>
@@ -60,6 +61,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../models/index.html">pic_scanner.models</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../index.html#submodules">Submodules</a></li>
 </ul>
 </li>
 </ul>
@@ -246,22 +248,48 @@ A list of valid image extensions.</p>
 </dl>
 </dd>
 </dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paths</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>)</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="pic_scanner.helpers.FileCollection.get_total_size_in_lowest_unit">
 <span class="sig-name descname"><span class="pre">get_total_size_in_lowest_unit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.get_total_size_in_lowest_unit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.FileCollection.get_total_size_in_lowest_unit" title="Link to this definition"></a></dt>
 <dd><p>Get the total size of the collection in the lowest unit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[Union[int, float], str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pic_scanner.helpers.FileCollection.get_total_extension_size_in_lowest_unit">
 <span class="sig-name descname"><span class="pre">get_total_extension_size_in_lowest_unit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.get_total_extension_size_in_lowest_unit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.FileCollection.get_total_extension_size_in_lowest_unit" title="Link to this definition"></a></dt>
 <dd><p>Get the total size of a specific extension in the lowest unit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>extension</strong> (<em>str</em>)</p></li>
+<li><p><strong>return_as_string</strong> (<em>bool</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[Union[int, float], str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pic_scanner.helpers.FileCollection.remove_file">
 <span class="sig-name descname"><span class="pre">remove_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.remove_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.FileCollection.remove_file" title="Link to this definition"></a></dt>
 <dd><p>Remove a file from the collection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>Union</em><em>[</em><em>pathlib.Path</em><em>, </em><em>str</em><em>]</em>)</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -296,20 +324,6 @@ A list of valid image extensions.</p>
 <span class="sig-name descname"><span class="pre">extensions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#pic_scanner.helpers.FileCollection.extensions" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.helpers.FileCollection.__post_init__">
-<span class="sig-name descname"><span class="pre">__post_init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.__post_init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.FileCollection.__post_init__" title="Link to this definition"></a></dt>
-<dd><p>Post-initialization method for the FileCollection class.</p>
-<p>This method processes the files in the collection. It calculates the total size of the collection, the total number
-of files, and the total size of each extension in the collection. It populates the <cite>total_size</cite>, <cite>total_files</cite>, and
-<cite>extensions</cite> attributes of the class.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.helpers.FileCollection.needs_reprocessing">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">needs_reprocessing</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#pic_scanner.helpers.FileCollection.needs_reprocessing" title="Link to this definition"></a></dt>
@@ -323,20 +337,6 @@ it will return <cite>False</cite>. The property is read-only.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.helpers.FileCollection._process_files">
-<span class="sig-name descname"><span class="pre">_process_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection._process_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.FileCollection._process_files" title="Link to this definition"></a></dt>
-<dd><p>Process the files in the collection.</p>
-<p>This method processes the files in the collection. It calculates the total size of the collection, the total number
-of files, and the total size of each extension in the collection. It populates the <cite>total_size</cite>, <cite>total_files</cite>, and
-<cite>extensions</cite> attributes of the class.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -430,17 +430,6 @@ of files, and total size of each extension.</p>
 <dd class="field-odd"><p>None</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.helpers.FileCollection.__getitem__">
-<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.__getitem__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.FileCollection.__getitem__" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.helpers.FileCollection.__str__">
-<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.__str__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.helpers.FileCollection.__str__" title="Link to this definition"></a></dt>
-<dd><p>Return str(self).</p>
 </dd></dl>
 
 </dd></dl>
@@ -611,7 +600,7 @@ directory will be excluded.</strong></p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../gui/models/windows/template/index.html" class="btn btn-neutral float-left" title="pic_scanner.gui.models.windows.template" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../gui/helpers/index.html" class="btn btn-neutral float-left" title="pic_scanner.gui.helpers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="filesystem/index.html" class="btn btn-neutral float-right" title="pic_scanner.helpers.filesystem" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

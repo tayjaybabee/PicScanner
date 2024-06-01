@@ -1,0 +1,51 @@
+pic_scanner.cli.subcommands.registry
+====================================
+
+.. py:module:: pic_scanner.cli.subcommands.registry
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   pic_scanner.cli.subcommands.registry.PROG_NAME
+   pic_scanner.cli.subcommands.registry.AUTHORS
+   pic_scanner.cli.subcommands.registry.PROG_DESC
+   pic_scanner.cli.subcommands.registry.REGISTRY
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   pic_scanner.cli.subcommands.registry.Registry
+
+
+Module Contents
+---------------
+
+.. py:data:: PROG_NAME
+   :value: 'IS-NSFW-Scanner'
+
+
+   The name of the program.
+
+.. py:data:: AUTHORS
+
+   The authors of the project.
+
+.. py:data:: PROG_DESC
+   :value: 'A tool for scanning (and managing) images for NSFW content.'
+
+
+   The description of the program.
+
+.. py:class:: Registry
+
+   .. py:method:: register_subcommand(name, help_text, handler, arguments)
+
+
+.. py:data:: REGISTRY
+

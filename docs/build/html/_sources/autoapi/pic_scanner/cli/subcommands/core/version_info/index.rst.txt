@@ -1,0 +1,61 @@
+pic_scanner.cli.subcommands.core.version_info
+=============================================
+
+.. py:module:: pic_scanner.cli.subcommands.core.version_info
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   pic_scanner.cli.subcommands.core.version_info.REGISTRY
+   pic_scanner.cli.subcommands.core.version_info.CONSOLE
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   pic_scanner.cli.subcommands.core.version_info.check_pypi_package_version
+   pic_scanner.cli.subcommands.core.version_info.get_package_info
+   pic_scanner.cli.subcommands.core.version_info.handle_version_update
+   pic_scanner.cli.subcommands.core.version_info.handle_version_info
+
+
+Module Contents
+---------------
+
+.. py:data:: REGISTRY
+
+.. py:data:: CONSOLE
+
+.. py:function:: check_pypi_package_version(package_name, include_prereleases=False)
+
+   Check if a package is available on PyPi and retrieve its latest version.
+
+   :param package_name: The name of the package to check.
+   :type package_name: str
+   :param include_prereleases: Whether to include pre-releases in the version check.
+   :type include_prereleases: bool
+
+   :returns: The latest version of the package if it exists, otherwise None.
+   :rtype: str
+
+
+.. py:function:: get_package_info(package_name)
+
+   Get version and license information for a given package.
+
+   :param package_name: The name of the package to check.
+   :type package_name: str
+
+   :returns: A dictionary with version and license information.
+   :rtype: dict
+
+
+.. py:function:: handle_version_update(args)
+
+.. py:function:: handle_version_info(args)
+

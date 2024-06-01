@@ -5,7 +5,7 @@ Subpackages
 -----------
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 8
 
    pic_scanner.gui.models.element_bases
    pic_scanner.gui.models.windows

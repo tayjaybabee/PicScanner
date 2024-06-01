@@ -48,6 +48,15 @@ autodoc_member_order = 'alphabetical'
 
 autoapi_dirs = ['../../pic_scanner']
 autoapi_type = 'python'
+autoapi_options = [
+        'members',
+        'undoc-members',
+        'show-inheritance',
+        'show-module-summary',
+        'imported-members'
+        ]
+
+autodoc_typehints = 'both'
 
 
 exclude_patterns = []

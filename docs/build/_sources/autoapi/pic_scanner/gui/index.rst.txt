@@ -13,3 +13,28 @@ Subpackages
    /autoapi/pic_scanner/gui/models/index
 
 
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/pic_scanner/gui/helpers/index
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   pic_scanner.gui.ROOT_LOGGER
+   pic_scanner.gui.MOD_LOGGER
+
+
+Package Contents
+----------------
+
+.. py:data:: ROOT_LOGGER
+
+.. py:data:: MOD_LOGGER
+

@@ -13,6 +13,15 @@ Subpackages
    /autoapi/pic_scanner/gui/models/index
 
 
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/pic_scanner/gui/helpers/index
+
+
 Attributes
 ----------
 

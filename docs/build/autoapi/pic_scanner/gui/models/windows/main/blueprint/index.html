@@ -51,6 +51,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../../../../../index.html">pic_scanner</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="../../../../../index.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="../../../../../api/index.html">pic_scanner.api</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../cli/index.html">pic_scanner.cli</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../../common/index.html">pic_scanner.common</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../../core/index.html">pic_scanner.core</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../../download_scanner/index.html">pic_scanner.download_scanner</a></li>
@@ -60,6 +61,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../../../models/index.html">pic_scanner.models</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../index.html#submodules">Submodules</a></li>
 </ul>
 </li>
 </ul>
@@ -106,27 +108,40 @@
 </ul>
 </div>
 </section>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pic_scanner.gui.models.windows.main.blueprint.PARENT_LOGGER" title="pic_scanner.gui.models.windows.main.blueprint.PARENT_LOGGER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PARENT_LOGGER</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pic_scanner.gui.models.windows.main.blueprint.MOD_LOGGER" title="pic_scanner.gui.models.windows.main.blueprint.MOD_LOGGER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MOD_LOGGER</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h2>
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#pic_scanner.gui.models.windows.main.blueprint.FileCollection" title="pic_scanner.gui.models.windows.main.blueprint.FileCollection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FileCollection</span></code></a></p></td>
-<td><p></p></td>
+<td><p>A class for managing a collection of files.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#pic_scanner.gui.models.windows.main.blueprint.LeftColumn" title="pic_scanner.gui.models.windows.main.blueprint.LeftColumn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LeftColumn</span></code></a></p></td>
-<td><p></p></td>
+<td><p>A class that represents the left column of the main window.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#pic_scanner.gui.models.windows.main.blueprint.FileColumn" title="pic_scanner.gui.models.windows.main.blueprint.FileColumn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FileColumn</span></code></a></p></td>
-<td><p></p></td>
+<td><p>A class for building a PySimpleGUI Column.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#pic_scanner.gui.models.windows.main.blueprint.BaseBlueprint" title="pic_scanner.gui.models.windows.main.blueprint.BaseBlueprint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseBlueprint</span></code></a></p></td>
-<td><p></p></td>
+<td><p>A base class for building blueprints.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#pic_scanner.gui.models.windows.main.blueprint.GUIFileCollection" title="pic_scanner.gui.models.windows.main.blueprint.GUIFileCollection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GUIFileCollection</span></code></a></p></td>
 <td><p>A class to manage a collection of files with a cursor to navigate through them.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../../../../../../../pic_scanner.gui.models.windows.main.blueprint.html#pic_scanner.gui.models.windows.main.blueprint.BluePrint" title="pic_scanner.gui.models.windows.main.blueprint.BluePrint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BluePrint</span></code></a></p></td>
-<td><p></p></td>
+<td><p>A base class for building blueprints.</p></td>
 </tr>
 </tbody>
 </table>
@@ -177,8 +192,80 @@ and reset it to False when exiting the context.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.FileCollection">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pic_scanner.gui.models.windows.main.blueprint.</span></span><span class="sig-name descname"><span class="pre">FileCollection</span></span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.FileCollection" title="Link to this definition"></a></dt>
-<dd><dl class="py attribute">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pic_scanner.gui.models.windows.main.blueprint.</span></span><span class="sig-name descname"><span class="pre">FileCollection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paths</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.FileCollection" title="Link to this definition"></a></dt>
+<dd><p>A class for managing a collection of files.</p>
+<dl class="simple">
+<dt>Properties:</dt><dd><dl class="simple">
+<dt>paths (list):</dt><dd><p>A list of file paths.</p>
+</dd>
+<dt>total_size (int):</dt><dd><p>The total size of the collection, in bytes.</p>
+</dd>
+<dt>total_files (int):</dt><dd><p>The total number of files in the collection.</p>
+</dd>
+<dt>extensions (dict):</dt><dd><p>A dictionary of extensions with properties for total size and number of files.</p>
+</dd>
+<dt>needs_reprocessing (bool):</dt><dd><p>A flag indicating whether the collection needs reprocessing.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paths</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.FileCollection.get_total_size_in_lowest_unit">
+<span class="sig-name descname"><span class="pre">get_total_size_in_lowest_unit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.get_total_size_in_lowest_unit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.FileCollection.get_total_size_in_lowest_unit" title="Link to this definition"></a></dt>
+<dd><p>Get the total size of the collection in the lowest unit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[Union[int, float], str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.FileCollection.get_total_extension_size_in_lowest_unit">
+<span class="sig-name descname"><span class="pre">get_total_extension_size_in_lowest_unit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.get_total_extension_size_in_lowest_unit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.FileCollection.get_total_extension_size_in_lowest_unit" title="Link to this definition"></a></dt>
+<dd><p>Get the total size of a specific extension in the lowest unit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>extension</strong> (<em>str</em>)</p></li>
+<li><p><strong>return_as_string</strong> (<em>bool</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[Union[int, float], str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.FileCollection.remove_file">
+<span class="sig-name descname"><span class="pre">remove_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.remove_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.FileCollection.remove_file" title="Link to this definition"></a></dt>
+<dd><p>Remove a file from the collection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>Union</em><em>[</em><em>pathlib.Path</em><em>, </em><em>str</em><em>]</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.FileCollection.reprocess_files">
+<span class="sig-name descname"><span class="pre">reprocess_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.reprocess_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.FileCollection.reprocess_files" title="Link to this definition"></a></dt>
+<dd><p>Reprocess the files in the collection.</p>
+</dd></dl>
+
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">collection</span> <span class="o">=</span> <span class="n">FileCollection</span><span class="p">(</span><span class="n">paths</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;/path/to/file1&#39;</span><span class="p">,</span> <span class="s1">&#39;/path/to/file2&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collection</span><span class="o">.</span><span class="n">total_size</span>
+<span class="go">123456  # Total size of the collection, in bytes.</span>
+</pre></div>
+</div>
+<dl class="py attribute">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.FileCollection.paths">
 <span class="sig-name descname"><span class="pre">paths</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.FileCollection.paths" title="Link to this definition"></a></dt>
 <dd></dd></dl>
@@ -198,35 +285,112 @@ and reset it to False when exiting the context.</p>
 <span class="sig-name descname"><span class="pre">extensions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.FileCollection.extensions" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.FileCollection.__post_init__">
-<span class="sig-name descname"><span class="pre">__post_init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.__post_init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.FileCollection.__post_init__" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.FileCollection.needs_reprocessing">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">needs_reprocessing</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.FileCollection.needs_reprocessing" title="Link to this definition"></a></dt>
+<dd><p>Returns whether the collection needs reprocessing.</p>
+<p>This property returns a boolean value indicating whether the collection needs reprocessing. If the collection has
+been modified since the last processing, this property will return <cite>True</cite>. If the collection has not been modified,
+it will return <cite>False</cite>. The property is read-only.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the collection needs reprocessing, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.FileCollection._process_files">
-<span class="sig-name descname"><span class="pre">_process_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection._process_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.FileCollection._process_files" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">reprocess_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.reprocess_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dd><p>Reprocess the files in the collection.</p>
+<p>This method reprocesses the files in the collection. It recalculates the total size of the collection, the total
+number of files, and the total size of each extension in the collection. It populates the <cite>total_size</cite>, <cite>total_files</cite>,
+and <cite>extensions</cite> attributes of the class. This method is used to update the collection after files have been added
+or removed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method should be called after files have been added or removed from the collection. It will only reprocess
+the files if the <cite>needs_reprocessing</cite> attribute is set to <cite>True</cite>. After reprocessing, the <cite>needs_reprocessing</cite>
+attribute will be set to <cite>False</cite>.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.FileCollection.get_total_size_in_lowest_unit">
-<span class="sig-name descname"><span class="pre">get_total_size_in_lowest_unit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.get_total_size_in_lowest_unit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.FileCollection.get_total_size_in_lowest_unit" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">get_total_size_in_lowest_unit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.get_total_size_in_lowest_unit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id1" title="Link to this definition"></a></dt>
+<dd><p>Get the total size of the collection in the lowest unit with a size greater than or equal to 1.</p>
+<p>This method calculates the total size of the collection in the lowest unit with a size greater than or equal
+to 1. It returns the size and the unit as a tuple. The unit is a string representing the unit of the size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The total size of the collection and the unit.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[Union[int, float], str]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.FileCollection.get_total_extension_size_in_lowest_unit">
-<span class="sig-name descname"><span class="pre">get_total_extension_size_in_lowest_unit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extension</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_as_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.get_total_extension_size_in_lowest_unit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.FileCollection.get_total_extension_size_in_lowest_unit" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">get_total_extension_size_in_lowest_unit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extension</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_as_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.get_total_extension_size_in_lowest_unit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id2" title="Link to this definition"></a></dt>
+<dd><p>Get the total size of a specific extension in the lowest unit with a size greater than or equal to 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>extension</strong> (<em>str</em>) – The extension to get the size of.</p></li>
+<li><p><strong>return_as_string</strong> (<em>bool</em>) – A flag indicating whether to return the size as a string. If True, the size will be returned as a string
+with the unit. If False, the size will be returned as a tuple with the size and the unit.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The total size of the extension and the unit.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[Union[int, float], str]</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the extension is not found in the collection.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.FileCollection.__getitem__">
-<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.__getitem__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.FileCollection.__getitem__" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.FileCollection.__str__">
-<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.__str__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.FileCollection.__str__" title="Link to this definition"></a></dt>
-<dd><p>Return str(self).</p>
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">remove_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.remove_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id3" title="Link to this definition"></a></dt>
+<dd><p>Remove a file from the collection.</p>
+<p>This method removes a file from the collection. It takes a file path as an argument and removes the file from the
+collection. It then reprocesses the files in the collection to update the total size, total number of files, and
+total size of each extension.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method does not delete the file from the file system. It only removes the file from the collection,
+and only if the file is in the collection. If the file is not in the collection, this method will raise a
+<cite>KeyError</cite>. After removing the file, the collection will be reprocessed to update the total size, total number
+of files, and total size of each extension.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>Union</em><em>[</em><em>Path</em><em>, </em><em>str</em><em>]</em>) – The file path to remove.</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>KeyError</strong> – If the file is not in the collection.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -235,6 +399,31 @@ and reset it to False when exiting the context.</p>
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.LeftColumn">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pic_scanner.gui.models.windows.main.blueprint.</span></span><span class="sig-name descname"><span class="pre">LeftColumn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_collection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../../../../../pic_scanner.helpers.filesystem.html#pic_scanner.helpers.filesystem.classes.FileCollection" title="pic_scanner.helpers.filesystem.classes.FileCollection"><span class="pre">pic_scanner.helpers.filesystem.classes.FileCollection</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#LeftColumn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.LeftColumn" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="../../../element_bases/column/index.html#pic_scanner.gui.models.element_bases.column.Column" title="pic_scanner.gui.models.element_bases.column.Column"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pic_scanner.gui.models.element_bases.column.Column</span></code></a></p>
+<p>A class that represents the left column of the main window.</p>
+<dl class="simple">
+<dt>Properties:</dt><dd><dl class="simple">
+<dt>file_collection (FileCollection):</dt><dd><p>The collection of files.</p>
+</dd>
+<dt>file_list_box (psg.Listbox):</dt><dd><p>The listbox displaying the file names.</p>
+</dd>
+<dt>file_names (list[str]):</dt><dd><p>The list of file names.</p>
+</dd>
+<dt>next_button (psg.Button):</dt><dd><p>The button to go to the next file.</p>
+</dd>
+<dt>file_num_display_elem (psg.Text):</dt><dd><p>The element displaying the current file number.</p>
+</dd>
+<dt>prev_button (psg.Button):</dt><dd><p>The button to go to the previous file.</p>
+</dd>
+<dt>remove_button (psg.Button):</dt><dd><p>The button to remove the current image.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_collection</strong> (<a class="reference internal" href="../../../../../../../pic_scanner.helpers.filesystem.html#pic_scanner.helpers.filesystem.classes.FileCollection" title="pic_scanner.helpers.filesystem.classes.FileCollection"><em>pic_scanner.helpers.filesystem.classes.FileCollection</em></a>)</p>
+</dd>
+</dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.LeftColumn.instances">
 <span class="sig-name descname"><span class="pre">instances</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.LeftColumn.instances" title="Link to this definition"></a></dt>
@@ -243,37 +432,121 @@ and reset it to False when exiting the context.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.LeftColumn.file_collection">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">file_collection</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.LeftColumn.file_collection" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Gets</span> <span class="pre">the</span> <span class="pre">file</span> <span class="pre">collection.</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The collection of files.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#pic_scanner.gui.models.windows.main.blueprint.FileCollection" title="pic_scanner.gui.models.windows.main.blueprint.FileCollection">FileCollection</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.LeftColumn.file_list_box">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">file_list_box</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.LeftColumn.file_list_box" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Gets</span> <span class="pre">the</span> <span class="pre">file</span> <span class="pre">list</span> <span class="pre">box.</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The listbox displaying the file names.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>psg.Listbox</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.LeftColumn.file_names">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">file_names</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.LeftColumn.file_names" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Gets</span> <span class="pre">the</span> <span class="pre">file</span> <span class="pre">names.</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The list of file names.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.LeftColumn.next_button">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">next_button</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.LeftColumn.next_button" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Gets</span> <span class="pre">the</span> <span class="pre">next</span> <span class="pre">button.</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The button to go to the next file.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>psg.Button</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.LeftColumn.file_num_display_elem">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">file_num_display_elem</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.LeftColumn.file_num_display_elem" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Gets</span> <span class="pre">the</span> <span class="pre">file</span> <span class="pre">number</span> <span class="pre">display</span> <span class="pre">element.</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The element displaying the current file number.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>psg.Text</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.LeftColumn.prev_button">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">prev_button</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.LeftColumn.prev_button" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Gets</span> <span class="pre">the</span> <span class="pre">previous</span> <span class="pre">button.</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The button to go to the previous file.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>psg.Button</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.LeftColumn.remove_button">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">remove_button</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.LeftColumn.remove_button" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Gets</span> <span class="pre">the</span> <span class="pre">remove</span> <span class="pre">button.</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The button to remove the current image.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>psg.Button</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.LeftColumn.build">
 <span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#LeftColumn.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.LeftColumn.build" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Builds the left column layout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The column layout.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>psg.Column</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -281,20 +554,63 @@ and reset it to False when exiting the context.</p>
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.FileColumn">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pic_scanner.gui.models.windows.main.blueprint.</span></span><span class="sig-name descname"><span class="pre">FileColumn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#FileColumn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.FileColumn" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="../../../element_bases/column/index.html#pic_scanner.gui.models.element_bases.column.Column" title="pic_scanner.gui.models.element_bases.column.Column"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pic_scanner.gui.models.element_bases.column.Column</span></code></a></p>
+<p>A class for building a PySimpleGUI Column.</p>
+<p>This class is used to build a PySimpleGUI Column. It is a subclass of the <cite>AutoBuildMeta</cite> metaclass.</p>
+<dl class="simple">
+<dt>Properties:</dt><dd><dl class="simple">
+<dt>auto_build (bool):</dt><dd><p>A boolean value that determines whether the class should automatically build itself when
+instantiated. This is set to <cite>False</cite> by default. This property is read-only.</p>
+</dd>
+<dt>building (bool):</dt><dd><p>A boolean value that determines whether the class is currently building itself. This is set to <cite>False</cite> by
+default.</p>
+</dd>
+<dt>column (psg.Column):</dt><dd><p>The PySimpleGUI Column object. This is built from the layout, and will only have a value if the class is built.</p>
+</dd>
+<dt>column_key (str):</dt><dd><p>The key for the column. This is used to identify the column in the layout. It is set to <cite>None</cite> by default, and
+after instantiation it is frozen and cannot be changed.</p>
+</dd>
+<dt>is_built (bool):</dt><dd><p>A boolean value that determines whether the class has been built.</p>
+</dd>
+<dt>layout (list):</dt><dd><p>A list of elements that make up the layout of the class. This is used to build the column, and is set to
+an empty list by default.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.FileColumn.building">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">building</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.FileColumn.building" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Returns the value of the <cite>building</cite> attribute.</p>
+<p>The <cite>building</cite> attribute is a boolean value that determines whether the class is currently building itself.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The value of the <cite>building</cite> attribute.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.FileColumn.changing_image">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">changing_image</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.FileColumn.changing_image" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.FileColumn.file_name_display_elem">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">file_name_display_elem</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pic_scanner.gui.models.element_bases.column.psg.Text</span></em><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.FileColumn.file_name_display_elem" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pic_scanner.gui.models.element_bases.column.psg.Text</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.FileColumn.file_path">
@@ -320,6 +636,9 @@ and reset it to False when exiting the context.</p>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The image element.</p>
 </dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pic_scanner.gui.models.element_bases.column.psg.Image</p>
+</dd>
 </dl>
 </dd></dl>
 
@@ -332,6 +651,9 @@ and reset it to False when exiting the context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The column.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pic_scanner.gui.models.element_bases.column.psg.Column</p>
 </dd>
 </dl>
 </dd></dl>
@@ -346,6 +668,9 @@ updates the file name display element to show the new file name.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>new_path</strong> (<em>Path</em>) – The new path to the image.</p>
 </dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
 </dl>
 </dd></dl>
 
@@ -353,89 +678,156 @@ updates the file name display element to show the new file name.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.BaseBlueprint">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pic_scanner.gui.models.windows.main.blueprint.</span></span><span class="sig-name descname"><span class="pre">BaseBlueprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">auto_build</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/element_bases/blueprint.html#BaseBlueprint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.BaseBlueprint" title="Link to this definition"></a></dt>
-<dd><dl class="py property">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pic_scanner.gui.models.windows.main.blueprint.</span></span><span class="sig-name descname"><span class="pre">BaseBlueprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">auto_build</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/element_bases/blueprint.html#BaseBlueprint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.BaseBlueprint" title="Link to this definition"></a></dt>
+<dd><p>A base class for building blueprints.</p>
+<p>This class is used to create blueprints for building GUI elements. A blueprint is a set of
+instructions that are used to build a GUI element.</p>
+<p>Properties:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>auto_build (bool):</dt><dd><p>A boolean value that determines whether the class should automatically build itself when
+instantiated.</p>
+</dd>
+<dt>building (bool):</dt><dd><p>A boolean value that determines whether the class is currently building itself.</p>
+</dd>
+<dt>is_built (bool):</dt><dd><p>A boolean value that determines whether the class has been built.</p>
+</dd>
+<dt>layout (list):</dt><dd><p>A list of elements that make up the layout of the class.</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>auto_build</strong> (<em>bool</em>)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.BaseBlueprint.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/element_bases/blueprint.html#BaseBlueprint.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.BaseBlueprint.build" title="Link to this definition"></a></dt>
+<dd><p>An abstract method that builds the class.</p>
+</dd></dl>
+
+<dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.BaseBlueprint.auto_build">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">auto_build</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.BaseBlueprint.auto_build" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Returns</span> <span class="pre">the</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">`auto_build`</span> <span class="pre">attribute.</span></span></dt>
+<dd><p>The <cite>auto_build</cite> attribute is a boolean value that determines whether the class should
+automatically build itself when instantiated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The value of the <cite>auto_build</cite> attribute.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.BaseBlueprint.building">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">building</span></span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/element_bases/blueprint.html#BaseBlueprint.building"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.BaseBlueprint.building" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Returns</span> <span class="pre">the</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">`building`</span> <span class="pre">attribute.</span></span></dt>
+<dd><p>The <cite>building</cite> attribute is a boolean value that determines whether the class is currently building
+itself.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The value of the <cite>building</cite> attribute.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id0">
-<span class="sig-name descname"><span class="pre">building</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/element_bases/blueprint.html#BaseBlueprint.building"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.BaseBlueprint._built">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_built</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.BaseBlueprint._built" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">building</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/element_bases/blueprint.html#BaseBlueprint.building"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id4" title="Link to this definition"></a></dt>
+<dd><p>Deletes the <cite>building</cite> attribute.</p>
+<p>This method sets the <cite>building</cite> attribute to <cite>False</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.BaseBlueprint.is_built">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_built</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.BaseBlueprint.is_built" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Returns</span> <span class="pre">the</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">`is_built`</span> <span class="pre">attribute.</span></span></dt>
+<dd><p>The <cite>is_built</cite> attribute is a boolean value that determines whether the class has been built.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The value of the <cite>is_built</cite> attribute.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.BaseBlueprint.layout">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">layout</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.BaseBlueprint.layout" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Returns</span> <span class="pre">the</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">`layout`</span> <span class="pre">attribute.</span></span></dt>
+<dd><p>The <cite>layout</cite> attribute is a list of elements that make up the layout of the class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The value of the <cite>layout</cite> attribute.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.BaseBlueprint.build">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/element_bases/blueprint.html#BaseBlueprint.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.BaseBlueprint.build" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="id5">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/element_bases/blueprint.html#BaseBlueprint.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id5" title="Link to this definition"></a></dt>
+<dd><p>An abstract method that builds the class.</p>
+<p>This method is called to build the class by creating and must be implemented by subclasses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.GUIFileCollection">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pic_scanner.gui.models.windows.main.blueprint.</span></span><span class="sig-name descname"><span class="pre">GUIFileCollection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../../../../../pic_scanner.helpers.filesystem.html#pic_scanner.helpers.filesystem.classes.FileCollection" title="pic_scanner.helpers.filesystem.classes.FileCollection"><span class="pre">pic_scanner.helpers.filesystem.classes.FileCollection</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.GUIFileCollection" title="Link to this definition"></a></dt>
-<dd><p>A class to manage a collection of files with a cursor to navigate through them.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.GUIFileCollection.collection">
-<span class="sig-name descname"><span class="pre">collection</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.GUIFileCollection.collection" title="Link to this definition"></a></dt>
-<dd><p>The collection of files.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="#pic_scanner.gui.models.windows.main.blueprint.FileCollection" title="pic_scanner.gui.models.windows.main.blueprint.FileCollection">FileCollection</a></p>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pic_scanner.log_engine.Loggable</span></code></p>
+<p>A class to manage a collection of files with a cursor to navigate through them.</p>
+<dl class="simple">
+<dt>Properties:</dt><dd><dl class="simple">
+<dt>collection (FileCollection):</dt><dd><p>The collection of files.</p>
+</dd>
+<dt>files (list[Path]):</dt><dd><p>List of file paths from the collection.</p>
+</dd>
+<dt>cursor (int):</dt><dd><p>Current position of the cursor in the collection.</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.GUIFileCollection.__files">
-<span class="sig-name descname"><span class="pre">__files</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.GUIFileCollection.__files" title="Link to this definition"></a></dt>
-<dd><p>List of file paths from the collection.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>list[Path]</p>
 </dd>
 </dl>
-</dd></dl>
-
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>collection</strong> (<a class="reference internal" href="../../../../../../../pic_scanner.helpers.filesystem.html#pic_scanner.helpers.filesystem.classes.FileCollection" title="pic_scanner.helpers.filesystem.classes.FileCollection"><em>pic_scanner.helpers.filesystem.classes.FileCollection</em></a>)</p>
+</dd>
+</dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.GUIFileCollection.cursor">
 <span class="sig-name descname"><span class="pre">cursor</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.GUIFileCollection.cursor" title="Link to this definition"></a></dt>
-<dd><p>Current position of the cursor in the collection.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="id1">
-<span class="sig-name descname"><span class="pre">cursor</span></span><a class="headerlink" href="#id1" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id2">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">collection</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../../../../../pic_scanner.helpers.filesystem.html#pic_scanner.helpers.filesystem.classes.FileCollection" title="pic_scanner.helpers.filesystem.classes.FileCollection"><span class="pre">pic_scanner.helpers.filesystem.classes.FileCollection</span></a></em><a class="headerlink" href="#id2" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.GUIFileCollection.collection">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">collection</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../../../../../pic_scanner.helpers.filesystem.html#pic_scanner.helpers.filesystem.classes.FileCollection" title="pic_scanner.helpers.filesystem.classes.FileCollection"><span class="pre">pic_scanner.helpers.filesystem.classes.FileCollection</span></a></em><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.GUIFileCollection.collection" title="Link to this definition"></a></dt>
 <dd><p>Returns the collection of files.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -457,6 +849,20 @@ updates the file name display element to show the new file name.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.GUIFileCollection.needs_reprocessing">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">needs_reprocessing</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.GUIFileCollection.needs_reprocessing" title="Link to this definition"></a></dt>
+<dd><p>Returns whether the collection needs reprocessing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the collection needs reprocessing, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -504,6 +910,12 @@ updates the file name display element to show the new file name.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.GUIFileCollection.remove_current">
+<span class="sig-name descname"><span class="pre">remove_current</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.remove_current"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.GUIFileCollection.remove_current" title="Link to this definition"></a></dt>
+<dd><p>Removes the file at the current cursor position.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.GUIFileCollection.set_cursor">
 <span class="sig-name descname"><span class="pre">set_cursor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.set_cursor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.GUIFileCollection.set_cursor" title="Link to this definition"></a></dt>
 <dd><p>Sets the cursor to the specified index, adjusting if out of bounds.</p>
@@ -513,23 +925,6 @@ updates the file name display element to show the new file name.</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>IndexError</strong> – If the index is out of the valid range.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.GUIFileCollection.__getitem__">
-<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.__getitem__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.GUIFileCollection.__getitem__" title="Link to this definition"></a></dt>
-<dd><p>Returns the file at the specified index.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>key</strong> (<em>int</em>) – The index of the file to retrieve.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The path of the file at the specified index.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
@@ -549,50 +944,82 @@ updates the file name display element to show the new file name.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.GUIFileCollection.__len__">
-<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.__len__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.GUIFileCollection.__len__" title="Link to this definition"></a></dt>
-<dd><p>Returns the number of files in the collection.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The number of files.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>int</p>
-</dd>
-</dl>
 </dd></dl>
 
-</dd></dl>
+<dl class="py data">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.PARENT_LOGGER">
+<span class="sig-prename descclassname"><span class="pre">pic_scanner.gui.models.windows.main.blueprint.</span></span><span class="sig-name descname"><span class="pre">PARENT_LOGGER</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.PARENT_LOGGER" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.MOD_LOGGER">
+<span class="sig-prename descclassname"><span class="pre">pic_scanner.gui.models.windows.main.blueprint.</span></span><span class="sig-name descname"><span class="pre">MOD_LOGGER</span></span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint.html#MOD_LOGGER"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.MOD_LOGGER" title="Link to this definition"></a></dt>
+<dd></dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.BluePrint">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pic_scanner.gui.models.windows.main.blueprint.</span></span><span class="sig-name descname"><span class="pre">BluePrint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_collection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../../../../../pic_scanner.helpers.filesystem.html#pic_scanner.helpers.filesystem.classes.FileCollection" title="pic_scanner.helpers.filesystem.classes.FileCollection"><span class="pre">pic_scanner.helpers.filesystem.classes.FileCollection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_built_left_column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_built_file_column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint.html#BluePrint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.BluePrint" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="../../../../../../../pic_scanner.gui.models.element_bases.html#pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint" title="pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint</span></code></a></p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.BluePrint.__left_column">
-<span class="sig-name descname"><span class="pre">__left_column</span></span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint.html#BluePrint.__left_column"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.BluePrint.__left_column" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.BluePrint.__file_column">
-<span class="sig-name descname"><span class="pre">__file_column</span></span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint.html#BluePrint.__file_column"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.BluePrint.__file_column" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.BluePrint.__file_collection_cursor">
-<span class="sig-name descname"><span class="pre">__file_collection_cursor</span></span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint.html#BluePrint.__file_collection_cursor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.BluePrint.__file_collection_cursor" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Bases: <a class="reference internal" href="../../../../../../../pic_scanner.gui.models.element_bases.html#pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint" title="pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pic_scanner.gui.models.element_bases.blueprint.BaseBlueprint</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">pic_scanner.log_engine.Loggable</span></code></p>
+<p>A base class for building blueprints.</p>
+<p>This class is used to create blueprints for building GUI elements. A blueprint is a set of
+instructions that are used to build a GUI element.</p>
+<p>Properties:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>auto_build (bool):</dt><dd><p>A boolean value that determines whether the class should automatically build itself when
+instantiated.</p>
+</dd>
+<dt>building (bool):</dt><dd><p>A boolean value that determines whether the class is currently building itself.</p>
+</dd>
+<dt>is_built (bool):</dt><dd><p>A boolean value that determines whether the class has been built.</p>
+</dd>
+<dt>layout (list):</dt><dd><p>A list of elements that make up the layout of the class.</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_collection</strong> (<a class="reference internal" href="../../../../../../../pic_scanner.helpers.filesystem.html#pic_scanner.helpers.filesystem.classes.FileCollection" title="pic_scanner.helpers.filesystem.classes.FileCollection"><em>pic_scanner.helpers.filesystem.classes.FileCollection</em></a>)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.BluePrint.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint.html#BluePrint.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.BluePrint.build" title="Link to this definition"></a></dt>
+<dd><p>An abstract method that builds the class.</p>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.BluePrint.building">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">building</span></span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint.html#BluePrint.building"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.BluePrint.building" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Returns</span> <span class="pre">the</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">`building`</span> <span class="pre">attribute.</span></span></dt>
+<dd><p>The <cite>building</cite> attribute is a boolean value that determines whether the class is currently building
+itself.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The value of the <cite>building</cite> attribute.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id3">
-<span class="sig-name descname"><span class="pre">building</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint.html#BluePrint.building"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id3" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="id6">
+<span class="sig-name descname"><span class="pre">building</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint.html#BluePrint.building"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id6" title="Link to this definition"></a></dt>
+<dd><p>Returns the value of the <cite>building</cite> attribute.</p>
+<p>The <cite>building</cite> attribute is a boolean value that determines whether the class is currently building
+itself.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The value of the <cite>building</cite> attribute.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.BluePrint.file_collection">
@@ -607,7 +1034,20 @@ updates the file name display element to show the new file name.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.BluePrint.file_column">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">file_column</span></span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint.html#BluePrint.file_column"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.BluePrint.file_column" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">A</span> <span class="pre">property</span> <span class="pre">that</span> <span class="pre">returns</span> <span class="pre">the</span> <span class="pre">file</span> <span class="pre">column.</span></span></dt>
+<dd><p>The file column is the column that displays the image in the GUI representation of the blueprint. This is the
+right column in the blueprint layout. This property is a RestrictedSetter, and can only be set to an instance of
+FileColumn. The initial value is None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The file column.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#pic_scanner.gui.models.windows.main.blueprint.FileColumn" title="pic_scanner.gui.models.windows.main.blueprint.FileColumn">FileColumn</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.BluePrint.left_column">
@@ -625,8 +1065,8 @@ updates the file name display element to show the new file name.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.BluePrint.build">
-<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint.html#BluePrint.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.BluePrint.build" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id7">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint.html#BluePrint.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id7" title="Link to this definition"></a></dt>
 <dd><p>Build the blueprint layout.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -641,17 +1081,62 @@ updates the file name display element to show the new file name.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.BluePrint.change_image">
 <span class="sig-name descname"><span class="pre">change_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_image</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint.html#BluePrint.change_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.BluePrint.change_image" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Change the image in the file column.</p>
+<p>This method changes the image in the image element of the file column to the new image provided. The new image
+must be a path to an image file. This method is used to change the image displayed in the GUI when the user
+navigates through the images in the file collection. This method is called by the blueprint controller when the
+user changes the image.</p>
+<dl class="simple">
+<dt>Parameters::</dt><dd><dl class="simple">
+<dt>new_image:</dt><dd><p>The new image to display in the file column.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.BluePrint.current_image">
 <span class="sig-name descname"><span class="pre">current_image</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint.html#BluePrint.current_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.BluePrint.current_image" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Get the current image.</p>
+<p>This method returns the path to the current image in the file column. This is the image that is currently
+displayed in the GUI. This method is used by the blueprint controller to determine which image is currently
+displayed in the GUI. This method is called by the blueprint controller when the user changes the image. The
+blueprint controller uses this method to determine the current image. The blueprint controller then uses this
+information to update the current image in the GUI.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The path to the current image.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.BluePrint.next_image">
 <span class="sig-name descname"><span class="pre">next_image</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint.html#BluePrint.next_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.BluePrint.next_image" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Get the next image.</p>
+<p>This method moves the cursor to the next image in the file collection and returns the path to that image. This
+method is used by the blueprint controller to move the cursor to the next image in the file collection. This
+method is called by the blueprint controller when the user clicks the ‘Next’ button in the GUI. The blueprint
+controller uses this method to move the cursor to the next image in the file collection. The blueprint controller
+then uses this information to update the current image in the GUI.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The path to the next image.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.BluePrint.update_image">

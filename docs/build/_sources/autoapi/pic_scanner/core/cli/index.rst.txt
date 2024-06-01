@@ -1,0 +1,32 @@
+pic_scanner.core.cli
+====================
+
+.. py:module:: pic_scanner.core.cli
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   pic_scanner.core.cli.REGISTRY
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   pic_scanner.core.cli.load_modules
+   pic_scanner.core.cli.main
+
+
+Module Contents
+---------------
+
+.. py:data:: REGISTRY
+
+.. py:function:: load_modules()
+
+.. py:function:: main()
+

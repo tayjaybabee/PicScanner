@@ -51,6 +51,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../../../../../../index.html">pic_scanner</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="../../../../../../index.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="../../../../../../api/index.html">pic_scanner.api</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../cli/index.html">pic_scanner.cli</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../../../common/index.html">pic_scanner.common</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../../../core/index.html">pic_scanner.core</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../../../download_scanner/index.html">pic_scanner.download_scanner</a></li>
@@ -60,6 +61,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../../../../models/index.html">pic_scanner.models</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../index.html#submodules">Submodules</a></li>
 </ul>
 </li>
 </ul>
@@ -122,10 +124,13 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#pic_scanner.gui.models.windows.main.blueprint.columns.FileCollection" title="pic_scanner.gui.models.windows.main.blueprint.columns.FileCollection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FileCollection</span></code></a></p></td>
 <td><p>A class for managing a collection of files.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../../../../../../../../pic_scanner.gui.models.windows.main.blueprint.columns.html#pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn" title="pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LeftColumn</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic" title="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ButtonSchematic</span></code></a></p></td>
+<td><p>A metaclass to enhance classes with logging capabilities. Classes that inherit from</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../../../../../pic_scanner.gui.models.windows.main.blueprint.columns.html#pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn" title="pic_scanner.gui.models.windows.main.blueprint.columns.LeftColumn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LeftColumn</span></code></a></p></td>
 <td><p>A class that represents the left column of the main window.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../../../../../../../../pic_scanner.gui.models.windows.main.blueprint.columns.html#pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn" title="pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FileColumn</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../../../../../pic_scanner.gui.models.windows.main.blueprint.columns.html#pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn" title="pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FileColumn</span></code></a></p></td>
 <td><p>A class for building a PySimpleGUI Column.</p></td>
 </tr>
 </tbody>
@@ -160,6 +165,11 @@
 <dt>cursor (int):</dt><dd><p>Current position of the cursor in the collection.</p>
 </dd>
 </dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>collection</strong> (<a class="reference internal" href="../../../../../../../../pic_scanner.helpers.filesystem.html#pic_scanner.helpers.filesystem.classes.FileCollection" title="pic_scanner.helpers.filesystem.classes.FileCollection"><em>pic_scanner.helpers.filesystem.classes.FileCollection</em></a>)</p>
 </dd>
 </dl>
 <dl class="py attribute">
@@ -272,23 +282,6 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.GUIFileCollection.__getitem__">
-<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../../../../../../../_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.__getitem__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.GUIFileCollection.__getitem__" title="Link to this definition"></a></dt>
-<dd><p>Returns the file at the specified index.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>key</strong> (<em>int</em>) – The index of the file to retrieve.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The path of the file at the specified index.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.GUIFileCollection.add_cursor_callback">
 <span class="sig-name descname"><span class="pre">add_cursor_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../../_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.add_cursor_callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.GUIFileCollection.add_cursor_callback" title="Link to this definition"></a></dt>
 <dd><p>Adds a callback to be invoked when the cursor changes.</p>
@@ -299,20 +292,6 @@
 <li><p><strong>*args</strong> – Additional positional arguments to pass to the callback.</p></li>
 <li><p><strong>**kwargs</strong> – Additional keyword arguments to pass to the callback.</p></li>
 </ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.GUIFileCollection.__len__">
-<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../../../../../../../../_modules/pic_scanner/gui/models/element_bases.html#GUIFileCollection.__len__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.GUIFileCollection.__len__" title="Link to this definition"></a></dt>
-<dd><p>Returns the number of files in the collection.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The number of files.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>int</p>
 </dd>
 </dl>
 </dd></dl>
@@ -343,6 +322,11 @@ after instantiation it is frozen and cannot be changed.</p>
 an empty list by default.</p>
 </dd>
 </dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>column_key</strong> (<em>str</em>)</p>
 </dd>
 </dl>
 <dl class="py attribute">
@@ -385,43 +369,12 @@ when instantiated.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.Column._built">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_built</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.Column._built" title="Link to this definition"></a></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">Returns</span> <span class="pre">the</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">`built`</span> <span class="pre">attribute.</span></span></dt>
-<dd><p>The <cite>built</cite> attribute is a boolean value that determines whether the class has been built.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The value of the <cite>built</cite> attribute.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool (bool)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.Column.column">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">column</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.Column.column" title="Link to this definition"></a></dt>
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">Returns</span> <span class="pre">the</span> <span class="pre">column.</span></span></dt>
 <dd><p>The column is built from the layout, and will only have a value if the class is built; otherwise it will be <cite>None</cite>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The column.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>psg.Column</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.Column._column">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_column</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.Column._column" title="Link to this definition"></a></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">Returns</span> <span class="pre">the</span> <span class="pre">column.</span></span></dt>
-<dd><dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The column.</p>
 </dd>
@@ -439,21 +392,6 @@ when instantiated.</p>
 <dd><p>The layout is a list of elements that make up the layout of the class. This is used to build the column, and is
 set to an empty list by default.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The layout.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>list</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.Column._layout">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_layout</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.Column._layout" title="Link to this definition"></a></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">Returns</span> <span class="pre">the</span> <span class="pre">layout.</span></span></dt>
-<dd><dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The layout.</p>
 </dd>
@@ -499,22 +437,48 @@ set to an empty list by default.</p>
 </dl>
 </dd>
 </dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paths</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>)</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.FileCollection.get_total_size_in_lowest_unit">
 <span class="sig-name descname"><span class="pre">get_total_size_in_lowest_unit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.get_total_size_in_lowest_unit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.FileCollection.get_total_size_in_lowest_unit" title="Link to this definition"></a></dt>
 <dd><p>Get the total size of the collection in the lowest unit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[Union[int, float], str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.FileCollection.get_total_extension_size_in_lowest_unit">
 <span class="sig-name descname"><span class="pre">get_total_extension_size_in_lowest_unit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.get_total_extension_size_in_lowest_unit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.FileCollection.get_total_extension_size_in_lowest_unit" title="Link to this definition"></a></dt>
 <dd><p>Get the total size of a specific extension in the lowest unit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>extension</strong> (<em>str</em>)</p></li>
+<li><p><strong>return_as_string</strong> (<em>bool</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[Union[int, float], str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.FileCollection.remove_file">
 <span class="sig-name descname"><span class="pre">remove_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.remove_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.FileCollection.remove_file" title="Link to this definition"></a></dt>
 <dd><p>Remove a file from the collection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>Union</em><em>[</em><em>pathlib.Path</em><em>, </em><em>str</em><em>]</em>)</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -549,20 +513,6 @@ set to an empty list by default.</p>
 <span class="sig-name descname"><span class="pre">extensions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.FileCollection.extensions" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.FileCollection.__post_init__">
-<span class="sig-name descname"><span class="pre">__post_init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.__post_init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.FileCollection.__post_init__" title="Link to this definition"></a></dt>
-<dd><p>Post-initialization method for the FileCollection class.</p>
-<p>This method processes the files in the collection. It calculates the total size of the collection, the total number
-of files, and the total size of each extension in the collection. It populates the <cite>total_size</cite>, <cite>total_files</cite>, and
-<cite>extensions</cite> attributes of the class.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.FileCollection.needs_reprocessing">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">needs_reprocessing</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.FileCollection.needs_reprocessing" title="Link to this definition"></a></dt>
@@ -576,20 +526,6 @@ it will return <cite>False</cite>. The property is read-only.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.FileCollection._process_files">
-<span class="sig-name descname"><span class="pre">_process_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection._process_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.FileCollection._process_files" title="Link to this definition"></a></dt>
-<dd><p>Process the files in the collection.</p>
-<p>This method processes the files in the collection. It calculates the total size of the collection, the total number
-of files, and the total size of each extension in the collection. It populates the <cite>total_size</cite>, <cite>total_files</cite>, and
-<cite>extensions</cite> attributes of the class.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -685,17 +621,6 @@ of files, and total size of each extension.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.FileCollection.__getitem__">
-<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.__getitem__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.FileCollection.__getitem__" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.FileCollection.__str__">
-<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../../_modules/pic_scanner/helpers/filesystem/classes.html#FileCollection.__str__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.FileCollection.__str__" title="Link to this definition"></a></dt>
-<dd><p>Return str(self).</p>
-</dd></dl>
-
 </dd></dl>
 
 <dl class="py function">
@@ -759,6 +684,414 @@ pass</p>
 and reset it to False when exiting the context.</p>
 </dd></dl>
 
+<dl class="py class">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pic_scanner.gui.models.windows.main.blueprint.columns.</span></span><span class="sig-name descname"><span class="pre">ButtonSchematic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_build</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create_disabled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create_hidden</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_enforcing_unique_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../../_modules/pic_scanner/gui/models/element_bases/button.html#ButtonSchematic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pic_scanner.log_engine.Loggable</span></code></p>
+<p>A metaclass to enhance classes with logging capabilities. Classes that inherit from
+‘Loggable’ can instantly access a logger without manually setting it up. This logger
+is derived from a parent logger, ensuring consistent logging behavior and hierarchy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>str</em>)</p></li>
+<li><p><strong>key</strong> (<em>str</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">log_device</span></span></dt>
+<dd><p>The logger device associated with the instance of the class.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.instances">
+<span class="sig-name descname"><span class="pre">instances</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.instances" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.built_instances">
+<span class="sig-name descname"><span class="pre">built_instances</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.built_instances" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.DEFAULT_SUFFIX">
+<span class="sig-name descname"><span class="pre">DEFAULT_SUFFIX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'button'</span></em><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.DEFAULT_SUFFIX" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.suffix">
+<span class="sig-name descname"><span class="pre">suffix</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.suffix" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.has_key">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">has_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">case_sensitive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_instance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic" title="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic"><span class="pre">ButtonSchematic</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../../../../../../../../_modules/pic_scanner/gui/models/element_bases/button.html#ButtonSchematic.has_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.has_key" title="Link to this definition"></a></dt>
+<dd><p>Checks if the class instances dictionary contains the provided key with optional case sensitivity and instance return.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – The key to check in the <cite>ButtonSchematic.instances</cite> dictionary.</p></li>
+<li><p><strong>case_sensitive</strong> (<em>bool</em>) – Whether the key comparison should be case-sensitive. Default is False.</p></li>
+<li><p><strong>return_instance</strong> (<em>bool</em>) – Whether to return the instance corresponding to the key. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>If return_instance is False: True if the key is present in the instances dictionary, False otherwise.</p></li>
+<li><p>If return_instance is True: The instance corresponding to the key, or None if the key is not found.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Union[bool, ‘ButtonSchematic’, None]</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ButtonSchematic</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;MY_BUTTON&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ButtonSchematic</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;MY_BUTTON&#39;</span><span class="p">,</span> <span class="n">case_sensitive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ButtonSchematic</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;MY_BUTTON&#39;</span><span class="p">,</span> <span class="n">return_instance</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">None</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ButtonSchematic</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;MY_BUTTON&#39;</span><span class="p">,</span> <span class="n">case_sensitive</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_instance</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">&lt;ButtonSchematic object at 0x000001&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.get_instance">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_instance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">case_sensitive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">'ButtonSchematic'</span> <span class="pre">or</span> <span class="pre">None</span></span></span><a class="reference internal" href="../../../../../../../../_modules/pic_scanner/gui/models/element_bases/button.html#ButtonSchematic.get_instance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.get_instance" title="Link to this definition"></a></dt>
+<dd><p>Returns an instance from the class instances dictionary based on the provided key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – The key to look up in the <cite>ButtonSchematic.instances</cite> dictionary.</p></li>
+<li><p><strong>default</strong> – The default value to return if the key is not found. Default is None.</p></li>
+<li><p><strong>case_sensitive</strong> (<em>bool</em>) – Whether the key lookup should be case-sensitive. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The instance corresponding to the key, or the default value if the key is not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>‘ButtonSchematic’ or None</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ButtonSchematic</span><span class="o">.</span><span class="n">get_instance</span><span class="p">(</span><span class="s1">&#39;MY_BUTTON&#39;</span><span class="p">)</span>
+<span class="go">None</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ButtonSchematic</span><span class="o">.</span><span class="n">get_instance</span><span class="p">(</span><span class="s1">&#39;MY_BUTTON&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;DEFAULT&#39;</span><span class="p">)</span>
+<span class="go">&#39;DEFAULT&#39;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ButtonSchematic</span><span class="o">.</span><span class="n">get_instance</span><span class="p">(</span><span class="s1">&#39;MY_BUTTON&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;DEFAULT&#39;</span><span class="p">,</span> <span class="n">case_sensitive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">None</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.check_key">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">check_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">case_sensitive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../../../../../../../../_modules/pic_scanner/gui/models/element_bases/button.html#ButtonSchematic.check_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.check_key" title="Link to this definition"></a></dt>
+<dd><p>Check if the key is in the <cite>ButtonSchematic.instances</cite> dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – The key to check in the <cite>ButtonSchematics.instances</cite> dictionary.</p></li>
+<li><p><strong>case_sensitive</strong> (<em>bool</em>) – Whether the key comparison should be case-sensitive. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the key is in the instances dictionary, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ButtonSchematic</span><span class="o">.</span><span class="n">check_key</span><span class="p">(</span><span class="s1">&#39;MY_BUTTON&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ButtonSchematic</span><span class="o">.</span><span class="n">check_key</span><span class="p">(</span><span class="s1">&#39;MY_BUTTON&#39;</span><span class="p">,</span> <span class="n">case_sensitive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../../_modules/pic_scanner/gui/models/element_bases/button.html#ButtonSchematic.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.build" title="Link to this definition"></a></dt>
+<dd><p>Build the button.</p>
+<p>Building the button will create the button object and store it in the <cite>ButtonSchematic.instances</cite> dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.disable">
+<span class="sig-name descname"><span class="pre">disable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../../_modules/pic_scanner/gui/models/element_bases/button.html#ButtonSchematic.disable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.disable" title="Link to this definition"></a></dt>
+<dd><p>Disables the button.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.enable">
+<span class="sig-name descname"><span class="pre">enable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../../_modules/pic_scanner/gui/models/element_bases/button.html#ButtonSchematic.enable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.enable" title="Link to this definition"></a></dt>
+<dd><p>Enables the button.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.hide">
+<span class="sig-name descname"><span class="pre">hide</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../../_modules/pic_scanner/gui/models/element_bases/button.html#ButtonSchematic.hide"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.hide" title="Link to this definition"></a></dt>
+<dd><p>Hides the button.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.unhide">
+<span class="sig-name descname"><span class="pre">unhide</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../../_modules/pic_scanner/gui/models/element_bases/button.html#ButtonSchematic.unhide"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.unhide" title="Link to this definition"></a></dt>
+<dd><p>Unhides the button.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../../_modules/pic_scanner/gui/models/element_bases/button.html#ButtonSchematic.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.update" title="Link to this definition"></a></dt>
+<dd><p>Updates the button.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.auto_build">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">auto_build</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.auto_build" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Whether</span> <span class="pre">the</span> <span class="pre">button</span> <span class="pre">should</span> <span class="pre">be</span> <span class="pre">built</span> <span class="pre">automatically.</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the button should be built automatically, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">button</span> <span class="o">=</span> <span class="n">ButtonSchematic</span><span class="p">(</span><span class="s1">&#39;My Button&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">button</span><span class="o">.</span><span class="n">auto_build</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.built">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">built</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.built" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Whether</span> <span class="pre">the</span> <span class="pre">button</span> <span class="pre">has</span> <span class="pre">been</span> <span class="pre">built.</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the button has been built, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.button">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">button</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Button</span> <span class="pre">or</span> <span class="pre">None</span></em><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.button" title="Link to this definition"></a></dt>
+<dd><p>The PySimpleGUI button object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Button or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.create_disabled">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_disabled</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.create_disabled" title="Link to this definition"></a></dt>
+<dd><p>Whether the button should be created in a disabled state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the button should be created in a disabled state, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.create_hidden">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_hidden</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.create_hidden" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Whether</span> <span class="pre">the</span> <span class="pre">button</span> <span class="pre">should</span> <span class="pre">be</span> <span class="pre">created</span> <span class="pre">in</span> <span class="pre">a</span> <span class="pre">hidden</span> <span class="pre">state.</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the button should be created in a hidden state, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.disabled">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">disabled</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.disabled" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Whether</span> <span class="pre">the</span> <span class="pre">button</span> <span class="pre">is</span> <span class="pre">disabled.</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the button is disabled, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.enabled">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">enabled</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.enabled" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Whether</span> <span class="pre">the</span> <span class="pre">button</span> <span class="pre">is</span> <span class="pre">enabled.</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the button is enabled, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.enforce_unique_keys">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">enforce_unique_keys</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.enforce_unique_keys" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Whether</span> <span class="pre">to</span> <span class="pre">enforce</span> <span class="pre">unique</span> <span class="pre">keys</span> <span class="pre">for</span> <span class="pre">buttons.</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if unique keys are enforced, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.hidden">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hidden</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.hidden" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.key">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">key</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.key" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">The</span> <span class="pre">key</span> <span class="pre">for</span> <span class="pre">the</span> <span class="pre">button.</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The key for the button.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.state">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">state</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.state" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Returns</span> <span class="pre">a</span> <span class="pre">`Box`</span> <span class="pre">object</span> <span class="pre">containing</span> <span class="pre">the</span> <span class="pre">state</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">button,</span> <span class="pre">including</span> <span class="pre">whether</span> <span class="pre">it</span> <span class="pre">is</span> <span class="pre">enabled</span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">and</span> <span class="pre">visible.</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A <cite>Box</cite> object with the button’s state attributes.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Box</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">button</span> <span class="o">=</span> <span class="n">ButtonSchematic</span><span class="p">(</span><span class="s1">&#39;My Button&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">button</span><span class="o">.</span><span class="n">state</span>
+<span class="go">{&#39;enabled&#39;: False, &#39;visible&#39;: False}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.text">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">text</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.text" title="Link to this definition"></a></dt>
+<dd><p>The text for display on the button.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The text for the button.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.visible">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">visible</span></span><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.ButtonSchematic.visible" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Whether</span> <span class="pre">the</span> <span class="pre">button</span> <span class="pre">is</span> <span class="pre">visible.</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the button is visible, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="py data">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.gui_file_collection">
 <span class="sig-prename descclassname"><span class="pre">pic_scanner.gui.models.windows.main.blueprint.columns.</span></span><span class="sig-name descname"><span class="pre">gui_file_collection</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="reference internal" href="../../../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#gui_file_collection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.gui_file_collection" title="Link to this definition"></a></dt>
@@ -786,6 +1119,11 @@ and reset it to False when exiting the context.</p>
 <dt>remove_button (psg.Button):</dt><dd><p>The button to remove the current image.</p>
 </dd>
 </dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_collection</strong> (<a class="reference internal" href="../../../../../../../../pic_scanner.helpers.filesystem.html#pic_scanner.helpers.filesystem.classes.FileCollection" title="pic_scanner.helpers.filesystem.classes.FileCollection"><em>pic_scanner.helpers.filesystem.classes.FileCollection</em></a>)</p>
 </dd>
 </dl>
 <dl class="py attribute">
@@ -959,12 +1297,22 @@ an empty list by default.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.changing_image">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">changing_image</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="reference internal" href="../../../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#FileColumn.changing_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.changing_image" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.file_name_display_elem">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">file_name_display_elem</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pic_scanner.gui.models.element_bases.column.psg.Text</span></em><a class="reference internal" href="../../../../../../../../_modules/pic_scanner/gui/models/windows/main/blueprint/columns.html#FileColumn.file_name_display_elem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.file_name_display_elem" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pic_scanner.gui.models.element_bases.column.psg.Text</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pic_scanner.gui.models.windows.main.blueprint.columns.FileColumn.file_path">
@@ -990,6 +1338,9 @@ an empty list by default.</p>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The image element.</p>
 </dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pic_scanner.gui.models.element_bases.column.psg.Image</p>
+</dd>
 </dl>
 </dd></dl>
 
@@ -1003,6 +1354,9 @@ an empty list by default.</p>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The column.</p>
 </dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pic_scanner.gui.models.element_bases.column.psg.Column</p>
+</dd>
 </dl>
 </dd></dl>
 
@@ -1015,6 +1369,9 @@ updates the file name display element to show the new file name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>new_path</strong> (<em>Path</em>) – The new path to the image.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
 </dd>
 </dl>
 </dd></dl>

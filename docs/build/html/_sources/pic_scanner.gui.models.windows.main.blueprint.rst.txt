@@ -5,7 +5,7 @@ Subpackages
 -----------
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 8
 
    pic_scanner.gui.models.windows.main.blueprint.columns
 
@@ -16,12 +16,3 @@ Module contents
    :members:
    :undoc-members:
    :show-inheritance:
-
-The ``Blueprint`` class
-***********************
-
-.. autoclass:: pic_scanner.gui.models.windows.main.blueprint.Blueprint
-   :members:
-   :undoc-members:
-   :show-inheritance:
-   :exclude-members: __init__

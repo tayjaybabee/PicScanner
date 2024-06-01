@@ -5,12 +5,14 @@ from pic_scanner.helpers.filesystem.classes import FileCollection
 from .columns import LeftColumn, FileColumn
 from pic_scanner.gui.models.element_bases.blueprint import BaseBlueprint
 from pic_scanner.gui.models.element_bases import GUIFileCollection
+from pic_scanner.gui.models.element_bases.button.factories import ButtonFactory
 
 from pic_scanner.gui.models.windows.main import MOD_LOGGER as PARENT_LOGGER
 from pic_scanner.log_engine import Loggable
 
 
 MOD_LOGGER = PARENT_LOGGER.get_child('blueprint')
+BUTTON_FACTORY = ButtonFactory('main window')
 
 
 class BluePrint(BaseBlueprint, Loggable):
@@ -70,7 +72,6 @@ class BluePrint(BaseBlueprint, Loggable):
             self.__left_column = pre_built_left_column
         else:
             self.log_device.debug('Building left column')
-            self.__left_column = LeftColumn(self.file_collection, **kwargs)
 
         if pre_built_file_column and isinstance(pre_built_file_column, FileColumn):
             self.log_device.debug('Using pre-built file column')
@@ -89,6 +90,10 @@ class BluePrint(BaseBlueprint, Loggable):
     @building.deleter
     def building(self):
         self._building = False
+
+    @property
+    def button_factory(self):
+        return BUTTON_FACTORY
 
     @property
     def file_collection(self):
@@ -124,6 +129,8 @@ class BluePrint(BaseBlueprint, Loggable):
             LeftColumn:
                 The left column.
         """
+        if self.building and not self.__left_column:
+            self.__left_column = LeftColumn(self.file_collection_cursor)
         return self.__left_column
 
     def build(self):

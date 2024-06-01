@@ -5,9 +5,10 @@ Subpackages
 -----------
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 8
 
    pic_scanner.api
+   pic_scanner.cli
    pic_scanner.common
    pic_scanner.core
    pic_scanner.download_scanner
@@ -16,6 +17,16 @@ Subpackages
    pic_scanner.log_engine
    pic_scanner.models
 
+Submodules
+----------
+
+pic\_scanner.main module
+------------------------
+
+.. automodule:: pic_scanner.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 Module contents
 ---------------

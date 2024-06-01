@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pic_scanner.cli.subcommands.core.version_info &mdash; PicScanner 1.0.0-dev.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=fd3f3429" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=3992bef7"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../../index.html" class="icon icon-home">
+            PicScanner
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">PicScanner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">pic_scanner.cli.subcommands.core.version_info</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for pic_scanner.cli.subcommands.core.version_info</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">importlib.metadata</span> <span class="k">as</span> <span class="nn">metadata</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">rich.console</span> <span class="kn">import</span> <span class="n">Console</span>
+<span class="kn">from</span> <span class="nn">rich.table</span> <span class="kn">import</span> <span class="n">Table</span>
+
+<span class="kn">from</span> <span class="nn">pic_scanner.cli.subcommands.registry</span> <span class="kn">import</span> <span class="n">REGISTRY</span>
+
+
+<div class="viewcode-block" id="CONSOLE">
+<a class="viewcode-back" href="../../../../../autoapi/pic_scanner/cli/subcommands/core/version_info/index.html#pic_scanner.cli.subcommands.core.version_info.CONSOLE">[docs]</a>
+<span class="n">CONSOLE</span> <span class="o">=</span> <span class="n">Console</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="check_pypi_package_version">
+<a class="viewcode-back" href="../../../../../autoapi/pic_scanner/cli/subcommands/core/version_info/index.html#pic_scanner.cli.subcommands.core.version_info.check_pypi_package_version">[docs]</a>
+<span class="k">def</span> <span class="nf">check_pypi_package_version</span><span class="p">(</span><span class="n">package_name</span><span class="p">,</span> <span class="n">include_prereleases</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Check if a package is available on PyPi and retrieve its latest version.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        package_name (str): The name of the package to check.</span>
+<span class="sd">        include_prereleases (bool): Whether to include pre-releases in the version check.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: The latest version of the package if it exists, otherwise None.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://pypi.org/pypi/</span><span class="si">{</span><span class="n">package_name</span><span class="si">}</span><span class="s2">/json&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="n">versions</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;releases&#39;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+
+        <span class="k">def</span> <span class="nf">is_stable_version</span><span class="p">(</span><span class="n">version</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">v</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">version</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
+                <span class="k">return</span> <span class="ow">not</span> <span class="n">v</span><span class="o">.</span><span class="n">is_prerelease</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">include_prereleases</span><span class="p">:</span>
+            <span class="n">versions</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">versions</span> <span class="k">if</span> <span class="n">is_stable_version</span><span class="p">(</span><span class="n">v</span><span class="p">)]</span>
+
+        <span class="k">if</span> <span class="n">versions</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">metadata</span><span class="o">.</span><span class="n">version</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">versions</span><span class="p">))</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">elif</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">404</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Package &#39;</span><span class="si">{</span><span class="n">package_name</span><span class="si">}</span><span class="s2">&#39; not found on PyPi.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to fetch package info for &#39;</span><span class="si">{</span><span class="n">package_name</span><span class="si">}</span><span class="s2">&#39;. HTTP Status Code: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
+
+
+
+<div class="viewcode-block" id="get_package_info">
+<a class="viewcode-back" href="../../../../../autoapi/pic_scanner/cli/subcommands/core/version_info/index.html#pic_scanner.cli.subcommands.core.version_info.get_package_info">[docs]</a>
+<span class="k">def</span> <span class="nf">get_package_info</span><span class="p">(</span><span class="n">package_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get version and license information for a given package.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        package_name (str): The name of the package to check.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: A dictionary with version and license information.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">distribution</span><span class="p">(</span><span class="n">package_name</span><span class="p">)</span>
+        <span class="n">metadata_content</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">metadata</span>
+        <span class="n">license_info</span> <span class="o">=</span> <span class="n">metadata_content</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;License&#39;</span><span class="p">,</span> <span class="s1">&#39;Unknown&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span>
+                <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="n">dist</span><span class="o">.</span><span class="n">version</span><span class="p">,</span>
+                <span class="s2">&quot;license&quot;</span><span class="p">:</span> <span class="n">license_info</span>
+                <span class="p">}</span>
+    <span class="k">except</span> <span class="n">metadata</span><span class="o">.</span><span class="n">PackageNotFoundError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span>
+                <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;Not installed&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;license&quot;</span><span class="p">:</span> <span class="s2">&quot;Unknown&quot;</span>
+                <span class="p">}</span></div>
+
+
+
+<div class="viewcode-block" id="handle_version_update">
+<a class="viewcode-back" href="../../../../../autoapi/pic_scanner/cli/subcommands/core/version_info/index.html#pic_scanner.cli.subcommands.core.version_info.handle_version_update">[docs]</a>
+<span class="k">def</span> <span class="nf">handle_version_update</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">version_info</span> <span class="o">==</span> <span class="s1">&#39;update&#39;</span><span class="p">:</span>
+        <span class="n">CONSOLE</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s1">&#39;Checking latest version info...&#39;</span><span class="p">)</span>
+
+        <span class="n">package_name</span> <span class="o">=</span> <span class="s1">&#39;pic_scanner&#39;</span>  <span class="c1"># Replace with your actual package name</span>
+        <span class="k">if</span> <span class="n">latest_version</span> <span class="o">:=</span> <span class="n">check_pypi_package_version</span><span class="p">(</span>
+                <span class="n">package_name</span><span class="p">,</span> <span class="n">include_prereleases</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">include_prereleases</span>
+                <span class="p">):</span>
+            <span class="n">CONSOLE</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The latest version of &#39;</span><span class="si">{</span><span class="n">package_name</span><span class="si">}</span><span class="s2">&#39; is </span><span class="si">{</span><span class="n">latest_version</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">CONSOLE</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not retrieve the latest version for &#39;</span><span class="si">{</span><span class="n">package_name</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="handle_version_info">
+<a class="viewcode-back" href="../../../../../autoapi/pic_scanner/cli/subcommands/core/version_info/index.html#pic_scanner.cli.subcommands.core.version_info.handle_version_info">[docs]</a>
+<span class="k">def</span> <span class="nf">handle_version_info</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="c1"># Gather information</span>
+    <span class="n">python_version</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">version</span>
+    <span class="n">python_executable</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">executable</span>
+    <span class="n">package_info</span> <span class="o">=</span> <span class="n">get_package_info</span><span class="p">(</span><span class="s1">&#39;PySimpleGUI&#39;</span><span class="p">)</span>
+    <span class="n">latest_version</span> <span class="o">=</span> <span class="n">check_pypi_package_version</span><span class="p">(</span><span class="s1">&#39;pic_scanner&#39;</span><span class="p">,</span> <span class="n">include_prereleases</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">include_prereleases</span><span class="p">)</span>
+
+    <span class="c1"># Create the table</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">show_header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">header_style</span><span class="o">=</span><span class="s2">&quot;bold magenta&quot;</span><span class="p">)</span>
+    <span class="n">table</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="s2">&quot;Attribute&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;dim&quot;</span><span class="p">)</span>
+    <span class="n">table</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="s2">&quot;Value&quot;</span><span class="p">)</span>
+
+    <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="s2">&quot;Version&quot;</span><span class="p">,</span> <span class="s2">&quot;3.1.0-dev.4&quot;</span><span class="p">)</span>
+    <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="s2">&quot;Full Version Name&quot;</span><span class="p">,</span> <span class="s2">&quot;v3.1.0 Development Build 4&quot;</span><span class="p">)</span>
+    <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="s2">&quot;Python Executable Path&quot;</span><span class="p">,</span> <span class="n">python_executable</span><span class="p">)</span>
+    <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="s2">&quot;Python Version&quot;</span><span class="p">,</span> <span class="n">python_version</span><span class="p">)</span>
+    <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="s2">&quot;PySimpleGUI Version&quot;</span><span class="p">,</span> <span class="n">package_info</span><span class="p">[</span><span class="s1">&#39;version&#39;</span><span class="p">])</span>
+    <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="s2">&quot;PySimpleGUI License&quot;</span><span class="p">,</span> <span class="n">package_info</span><span class="p">[</span><span class="s1">&#39;license&#39;</span><span class="p">])</span>
+    <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="s2">&quot;Latest Version on PyPi&quot;</span><span class="p">,</span> <span class="n">latest_version</span> <span class="ow">or</span> <span class="s2">&quot;Unknown&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Print the table</span>
+    <span class="n">CONSOLE</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">table</span><span class="p">)</span></div>
+
+
+
+<span class="n">REGISTRY</span><span class="o">.</span><span class="n">register_subcommand</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;version&#39;</span><span class="p">,</span>
+        <span class="n">help_text</span><span class="o">=</span><span class="s1">&#39;Version information commands&#39;</span><span class="p">,</span>
+        <span class="n">handler</span><span class="o">=</span><span class="n">handle_version_update</span><span class="p">,</span>
+        <span class="n">arguments</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;version_info&#39;</span><span class="p">:</span>          <span class="p">{</span>
+                        <span class="s1">&#39;choices&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;update&#39;</span><span class="p">],</span>
+                        <span class="s1">&#39;help&#39;</span><span class="p">:</span>    <span class="s1">&#39;Version information action to perform&#39;</span>
+                        <span class="p">},</span>
+                <span class="s1">&#39;--include-prereleases&#39;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s1">&#39;action&#39;</span><span class="p">:</span> <span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;help&#39;</span><span class="p">:</span>   <span class="s1">&#39;Include pre-releases in the version check&#39;</span>
+                        <span class="p">}</span>
+                <span class="p">}</span>
+        <span class="p">)</span>
+
+<span class="n">REGISTRY</span><span class="o">.</span><span class="n">register_subcommand</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;info&#39;</span><span class="p">,</span>
+        <span class="n">help_text</span><span class="o">=</span><span class="s1">&#39;Print detailed version information&#39;</span><span class="p">,</span>
+        <span class="n">handler</span><span class="o">=</span><span class="n">handle_version_info</span><span class="p">,</span>
+        <span class="n">arguments</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;--include-prereleases&#39;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s1">&#39;action&#39;</span><span class="p">:</span> <span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;help&#39;</span><span class="p">:</span>   <span class="s1">&#39;Include pre-releases in the version check&#39;</span>
+                        <span class="p">}</span>
+                <span class="p">}</span>
+        <span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Inspyre-Softworks.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

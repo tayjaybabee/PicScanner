@@ -1,5 +1,6 @@
 from pic_scanner.helpers.filesystem.classes import FileCollection
 from pic_scanner.helpers.properties import ReactiveProperty
+from inspyre_toolbox.syntactic_sweets.properties.decorators import validate_type
 
 from pic_scanner.gui.models import MOD_LOGGER as PARENT_LOGGER
 from pic_scanner.log_engine import Loggable
@@ -36,7 +37,9 @@ class GUIFileCollection(Loggable):
             TypeError:
                 If the collection is not an instance of FileCollection.
         """
+        self.__collection = collection
         super().__init__(parent_log_device=MOD_LOGGER)
+        self.__files = self.collection.paths
 
         if not isinstance(collection, FileCollection):
             raise TypeError('The `collection` attribute must be of type `FileCollection`.')
@@ -44,8 +47,6 @@ class GUIFileCollection(Loggable):
         self.log_device.debug(f'Received a collection with {collection.total_files} files. With the following '
                               f'extensions represented: {collection.extensions}')
 
-        self.__collection = collection
-        self.__files = collection.paths
 
     @property
     def collection(self) -> FileCollection:
@@ -67,7 +68,7 @@ class GUIFileCollection(Loggable):
             list:
                 The list of file paths.
         """
-        return self.__files
+        return self.collection.paths
 
     @property
     def needs_reprocessing(self) -> bool:
@@ -237,4 +238,4 @@ class GUIFileCollection(Loggable):
             int:
                 The number of files.
         """
-        return len(self.__files)
+        return len(self.files)

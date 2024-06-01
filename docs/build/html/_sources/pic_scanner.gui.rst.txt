@@ -5,9 +5,20 @@ Subpackages
 -----------
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 8
 
    pic_scanner.gui.models
+
+Submodules
+----------
+
+pic\_scanner.gui.helpers module
+-------------------------------
+
+.. automodule:: pic_scanner.gui.helpers
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 Module contents
 ---------------

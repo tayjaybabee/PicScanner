@@ -1,8 +1,6 @@
 from inspyre_toolbox.syntactic_sweets.properties import validate_type
 import PySimpleGUI as psg
 
-from .blueprint import BluePrint
-from ..template import Window
 from pic_scanner.helpers.locks import flag_lock
 
 from pathlib import Path
@@ -12,6 +10,14 @@ from pic_scanner.log_engine import Loggable
 
 MOD_LOGGER = PARENT_LOGGER.get_child('main')
 
+
+def make_window_template():
+    from pic_scanner.gui.models.windows.template import Window
+
+    return Window
+
+
+Window = make_window_template()
 
 
 class MainWindow(Window, Loggable):
@@ -56,7 +62,7 @@ class MainWindow(Window, Loggable):
                     self.window.file_index -= 1
                     log.debug(f'New index: {self.window.file_index}')
 
-                elif event in ['REMOVE_BUTTON']:
+                elif event == 'MAIN_WINDOW:REMOVE_FILE:BUTTON':
                     log.debug('Remove event')
 
                     log.debug(f'Current file: {self.window.active_image}')
@@ -73,13 +79,13 @@ class MainWindow(Window, Loggable):
                     # Set the new index
                     self.window.blueprint.left_column.file_list_box.update(set_to_index=self.window.file_index )
 
+
+                    self.window.window.refresh()
+
                 elif event == 'FILE_LIST_BOX':
                     log.debug(f'File list box event: {values[event][0]}')
 
                     self.window.file_index = values[event][0]
-
-                elif 'TIMEOUT' not in event:
-                    log.warning(f'Unhandled event: {event}, {values}')
 
                 self.window.check_prev_button()
                 self.window.check_remove_button()
@@ -89,15 +95,33 @@ class MainWindow(Window, Loggable):
             return self.__announced_start
 
     def check_index(self):
+        log_name = f'{self.log_device.name}:check_index'
+
+        log = (
+            self.log_device.find_child_by_name(log_name)[0]
+            ) if self.log_device.has_child(log_name) else self.create_child_logger()
+
         if self.file_index != self.__last_index:
+            log.debug(f'Index changed from {self.__last_index} to {self.file_index}')
+            log.debug('Updating image')
             self.__last_index = self.file_index
             #self.blueprint.file_column.change_image(self.files[self.file_index])
 
     def check_prev_button(self):
+        log_name = f'{self.log_device.name}:check_prev_button'
+
+        log = (
+            self.log_device.find_child_by_name(log_name)[0]
+            ) if self.log_device.has_child(log_name) else self.create_child_logger()
+
         if self.file_index == 0:
-            self.blueprint.left_column.prev_button.update(disabled=True)
+            if not self.blueprint.left_column.prev_button.disabled:
+                log.debug('Index is 0, disabling prev button')
+                self.blueprint.left_column.prev_button.update(disabled=True)
         else:
-            self.blueprint.left_column.prev_button.update(disabled=False)
+            if self.blueprint.left_column.prev_button.disabled:
+                log.debug('Index is not 0, enabling prev button')
+                self.blueprint.left_column.prev_button.update(disabled=False)
 
     def check_remove_button(self):
         """
@@ -116,16 +140,12 @@ class MainWindow(Window, Loggable):
             ) if self.log_device.has_child(log_name) else self.create_child_logger()
 
         if self.file_index is not None and len(self.files) > 0:
-            if self.__remove_button_state is False:
-                log.debug('Index is not None and files are present, enabling remove button')
-                self.__remove_button_state = True
+            if self.__remove_button_state is False and self.blueprint.left_column.remove_button.disabled:
+                log.debug('Enabling remove button')
                 self.update_remove_button_state(True)
-
-        elif self.__remove_button_state:
-            log.debug('Index is None or no files are present')
-            self.__remove_button_state = False
+        elif self.__remove_button_state and not self.blueprint.left_column.remove_button.disabled:
+            log.debug('Disabling remove button')
             self.update_remove_button_state(False)
-
 
     def __init__(self, *args, **kwargs):
         Window.__init__(self, *args, **kwargs)
@@ -202,11 +222,18 @@ class MainWindow(Window, Loggable):
             self._window = None
 
     def remove_current_file(self):
+        log_name = f'{self.log_device.name}:remove_current_file'
+
+        log = (
+            self.log_device.find_child_by_name(log_name)[0]
+            ) if self.log_device.has_child(log_name) else self.create_child_logger()
         cursor = self.window.blueprint.file_collection_cursor
         cursor.remove_current()
         cursor.collection.reprocess_files()
 
         new_index = cursor.cursor if cursor.cursor < len(self.window.files) else len(self.window.files) - 1
+
+        self.window.blueprint.left_column.file_list_box.update(values=self.window.files)
 
         self.window.file_index = new_index
         self.window.blueprint.left_column.file_list_box.update(set_to_index=new_index)
@@ -232,7 +259,14 @@ class MainWindow(Window, Loggable):
         Returns:
             None
         """
-        self.blueprint.left_column.remove_button.update(disabled=not state)
+        button = self.blueprint.left_column.remove_button
+        if state:
+            button.enable()
+        else:
+            button.disable()
+
+        if self.running:
+            self.window.refresh()
 
 
     @property

@@ -12,6 +12,14 @@ pic\_scanner.gui.models.element\_bases.blueprint module
    :undoc-members:
    :show-inheritance:
 
+pic\_scanner.gui.models.element\_bases.button module
+----------------------------------------------------
+
+.. automodule:: pic_scanner.gui.models.element_bases.button
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 pic\_scanner.gui.models.element\_bases.column module
 ----------------------------------------------------
 
@@ -32,15 +40,6 @@ Module contents
 ---------------
 
 .. automodule:: pic_scanner.gui.models.element_bases
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-
-The ``GUIFileCollection`` class
-********************************
-
-.. autoclass:: pic_scanner.gui.models.element_bases.GUIFileCollection
    :members:
    :undoc-members:
    :show-inheritance:
