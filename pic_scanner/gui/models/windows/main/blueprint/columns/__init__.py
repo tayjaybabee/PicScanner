@@ -83,7 +83,15 @@ class LeftColumn(Column):
         self.instances.append(self)
 
     @property
-    def 
+    def button_factory(self):
+        """
+        Gets the button factory.
+
+        Returns:
+            ButtonFactory:
+                The button factory.
+        """
+        return self.__button_factory
 
     @property
     def file_collection(self):
@@ -141,7 +149,7 @@ class LeftColumn(Column):
         """
         if self.building and not self.is_built and self.__next_button is None:
 
-            self.__next_button = self.
+            self.__next_button = self.button_factory.create_button('Next')
         return self.__next_button
 
     @property
@@ -240,7 +248,7 @@ class FileColumn(Column):
 
         self._changing_image = False
 
-        self.__file_path = False
+        self.__file_path = None
 
         self.file_path = file_path
         self.__image_elem = None
