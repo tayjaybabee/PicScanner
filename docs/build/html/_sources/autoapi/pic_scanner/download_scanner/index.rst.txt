@@ -1,6 +1,0 @@
-pic_scanner.download_scanner
-============================
-
-.. py:module:: pic_scanner.download_scanner
-
-
