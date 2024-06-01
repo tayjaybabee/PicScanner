@@ -4,7 +4,7 @@ from pic_scanner.helpers.locks import flag_lock
 from pic_scanner.helpers.filesystem.classes import FileCollection
 from .columns import LeftColumn, FileColumn
 from pic_scanner.gui.models.element_bases.blueprint import BaseBlueprint
-from pic_scanner.gui.models.element_bases import GUIFileCollection
+from pic_scanner.gui.wrappers.file_collections import GUIFileCollection
 from pic_scanner.gui.models.element_bases.button.factories import ButtonFactory
 
 from pic_scanner.gui.models.windows.main import MOD_LOGGER as PARENT_LOGGER

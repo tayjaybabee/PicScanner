@@ -10,8 +10,13 @@ from inspyre_toolbox.syntactic_sweets.properties.decorators import validate_type
 from shutil import copy as copy_file
 
 from ..common.constants import LABEL_DESCRIPTIONS
-from .concern import Concern
+from .of_interest import Concern
 from ..helpers.filesystem import provision_path
+from ..helpers.filesystem.classes import FileCollection
+from ..helpers.images import get_image_checksum
+from ..helpers.locks import flag_lock
+
+from pic_scanner.common.types import ScannedImageCollection as ScannedImageCollectionMeta
 
 
 __all__ = [
@@ -88,17 +93,65 @@ class ScannedImage:
         restrict_setter=True,
     )
 
-    def __init__(self, image_path: Union[str, Path]):
+    def __init__(
+            self,
+            image_path: Union[str, Path],
+            auto_checksum: bool = True,
+            backup_path: Union[str, Path] = None,
+            ):
         """
         The constructor for ScannedImage class.
 
         Parameters:
             image_path (str, Path): The path of the image.
         """
+        self._getting_checksum = False
+        self.__auto_checksum = None
+        self.__backup_path = None
         self.__backed_up = False
+        self.__checksum = None
         self.__concerns = []
 
+        self.auto_checksum = auto_checksum
+
         self.image_path = image_path
+
+    @property
+    def auto_checksum(self):
+        """
+        Get the auto checksum status of the image.
+
+        Returns:
+            bool:
+                The auto checksum status of the image.
+        """
+        return self.__auto_checksum
+
+    @auto_checksum.setter
+    @validate_type(bool)
+    def auto_checksum(self, value):
+        """
+        Set the auto checksum status of the image.
+
+        Parameters:
+            value (bool):
+                The auto checksum status of the image.
+        """
+        self.__auto_checksum = value
+
+    @property
+    def backup_path(self):
+        """
+        Get the backup path for the image.
+
+        Returns:
+            Path:
+                The backup path for the image.
+        """
+        if not self.__backup_path:
+            return self.default_backup_path
+
+        return self.__backup_path
 
 
     @property
@@ -110,7 +163,24 @@ class ScannedImage:
             bool:
                 The backed up status of the image.
         """
+        if not self.__backed_up:
+            return self.backup_path.exists()
+
         return self.__backed_up
+
+    @property
+    def checksum(self):
+        """
+        Get the checksum of the image.
+
+        Returns:
+            str:
+                The checksum of the image.
+        """
+        if not self.getting_checksum and self.auto_checksum and not self.__checksum:
+            self.get_checksum()
+
+        return self.__checksum
 
     @property
     def concerns(self):
@@ -143,6 +213,28 @@ class ScannedImage:
             list:
         """
         return [concern.name for concern in self.concerns]
+
+    @property
+    def default_backup_path(self):
+        """
+        Get the default backup path for the image.
+
+        Returns:
+            Path:
+                The default backup path for the image.
+        """
+        return self.image_path.parent / 'backups' / self.image_path.name
+
+    @property
+    def getting_checksum(self):
+        """
+        Get the getting checksum status of the image.
+
+        Returns:
+            bool:
+                The getting checksum status of the image.
+        """
+        return self._getting_checksum
 
     def add_concern(self, concern):
         """
@@ -209,9 +301,23 @@ class ScannedImage:
                 class_name = detection.get('class')
                 score = detection.get('score')
                 location = detection.get('box')
-                description = get_description(class_name)
-                if description:
+                if description := get_description(class_name):
                     self.add_concern(Concern(class_name, score, location, description))
+
+    def get_checksum(self):
+        """
+        Get the checksum of the image.
+
+        Returns:
+            str:
+                The checksum of the image.
+        """
+        if not self.getting_checksum:
+            with flag_lock(self, 'getting_checksum'):
+                if not self.__checksum:
+                    self.__checksum = get_image_checksum(self.image_path)
+
+        return self.__checksum
 
     def get_concerns(self):
         """
@@ -223,7 +329,7 @@ class ScannedImage:
         """
         return self.concerns
 
-    def get_concerns_by_name(self, name):
+    def get_concerns_by_name(self, name, case_sensitive=False):
         """
         Get the concerns associated with the image by name.
 
@@ -231,14 +337,23 @@ class ScannedImage:
             name (str):
                 The name of the concern.
 
+            case_sensitive (bool):
+                If the check should be case-sensitive.
+
         Returns:
             list:
                 The concerns associated with the image by name.
         """
         concerns = []
         for concern in self.__concerns:
-            if concern.name == name:
+
+            if not case_sensitive:
+                name = name.upper()
+                if concern.name.upper() == name:
+                    concerns.append(concern)
+            elif concern.name == name:
                 concerns.append(concern)
+
         return concerns
 
     def has_concern(self, name, case_sensitive=False):
@@ -281,7 +396,7 @@ class ScannedImage:
         self.image_path = new_path
 
 
-class ScannedImageCollection:
+class ScannedImageCollection(ScannedImageCollectionMeta):
     """
     A class representing a collection of scanned images.
 
@@ -316,9 +431,13 @@ class ScannedImageCollection:
         """
         The constructor for ScannedImageCollection class.
         """
+        super().__init__()
+        self.add_image = self.__add_image
+        self.finalize = self.__finalize
+
         self.images = []
 
-    def add_image(self, image: ScannedImage):
+    def __add_image(self, image: ScannedImage):
         """
         Add a scanned image to the collection.
 
@@ -351,7 +470,7 @@ class ScannedImageCollection:
         else:
             raise ValueError(f"The image {image} is not in the collection!")
 
-    def get_all_with_concern(self, concern_name: str, case_sensitive=False):
+    def get_all_with_concern(self, concern_name: str, case_sensitive=False, score_threshold=None):
         """
         Get all images with a specific concern.
 
@@ -362,11 +481,18 @@ class ScannedImageCollection:
             case_sensitive (bool):
                 If the check should be case-sensitive.
 
+            score_threshold (Union[float, int], optional):
+                The threshold for the concern score.
+
         Returns:
             list:
                 A list of images with the concern.
         """
-        images = []
+        if score_threshold:
+            if score_threshold > 1:
+                score_threshold = score_threshold / 100
+            else:
+                score_threshold = score_threshold
 
         if not case_sensitive:
             concern_name = concern_name.upper()
@@ -374,9 +500,20 @@ class ScannedImageCollection:
         if concern_name not in self.concern_names:
             warn(f"The concern {concern_name} is not in the collection!")
         else:
+            images = []
+
             for image in self.images:
                 if image.has_concern(concern_name, case_sensitive):
-                    images.append(image)
+                    if score_threshold:
+                        images.extend(
+                            image
+                            for concern in image.get_concerns_by_name(
+                                concern_name, case_sensitive
+                            )
+                            if concern.score >= score_threshold
+                        )
+                    else:
+                        images.append(image)
             return images
 
     def get_image(self, image_path):
@@ -535,6 +672,17 @@ class ScannedImageCollection:
                 The paths of the images in the collection.
         """
         return [image.image_path for image in self.images]
+
+    def __finalize(self):
+        """
+        Finalize the collection.
+
+        Returns:
+            None
+        """
+        del self.add_image
+        del self.finalize
+
 
 
 

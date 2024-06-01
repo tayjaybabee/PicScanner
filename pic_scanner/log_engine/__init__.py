@@ -1,11 +1,11 @@
-from ..common.constants import *
-from ..common.constants.defaults.dirs import PROG_DIRS
+from pic_scanner.common.constants import *
+from pic_scanner.common.constants.defaults.dirs import PROG_DIRS
 from inspy_logger import InspyLogger, LEVELS, Loggable
 
 
 ROOT_LOGGER = InspyLogger(
         PROG_NAME,
-        console_level='debug',
+        console_level='info',
         file_level='debug',
         file_path=PROG_DIRS.user_data_path / 'logs' / 'pic_scanner.log',
         )

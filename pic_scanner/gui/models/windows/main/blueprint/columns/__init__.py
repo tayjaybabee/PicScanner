@@ -3,7 +3,7 @@ from typing import Union
 
 from inspyre_toolbox.syntactic_sweets.properties import validate_path
 
-from pic_scanner.gui.models.element_bases import GUIFileCollection
+from pic_scanner.gui.wrappers.file_collections import GUIFileCollection
 from pic_scanner.gui.models.element_bases.column import Column, psg
 from pic_scanner.helpers.filesystem.classes import FileCollection
 from pic_scanner.helpers.images import get_image_data

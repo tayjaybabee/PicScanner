@@ -5,6 +5,8 @@ import io
 from io import BytesIO
 import base64
 from pic_scanner.helpers import MOD_LOGGER as PARENT_LOGGER
+from pathlib import Path
+import hashlib
 
 MOD_LOGGER = PARENT_LOGGER.get_child('images')
 
@@ -120,3 +122,36 @@ def get_image_data(file_or_bytes: Union[str, bytes], maxsize: Tuple[int, int] = 
         img.save(bio, format="PNG")
         del img
         return bio.getvalue()
+
+
+def get_image_checksum(image_path: Union[str, Path]):
+    """
+    Get the checksum of an image file.
+
+    Parameters:
+        image_path (Union[str, Path]):
+            The path to the image file.
+
+    Returns:
+        str: The checksum of the image file.
+    """
+    if MOD_LOGGER.find_child_by_name('get_image_checksum'):
+        log = MOD_LOGGER.find_child_by_name('get_image_checksum')[0]
+    else:
+        log = MOD_LOGGER.get_child('get_image_checksum')
+
+    log.debug(f'Received image path: {image_path}')
+
+    if isinstance(image_path, str):
+        image_path = Path(image_path)
+
+    if not image_path.exists():
+        log.error(f'File not found: {image_path}')
+        raise FileNotFoundError(f'File not found: {image_path}')
+
+    with open(image_path, 'rb') as f:
+        checksum = hashlib.md5(f.read()).hexdigest()
+
+    log.debug(f'Checksum: {checksum}')
+
+    return checksum

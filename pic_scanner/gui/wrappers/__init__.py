@@ -1,0 +1,1 @@
+from pic_scanner.gui.wrappers.file_collections import GUIFileCollection

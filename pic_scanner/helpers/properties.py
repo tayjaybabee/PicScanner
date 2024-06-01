@@ -1,4 +1,51 @@
 from inspyre_toolbox.syntactic_sweets.properties import RestrictedSetter
+from typing import Union
+from functools import wraps
+
+
+def validate_float_between(min_value: float = 0.0, max_value: float = 1.0):
+    """
+    Decorator to ensure that a property setter only accepts floats between a given range.
+
+    Parameters:
+        min_value (Union[float, int], optional):
+            The minimum value that the property can be.
+
+        max_value (Union[float, int], optional):
+            The maximum value that the property can be.
+
+    Returns:
+        function:
+            The decorated function.
+
+    Raises:
+        ValueError:
+            If the value is not between the specified range.
+
+    Examples:
+        >>> class Test:
+        ...     @validate_float_between(0.0, 1.0)
+        ...     def test(self, value):
+        ...         return value
+        ...
+        >>> t = Test()
+        >>> t.test(0.5)
+        0.5
+        >>> t.test(1.5)
+        Traceback (most recent call last):
+        ...
+        AttributeError: Value must be between 0.0 and 1.0
+    """
+    def decorator(func):
+        @wraps(func)
+        def wrapper(instance, value):
+            if isinstance(value, (int, float)) and min_value < value <= max_value:
+                return func(instance, float(value))
+            else:
+                raise ValueError(f"Value must be between {min_value} and {max_value}")
+
+        return wrapper
+    return decorator
 
 
 class ReactiveProperty:

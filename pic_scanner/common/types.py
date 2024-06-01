@@ -1,0 +1,6 @@
+class ScannedImageCollection:
+    """
+    .. :noindex:
+    ...
+    """
+    pass
