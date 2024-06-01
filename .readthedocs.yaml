@@ -15,6 +15,7 @@ build:
       - curl -sSL https://install.python-poetry.org | python -
     post_install:
       - /home/docs/.local/bin/poetry install --with docs
+      - /home/docs/.local/bin/poetry shell
 
 # Build documentation in the "docs/" directory with Sphinx
 sphinx:
