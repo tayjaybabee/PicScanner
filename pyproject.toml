@@ -30,6 +30,7 @@ sphinx-rtd-theme = "^2.0.0"
 sphinx-autodoc-typehints = "^2.1.0"
 sphinx-autoapi = "^3.1.1"
 sphinxcontrib-napoleon = "^0.7"
+sphinxcontrib-fulltoc = "^1.2.0"
 
 [tool.poetry.scripts]
 pic-scanner = "pic_scanner.main:main"
