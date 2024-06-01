@@ -21,7 +21,6 @@ release = '1.0.0-dev.1'
 extensions = [
         'sphinx.ext.autodoc',
         'sphinx.ext.napoleon',
-        'sphinxcontrib.fulltoc',
         #'sphinx.ext.viewcode',
         'sphinx_rtd_theme',
         'sphinx.ext.autosummary',
