@@ -11,6 +11,7 @@ Welcome to PicScanner's documentation!
    :caption: Contents:
 
    button_schematic
+   using_the_picscanner_library
 
 
 

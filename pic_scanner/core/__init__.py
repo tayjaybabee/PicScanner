@@ -187,8 +187,7 @@ def scan_images(
             log.debug(f'Scanned image created: {scanned_image}')
 
         except Exception as e:
-            log.warning(f'Failed to scan image: {image_path} {result if hasattr(locals(), "result") else ""}!',
-                        exc_info=True)
+            log.warning(f'Failed to scan image: {image_path} {result if hasattr(locals(), "result") else ""}!',)
             if e.__class__.__name__ == 'KeyboardInterrupt':
                 raise e from e
 

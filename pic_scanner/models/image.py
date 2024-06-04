@@ -10,7 +10,8 @@ from inspyre_toolbox.syntactic_sweets.properties.decorators import validate_type
 from shutil import copy as copy_file
 
 from ..common.constants import LABEL_DESCRIPTIONS
-from .of_interest import Concern
+from .of_interest import OfInterest
+from .of_interest.concern import Concern
 from ..helpers.filesystem import provision_path
 from ..helpers.filesystem.classes import FileCollection
 from ..helpers.images import get_image_checksum
@@ -111,6 +112,7 @@ class ScannedImage:
         self.__backed_up = False
         self.__checksum = None
         self.__concerns = []
+        self.__point_of_interests = []
 
         self.auto_checksum = auto_checksum
 
@@ -236,6 +238,17 @@ class ScannedImage:
         """
         return self._getting_checksum
 
+    @property
+    def point_of_interests(self):
+        """
+        Get the points of interest associated with the image.
+
+        Returns:
+            list:
+                The points of interest associated with the image.
+        """
+        return self.__point_of_interests
+
     def add_concern(self, concern):
         """
         Add a concern to the scanned image.
@@ -251,6 +264,21 @@ class ScannedImage:
             raise ValueError(f"The concern must be an instance of the Concern class, not {type(concern)}!"
                              f"")
         self.__concerns.append(concern)
+
+    def add_point_of_interest(self, point_of_interest):
+        """
+        Add a point of interest to the scanned image.
+
+        Parameters:
+            point_of_interest (PointOfInterest):
+                The point of interest to add to the scanned image.
+
+        Returns:
+            None
+        """
+        if not isinstance(point_of_interest, OfInterest):
+            raise ValueError(f"The point of interest must be an instance of the PointOfInterest class, not {type(point_of_interest)}!")
+        self.__point_of_interests.append(point_of_interest)
 
     def backup(self, backup_dir=None, backup_name=None, **kwargs):
         """
@@ -372,6 +400,24 @@ class ScannedImage:
             return name in self.concern_names
 
         if name.upper() in self.concern_names:
+            return True
+
+    def has_point_of_interest(self, name, case_sensitive=False):
+        """
+        Check if the image has a point of interest by name.
+
+        Parameters:
+            name (str): The name of the point of interest.
+            case_sensitive (bool): If the check should be case sensitive.
+
+        Returns:
+            bool:
+                True if the image has the point of interest, False otherwise.
+        """
+        if case_sensitive:
+            return name in self.point_of_interest_names
+
+        if name.upper() in self.point_of_interest_names:
             return True
 
     def move(self, new_dir, new_name=None):

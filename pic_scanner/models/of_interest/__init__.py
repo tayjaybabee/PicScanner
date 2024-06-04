@@ -11,7 +11,7 @@ from pic_scanner.log_engine import Loggable
 from pic_scanner.models import MOD_LOGGER as PARENT_LOGGER
 
 
-MOD_LOGGER = PARENT_LOGGER.get_child('concern')
+MOD_LOGGER = PARENT_LOGGER.get_child('of_interest')
 
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 
-class OfInterest:
+class OfInterest(Loggable):
     description = RestrictedSetter(
         'description',
         allowed_types=(str, type(None)),

@@ -4,14 +4,12 @@ from pathlib import Path
 
 from typing import Union
 from warnings import warn
-from .filesystem import provision_path, check_directory
-from ..common.constants import IMAGE_EXTENSIONS
 
-from .filesystem.classes import FileCollection
-
+from pic_scanner.common.constants import IMAGE_EXTENSIONS
 from pic_scanner.log_engine import MAIN_MOD_LOGGER
 
 MOD_LOGGER = MAIN_MOD_LOGGER.get_child('helpers')
+
 
 excluded = []
 
@@ -101,6 +99,7 @@ def get_picture_files(
         >>> get_picture_files('path/to/directory', recursive=True)
         [Path('path/to/directory/image1.jpg'), Path('path/to/directory/image2.jpg')]
     """
+    from pic_scanner.helpers.filesystem import provision_path, check_directory
 
     files = []
 
@@ -144,7 +143,7 @@ def get_file_collection(
         recursive: bool = False,
         do_not_provision: bool = False,
         exclude_dir_names: list[str] = None,
-        **kwargs) -> FileCollection:
+        **kwargs) -> 'FileCollection':
     """
     Get a FileCollection object for a directory.
 
@@ -183,6 +182,7 @@ def get_file_collection(
         >>> get_file_collection('path/to/directory', recursive=True)
         FileCollection(paths=[Path('path/to/directory/image1.jpg'), Path('path/to/directory/image2.jpg')])
     """
+    from pic_scanner.helpers.filesystem.classes import FileCollection
 
     return FileCollection(
         get_picture_files(
